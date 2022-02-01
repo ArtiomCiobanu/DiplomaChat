@@ -17,7 +17,7 @@ namespace DiplomaChat.Common.DataAccess.Extensions
         {
             return (queryable is IAsyncEnumerable<TEntity>)
                 ? queryable.AllAsync(predicate, cancellationToken)
-                : Task.FromResult(queryable.Any());
+                : Task.FromResult(queryable.Any(predicate));
         }
 
         public static Task<bool> ExistsAsync<TEntity>(
@@ -36,7 +36,7 @@ namespace DiplomaChat.Common.DataAccess.Extensions
         {
             return (queryable is IAsyncEnumerable<TEntity>)
                 ? queryable.AnyAsync(predicate, cancellationToken)
-                : Task.FromResult(queryable.Any());
+                : Task.FromResult(queryable.Any(predicate));
         }
 
         public static Task<TEntity> TopOneAsync<TEntity>(

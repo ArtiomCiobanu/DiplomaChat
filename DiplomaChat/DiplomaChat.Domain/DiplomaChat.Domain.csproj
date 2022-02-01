@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <VersionPrefix>1.0.1</VersionPrefix>
+        <VersionSuffix>develop</VersionSuffix>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <RootNamespace>TileGameServer.Domain</RootNamespace>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <OutputPath>$(MSBuildProjectDirectory)/../../../output</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="TileGameServer.BaseLibrary.Domain">
+            <HintPath>$(OutputPath)/TileGameServer.BaseLibrary.Domain.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <VersionPrefix>1.0.2</VersionPrefix>
+        <VersionSuffix>develop</VersionSuffix>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <RootNamespace>TileGameServer.Infrastructure</RootNamespace>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <OutputPath>$(MSBuildProjectDirectory)/../../../output</OutputPath>
+    </PropertyGroup>
+
+    <!-- Libs from nuget.org -->
+    <ItemGroup>
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.15.1" />
+        <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.15.1" />
+    </ItemGroup>
+
+    <!-- TCD writen libs from own artifactory -->
+
+</Project>

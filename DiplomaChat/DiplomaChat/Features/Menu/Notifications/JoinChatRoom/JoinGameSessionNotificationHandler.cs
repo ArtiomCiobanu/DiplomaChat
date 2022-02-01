@@ -1,0 +1,65 @@
+﻿using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using DiplomaChat.Common.DataAccess.Extensions;
+using DiplomaChat.Common.Infrastructure.Enums;
+using DiplomaChat.Common.MessageQueueing.MessageQueueing;
+using MediatR;
+using TileGameServer.DataAccess.Context;
+using TileGameServer.DataAccess.Entities;
+
+namespace TileGameServer.Features.Menu.Notifications.JoinChatRoom
+{
+    public class JoinGameSessionNotificationHandler : IRequestHandler<JoinChatRoomNotificationCommand>
+    {
+        private readonly IMessageQueuePublisher _messageQueuePublisher;
+        private readonly IDiplomaChatContext _diplomaChatContext;
+
+        public JoinGameSessionNotificationHandler(
+            IMessageQueueConnection messageQueueConnection,
+            IDiplomaChatContext diplomaChatContext)
+        {
+            _messageQueuePublisher = messageQueueConnection.CreatePublisher("JoinChatRoomQueue");
+            _diplomaChatContext = diplomaChatContext;
+        }
+
+        public async Task<Unit> Handle(JoinChatRoomNotificationCommand request, CancellationToken cancellationToken)
+        {
+            if (request.ResponseStatus == ResponseStatus.Success)
+            {
+                var user = await _diplomaChatContext.EntitySet<ChatRoomUser>()
+                    .JoinSet(cru => cru.User)
+                    .Where(u => u.Id == request.UserId)
+                    .Select(u => new
+                    {
+                        u.Id,
+                        ChatRoomId = u.ChatRoomId,
+                        u.User.Nickname
+                    })
+                    .TopOneAsync(cancellationToken);
+
+                if (user != null)
+                {
+                    _messageQueuePublisher.PublishMessage(
+                        new JoinGameSessionNotification
+                        {
+                            PlayerId = request.UserId,
+                            PlayerNickname = user.Nickname,
+                            GameSessionId = request.ChatRoomId
+                        });
+                    _messageQueuePublisher.Dispose();
+                }
+            }
+
+            return Unit.Value;
+        }
+    }
+
+    public class JoinGameSessionNotification
+    {
+        public Guid PlayerId { get; set; }
+        public Guid GameSessionId { get; set; }
+        public string PlayerNickname { get; set; }
+    }
+}

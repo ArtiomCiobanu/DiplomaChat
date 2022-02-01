@@ -23,5 +23,12 @@ namespace DiplomaChat.Common.Infrastructure.Controllers
         {
             return ResponseMapper.ExecuteAndMapStatusAsync(Mediator.Send(request, cancellationToken));
         }
+
+        protected Task<IActionResult> SendCommandToMediatorAsync(
+            IRequest<IResponse<Unit>> request,
+            CancellationToken cancellationToken = default)
+        {
+            return ResponseMapper.ExecuteAndMapStatusAsync(Mediator.Send(request, cancellationToken));
+        }
     }
 }

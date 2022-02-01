@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <IsPackable>true</IsPackable>
+        <VersionPrefix>1.0.4</VersionPrefix>
+        <VersionSuffix>develop</VersionSuffix>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <RootNamespace>TileGameServer</RootNamespace>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <OutputPath>$(MSBuildProjectDirectory)/../../../output</OutputPath>
+    </PropertyGroup>
+
+    <!-- Libs from nuget.org -->
+    <ItemGroup>
+        <PackageReference Include="MediatR" Version="10.0.1" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.2.3" />
+    </ItemGroup>
+
+    <!-- TCD writen libs from own artifactory -->
+
+    <!-- Local repo refs -->
+    <ItemGroup>
+        <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.Authorization\DiplomaChat.Common.Authorization.csproj" />
+        <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.MessageQueueing\DiplomaChat.Common.MessageQueueing.csproj" />
+        <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common\DiplomaChat.Common.csproj" />
+        <ProjectReference Include="..\DiplomaChat.DataAccess\DiplomaChat.DataAccess.csproj" />
+        <ProjectReference Include="..\DiplomaChat.Domain\DiplomaChat.Domain.csproj" />
+        <ProjectReference Include="..\DiplomaChat.Infrastructure\DiplomaChat.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="DiplomaChat.Common.Infrastructure, Version=1.1.7.0, Culture=neutral, PublicKeyToken=null, ProcessorArchitecture=MSIL">
+          <HintPath>..\..\DiplomaChat.Common\DiplomaChat.Common.Infrastructure\bin\Debug\net6.0\DiplomaChat.Common.Infrastructure.dll</HintPath>
+        </Reference>
+        <Reference Include="TileGameServer.BaseLibrary.DataAccess">
+          <HintPath>$(OutputPath)/TileGameServer.BaseLibrary.DataAccess.dll</HintPath>
+        </Reference>
+        <Reference Include="TileGameServer.BaseLibrary.Domain">
+            <HintPath>$(OutputPath)/TileGameServer.BaseLibrary.Domain.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+</Project>
