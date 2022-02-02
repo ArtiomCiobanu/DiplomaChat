@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using DiplomaChat.Common.DataAccess.EntityConfigurations;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TileGameServer.DataAccess.Entities;
 
 namespace TileGameServer.DataAccess.EntityConfigurations
 {
-    public class SessionPlayerConfiguration : BaseEntityConfiguration<ChatRoomUser>
+    public class ChatRoomUserConfiguration : BaseEntityConfiguration<ChatRoomUser>
     {
         public override void Configure(EntityTypeBuilder<ChatRoomUser> builder)
         {
@@ -13,6 +14,7 @@ namespace TileGameServer.DataAccess.EntityConfigurations
 
             builder.HasOne(sessionPlayer => sessionPlayer.ChatRoom)
                 .WithMany(gs => gs.RoomUsers).IsRequired();
+            builder.HasOne(cru => cru.User).WithOne(u => u.ChatRoomUser).IsRequired();
         }
     }
 }

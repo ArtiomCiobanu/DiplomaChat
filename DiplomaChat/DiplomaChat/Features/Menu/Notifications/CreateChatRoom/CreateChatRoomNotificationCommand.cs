@@ -1,10 +1,10 @@
 ﻿using System;
-using DiplomaChat.Common.Infrastructure;
 using DiplomaChat.Common.Infrastructure.Enums;
+using MediatR;
 
 namespace TileGameServer.Features.Menu.Notifications.CreateChatRoom
 {
-    public class CreateChatRoomNotificationCommand : ICommand
+    public class CreateChatRoomNotificationCommand : IRequest
     {
         public ResponseStatus ResponseStatus { get; set; }
 

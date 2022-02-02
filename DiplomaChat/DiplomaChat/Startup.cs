@@ -26,8 +26,6 @@ namespace TileGameServer
     {
         public IConfiguration Configuration { get; }
 
-        private IServiceProvider _serviceProvider;
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -59,13 +57,10 @@ namespace TileGameServer
                 return requestLimitConfiguration;
             });
 
-            services.AddDbContext<DataAccess.Context.DiplomaChatContext>(options => options.UseSqlServer(databaseConnectionString!));
-
-            services.AddScoped<IGameSessionRepository, GameSessionDbRepository>();
-            services.AddScoped<IPlayerRepository, PlayerRepository>();
+            services.AddDbContext<DataAccess.Context.DiplomaChatContext>(options =>
+                options.UseSqlServer(databaseConnectionString!));
 
             services.AddSingletonSessionCapacityConfiguration(Configuration);
-            services.AddScoped<ISessionCapacityConfigurator, SessionCapacityConfigurator>();
 
             services.AddScoped<IJwtGenerator, JwtGenerator>();
 
@@ -119,8 +114,6 @@ namespace TileGameServer
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            _serviceProvider = app.ApplicationServices;
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
