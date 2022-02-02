@@ -36,7 +36,7 @@ namespace DiplomaChat.SingleSignOn
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var databaseConnectionString = Configuration.GetConnectionString("DIPLOMA_SSO_DB_CONNECTION_STRING");
+            var databaseConnectionString = Configuration.GetConnectionString("DIPLOMA_CHAT_SSO_DB_CONNECTION_STRING");
             services.AddDbContext<SSOContext>(options => options.UseSqlServer(databaseConnectionString!));
 
             services.AddScoped<ISSOContext, SSOContext>();

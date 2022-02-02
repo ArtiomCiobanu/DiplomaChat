@@ -64,7 +64,7 @@ namespace DiplomaChat.SingleSignOn.Features.Accounts.RegisterAccount
 
             return new Response<Unit>
             {
-                Status = ResponseStatus.Created
+                Status = ResponseStatus.Success
             };
         }
     }
