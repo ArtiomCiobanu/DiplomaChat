@@ -4,13 +4,13 @@ using DiplomaChat.Common.Authorization.Constants;
 using DiplomaChat.Common.Authorization.Extensions;
 using DiplomaChat.Common.Infrastructure.Controllers;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
+using DiplomaChat.Features.Users.GetPlayerProfile;
+using DiplomaChat.Features.Users.RegisterPlayer;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TileGameServer.Features.Users.GetPlayerProfile;
-using TileGameServer.Features.Users.RegisterPlayer;
 
-namespace TileGameServer.Controllers
+namespace DiplomaChat.Controllers
 {
     [Authorize]
     [ApiController]

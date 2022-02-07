@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TileGameServer.Features.Menu.JoinChatRoom
+namespace DiplomaChat.Features.Menu.JoinChatRoom
 {
     public class JoinGameSessionRequest
     {

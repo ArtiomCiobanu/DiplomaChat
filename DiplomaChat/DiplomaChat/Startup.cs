@@ -5,6 +5,9 @@ using DiplomaChat.Common.Authorization.Generators;
 using DiplomaChat.Common.Extensions;
 using DiplomaChat.Common.MessageQueueing.Configuration;
 using DiplomaChat.Common.MessageQueueing.Extensions.RabbitMQ;
+using DiplomaChat.Constants;
+using DiplomaChat.Domain.Models.Configurations;
+using DiplomaChat.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -14,13 +17,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
-using TileGameServer.Constants;
-using TileGameServer.Domain.Models.Configurations;
-using TileGameServer.Extensions;
-using HeaderNames = TileGameServer.Constants.HeaderNames;
-using Schemes = TileGameServer.Constants.Schemes;
+using HeaderNames = DiplomaChat.Constants.HeaderNames;
+using Schemes = DiplomaChat.Constants.Schemes;
 
-namespace TileGameServer
+namespace DiplomaChat
 {
     public class Startup
     {

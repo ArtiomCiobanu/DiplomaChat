@@ -1,8 +1,8 @@
 ﻿using DiplomaChat.Common.DataAccess.EntityConfigurations;
+using DiplomaChat.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TileGameServer.DataAccess.Entities;
 
-namespace TileGameServer.DataAccess.EntityConfigurations
+namespace DiplomaChat.DataAccess.EntityConfigurations
 {
     public class UserConfiguration : BaseEntityConfiguration<User>
     {

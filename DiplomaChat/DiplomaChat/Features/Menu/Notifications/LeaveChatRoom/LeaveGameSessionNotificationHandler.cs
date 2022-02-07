@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using DiplomaChat.Common.DataAccess.Extensions;
 using DiplomaChat.Common.Infrastructure.Enums;
 using DiplomaChat.Common.MessageQueueing.MessageQueueing;
+using DiplomaChat.DataAccess.Context;
+using DiplomaChat.DataAccess.Entities;
 using MediatR;
-using TileGameServer.DataAccess.Context;
-using TileGameServer.DataAccess.Entities;
 
-namespace TileGameServer.Features.Menu.Notifications.LeaveChatRoom
+namespace DiplomaChat.Features.Menu.Notifications.LeaveChatRoom
 {
     public class LeaveGameSessionNotificationHandler : IRequestHandler<LeaveChatRoomNotificationCommand>
     {

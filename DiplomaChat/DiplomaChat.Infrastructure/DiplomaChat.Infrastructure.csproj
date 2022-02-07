@@ -6,7 +6,7 @@
         <VersionSuffix>develop</VersionSuffix>
         <ImplicitUsings>disable</ImplicitUsings>
         <Nullable>disable</Nullable>
-        <RootNamespace>TileGameServer.Infrastructure</RootNamespace>
+        <RootNamespace>DiplomaChat.Infrastructure</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup>

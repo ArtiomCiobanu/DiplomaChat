@@ -1,7 +1,7 @@
 ﻿using System;
 using DiplomaChat.Common.Infrastructure;
 
-namespace TileGameServer.Features.Menu.CreateChatRoom
+namespace DiplomaChat.Features.Menu.CreateChatRoom
 {
     public class CreateChatRoomCommand : IQuery<CreateChatRoomResponse>
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using DiplomaChat.Common.Infrastructure;
 
-namespace TileGameServer.Features.Users.RegisterPlayer
+namespace DiplomaChat.Features.Users.RegisterPlayer
 {
     public class RegisterPlayerCommand : ICommand
     {

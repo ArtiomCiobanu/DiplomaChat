@@ -3,13 +3,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using DiplomaChat.Common.Infrastructure.Extensions;
 using DiplomaChat.Common.Infrastructure.Responses;
+using DiplomaChat.DataAccess.Context;
+using DiplomaChat.DataAccess.Entities;
+using DiplomaChat.Domain.Models.Configurations;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using TileGameServer.DataAccess.Context;
-using TileGameServer.DataAccess.Entities;
-using TileGameServer.Domain.Models.Configurations;
 
-namespace TileGameServer.Features.Menu.ListCreatedChatRoom
+namespace DiplomaChat.Features.Menu.ListCreatedChatRoom
 {
     public class ListCreatedGameSessionsHandler :
         IRequestHandler<ListCreatedChatRoomsRequest, IResponse<ListCreatedChatRoomsResponse>>

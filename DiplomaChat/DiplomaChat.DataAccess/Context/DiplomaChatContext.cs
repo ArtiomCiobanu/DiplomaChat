@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
 using DiplomaChat.Common.DataAccess.Context;
+using DiplomaChat.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
-using TileGameServer.DataAccess.Entities;
 
-namespace TileGameServer.DataAccess.Context
+namespace DiplomaChat.DataAccess.Context
 {
     public class DiplomaChatContext : DatabaseContext, IDiplomaChatContext
     {

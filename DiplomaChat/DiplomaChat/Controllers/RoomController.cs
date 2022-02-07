@@ -4,18 +4,18 @@ using DiplomaChat.Common.Authorization.Constants;
 using DiplomaChat.Common.Authorization.Extensions;
 using DiplomaChat.Common.Infrastructure.Controllers;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
+using DiplomaChat.Features.Menu.CreateChatRoom;
+using DiplomaChat.Features.Menu.JoinChatRoom;
+using DiplomaChat.Features.Menu.LeaveChatRoom;
+using DiplomaChat.Features.Menu.ListCreatedChatRoom;
+using DiplomaChat.Features.Menu.Notifications.CreateChatRoom;
+using DiplomaChat.Features.Menu.Notifications.JoinChatRoom;
+using DiplomaChat.Features.Menu.Notifications.LeaveChatRoom;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TileGameServer.Features.Menu.CreateChatRoom;
-using TileGameServer.Features.Menu.JoinChatRoom;
-using TileGameServer.Features.Menu.LeaveChatRoom;
-using TileGameServer.Features.Menu.ListCreatedChatRoom;
-using TileGameServer.Features.Menu.Notifications.CreateChatRoom;
-using TileGameServer.Features.Menu.Notifications.JoinChatRoom;
-using TileGameServer.Features.Menu.Notifications.LeaveChatRoom;
 
-namespace TileGameServer.Controllers
+namespace DiplomaChat.Controllers
 {
     [Authorize]
     [ApiController]

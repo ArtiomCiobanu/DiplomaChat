@@ -1,6 +1,6 @@
 ﻿using DiplomaChat.Common.DataAccess.Entities;
 
-namespace TileGameServer.DataAccess.Entities
+namespace DiplomaChat.DataAccess.Entities
 {
     public class User : BaseEntity
     {

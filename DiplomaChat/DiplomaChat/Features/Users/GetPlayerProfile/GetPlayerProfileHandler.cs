@@ -4,11 +4,11 @@ using DiplomaChat.Common.DataAccess.Extensions;
 using DiplomaChat.Common.Infrastructure.Enums;
 using DiplomaChat.Common.Infrastructure.Extensions;
 using DiplomaChat.Common.Infrastructure.Responses;
+using DiplomaChat.DataAccess.Context;
+using DiplomaChat.DataAccess.Entities;
 using MediatR;
-using TileGameServer.DataAccess.Context;
-using TileGameServer.DataAccess.Entities;
 
-namespace TileGameServer.Features.Users.GetPlayerProfile;
+namespace DiplomaChat.Features.Users.GetPlayerProfile;
 
 public class GetPlayerProfileHandler : IRequestHandler<GetPlayerProfileQuery, IResponse<GetPlayerProfileResponse>>
 {

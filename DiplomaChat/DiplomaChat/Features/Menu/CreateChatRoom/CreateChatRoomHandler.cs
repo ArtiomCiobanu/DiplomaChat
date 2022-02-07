@@ -3,11 +3,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using DiplomaChat.Common.Infrastructure.Extensions;
 using DiplomaChat.Common.Infrastructure.Responses;
+using DiplomaChat.DataAccess.Context;
+using DiplomaChat.DataAccess.Entities;
 using MediatR;
-using TileGameServer.DataAccess.Context;
-using TileGameServer.DataAccess.Entities;
 
-namespace TileGameServer.Features.Menu.CreateChatRoom
+namespace DiplomaChat.Features.Menu.CreateChatRoom
 {
     public class CreateGameSessionCommandHandler
         : IRequestHandler<CreateChatRoomCommand, IResponse<CreateChatRoomResponse>>

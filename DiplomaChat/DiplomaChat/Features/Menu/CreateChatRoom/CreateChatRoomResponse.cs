@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TileGameServer.Features.Menu.CreateChatRoom
+namespace DiplomaChat.Features.Menu.CreateChatRoom
 {
     public class CreateChatRoomResponse
     {

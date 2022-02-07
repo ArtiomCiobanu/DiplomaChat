@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TileGameServer.Features.Menu.ListCreatedChatRoom
+namespace DiplomaChat.Features.Menu.ListCreatedChatRoom
 {
     public class ListedGameSession
     {

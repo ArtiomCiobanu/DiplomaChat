@@ -1,4 +1,4 @@
-﻿namespace TileGameServer.Constants
+﻿namespace DiplomaChat.Constants
 {
     public static class Schemes
     {

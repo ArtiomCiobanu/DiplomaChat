@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using DiplomaChat.Constants;
+using DiplomaChat.Domain.Models.Configurations;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TileGameServer.Constants;
-using TileGameServer.Domain.Models.Configurations;
 
-namespace TileGameServer.Extensions
+namespace DiplomaChat.Extensions
 {
     public static class ServicesExtensions
     {

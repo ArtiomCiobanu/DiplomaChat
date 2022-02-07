@@ -1,6 +1,6 @@
 ﻿using DiplomaChat.Common.Infrastructure;
 
-namespace TileGameServer.Features.Menu.ListCreatedChatRoom
+namespace DiplomaChat.Features.Menu.ListCreatedChatRoom
 {
     public class ListCreatedChatRoomsRequest : IQuery<ListCreatedChatRoomsResponse>
     {

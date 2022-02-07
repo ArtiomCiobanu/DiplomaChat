@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace TileGameServer.Constants
+namespace DiplomaChat.Constants
 {
     public static class EnvironmentVariables
     {

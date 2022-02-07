@@ -2,7 +2,7 @@
 using DiplomaChat.Common.Infrastructure;
 using MediatR;
 
-namespace TileGameServer.Features.Menu.JoinChatRoom
+namespace DiplomaChat.Features.Menu.JoinChatRoom
 {
     public class JoinChatRoomCommand : IQuery<Unit>
     {

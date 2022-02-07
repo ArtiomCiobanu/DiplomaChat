@@ -1,4 +1,4 @@
-﻿namespace TileGameServer.Features.Users.GetPlayerProfile;
+﻿namespace DiplomaChat.Features.Users.GetPlayerProfile;
 
 public class GetPlayerProfileResponse
 {

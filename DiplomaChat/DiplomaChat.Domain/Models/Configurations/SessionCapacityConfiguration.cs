@@ -1,4 +1,4 @@
-namespace TileGameServer.Domain.Models.Configurations
+namespace DiplomaChat.Domain.Models.Configurations
 {
     public class SessionCapacityConfiguration
     {

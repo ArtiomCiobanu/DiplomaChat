@@ -1,4 +1,4 @@
-﻿namespace TileGameServer.Features.Users.RegisterPlayer
+﻿namespace DiplomaChat.Features.Users.RegisterPlayer
 {
     public class RegisterPlayerDto
     {
