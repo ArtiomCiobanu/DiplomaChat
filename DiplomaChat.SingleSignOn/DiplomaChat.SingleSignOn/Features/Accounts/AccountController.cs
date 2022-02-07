@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DiplomaChat.SingleSignOn.Features.Accounts
 {
     [ApiController]
+    [Route("account")]
     public class AccountController : BaseMediatorController
     {
         public AccountController(IMediator mediator, IResponseMapper responseMapper)

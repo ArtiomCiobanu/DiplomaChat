@@ -46,6 +46,7 @@ namespace DiplomaChat.SingleSignOn.Features.Accounts.AuthorizeAccount
             {
                 return new Response<AuthorizeAccountResponse>
                 {
+                    Message = "Invalid login credentials",
                     Status = ResponseStatus.Conflict
                 };
             }
