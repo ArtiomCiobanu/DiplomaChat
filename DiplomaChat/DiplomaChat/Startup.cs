@@ -6,8 +6,8 @@ using DiplomaChat.Common.Extensions;
 using DiplomaChat.Common.MessageQueueing.Configuration;
 using DiplomaChat.Common.MessageQueueing.Extensions.RabbitMQ;
 using DiplomaChat.Constants;
+using DiplomaChat.DataAccess.Context;
 using DiplomaChat.Domain.Models.Configurations;
-using DiplomaChat.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,7 +35,11 @@ namespace DiplomaChat
         public void ConfigureServices(IServiceCollection services)
         {
             var databaseConnectionString =
-                Environment.GetEnvironmentVariable(EnvironmentVariables.DatabaseConnectionString);
+                Configuration.GetConnectionString(EnvironmentVariables.DatabaseConnectionString);
+
+            services.AddDbContext<DiplomaChatContext>(options => options.UseSqlServer(databaseConnectionString));
+
+            services.AddScoped<IDiplomaChatContext, DiplomaChatContext>();
 
             var rabbitMqConfiguration = new RabbitMQConfiguration
             {
@@ -56,13 +60,6 @@ namespace DiplomaChat
 
                 return requestLimitConfiguration;
             });
-
-            services.AddDbContext<DataAccess.Context.DiplomaChatContext>(options =>
-                options.UseSqlServer(databaseConnectionString!));
-
-            services.AddSingletonSessionCapacityConfiguration(Configuration);
-
-            services.AddScoped<IJwtGenerator, JwtGenerator>();
 
             var jwtConfiguration = Configuration.GetSection("JwtConfiguration").Get<JwtConfiguration>();
             services.AddJwt(jwtConfiguration);

@@ -13,8 +13,13 @@ namespace DiplomaChat.Common.Infrastructure.ResponseMappers
         public IActionResult ExecuteAndMapStatus<TResult>(IResponse<TResult> response)
         {
             object responseBody = string.IsNullOrEmpty(response.Message)
-                ? GetResponseWithoutMessage(response)
+                ? response.Result
                 : GetMessageResponse(response);
+
+            if (responseBody is Unit)
+            {
+                responseBody = null;
+            }
 
             int statusCode = GetStatusCode(response.Status);
             var actionResult = new ObjectResult(responseBody)
@@ -34,20 +39,6 @@ namespace DiplomaChat.Common.Infrastructure.ResponseMappers
         {
             var response = await responseTask;
             return ExecuteAndMapStatus(response);
-        }
-
-        public object GetResponseWithoutMessage<TResult>(IResponse<TResult> response)
-        {
-            return (response.Result is Unit || response.Result == null)
-                ? new
-                {
-                    StatusCode = response.Status
-                }
-                : new
-                {
-                    Value = response.Result,
-                    StatusCode = response.Status
-                };
         }
 
         public object GetMessageResponse<TResult>(IResponse<TResult> response)

@@ -14,7 +14,7 @@ namespace DiplomaChat.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("players")]
+    [Route("users")]
     public class UserController : BaseMediatorController
     {
         private Guid AccountId => Guid.Parse(User.GetClaim(WebApiClaimTypes.AccountId).Value);

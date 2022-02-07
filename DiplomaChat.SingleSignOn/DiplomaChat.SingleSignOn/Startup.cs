@@ -50,6 +50,9 @@ namespace DiplomaChat.SingleSignOn
 
             services.AddLoggingPipeline().AddLoggers().AddSanitizing(typeof(Startup).Assembly);
 
+            var jwtConfiguration = Configuration.GetSection("JwtConfiguration").Get<JwtConfiguration>();
+            services.AddJwt(jwtConfiguration);
+
             services.AddAuthentication();
             services.AddAuthorization();
 
@@ -58,9 +61,6 @@ namespace DiplomaChat.SingleSignOn
                 configuration.DisableDataAnnotationsValidation = true; //Attributes shouldn't work
                 configuration.RegisterValidatorsFromAssemblyContaining<Startup>();
             });
-
-            var jwtConfiguration = Configuration.GetSection("JwtConfiguration").Get<JwtConfiguration>();
-            services.AddJwt(jwtConfiguration);
 
             services.AddSwaggerGen(options =>
             {

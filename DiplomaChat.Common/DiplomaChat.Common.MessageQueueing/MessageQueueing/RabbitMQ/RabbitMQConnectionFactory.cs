@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using DiplomaChat.Common.MessageQueueing.Configuration;
 using RabbitMQ.Client;
 
@@ -13,11 +14,12 @@ namespace DiplomaChat.Common.MessageQueueing.MessageQueueing.RabbitMQ
         {
             _connectionFactory = new ConnectionFactory
             {
-                HostName = rabbitMqConfiguration.HostName,
+                Uri = new Uri("amqp://guest:guest@localhost:5672")
+                /*HostName = rabbitMqConfiguration.HostName,
                 Port = rabbitMqConfiguration.Port,
                 VirtualHost = rabbitMqConfiguration.VirtualHost,
                 UserName = rabbitMqConfiguration.UserName,
-                Password = rabbitMqConfiguration.Password
+                Password = rabbitMqConfiguration.Password*/
             };
         }
 
