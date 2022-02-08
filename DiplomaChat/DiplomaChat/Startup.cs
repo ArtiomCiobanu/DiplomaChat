@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using DiplomaChat.Common.Authorization.Configuration;
 using DiplomaChat.Common.Authorization.Generators;
 using DiplomaChat.Common.Extensions;
+using DiplomaChat.Common.Infrastructure.ResponseMappers;
 using DiplomaChat.Common.MessageQueueing.Configuration;
 using DiplomaChat.Common.MessageQueueing.Extensions.RabbitMQ;
 using DiplomaChat.Constants;
 using DiplomaChat.DataAccess.Context;
 using DiplomaChat.Domain.Models.Configurations;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,8 +38,7 @@ namespace DiplomaChat
         {
             var databaseConnectionString =
                 Configuration.GetConnectionString(EnvironmentVariables.DatabaseConnectionString);
-
-            services.AddDbContext<DiplomaChatContext>(options => options.UseSqlServer(databaseConnectionString));
+            services.AddDbContext<DiplomaChatContext>(options => options.UseSqlServer(databaseConnectionString).EnableDetailedErrors());
 
             services.AddScoped<IDiplomaChatContext, DiplomaChatContext>();
 
@@ -49,7 +50,6 @@ namespace DiplomaChat
                 UserName = Environment.GetEnvironmentVariable(EnvironmentVariables.RabbitMQUserName),
                 Password = Environment.GetEnvironmentVariable(EnvironmentVariables.RabbitMQPassword)
             };
-
             services.AddRabbitMQ(rabbitMqConfiguration);
 
             services.AddSingleton(_ =>
@@ -61,14 +61,22 @@ namespace DiplomaChat
                 return requestLimitConfiguration;
             });
 
+            services.AddScoped<IResponseMapper, ResponseMapper>();
+
             var jwtConfiguration = Configuration.GetSection("JwtConfiguration").Get<JwtConfiguration>();
             services.AddJwt(jwtConfiguration);
 
             services.AddAuthentication();
             services.AddAuthorization();
 
-            services.AddControllers().AddNewtonsoftJson(
-                options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            services.AddControllers()
+                .AddFluentValidation(configuration =>
+                {
+                    configuration.DisableDataAnnotationsValidation = true; //Attributes shouldn't work
+                    configuration.RegisterValidatorsFromAssemblyContaining<Startup>();
+                })
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             services.AddSwaggerGen(options =>
             {

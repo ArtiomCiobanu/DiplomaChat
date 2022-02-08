@@ -1,46 +1,31 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <VersionPrefix>1.0.1</VersionPrefix>
-        <VersionSuffix>develop</VersionSuffix>
-        <ImplicitUsings>disable</ImplicitUsings>
-        <Nullable>disable</Nullable>
-        <RootNamespace>DiplomaChat.DataAccess</RootNamespace>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<RootNamespace>DiplomaChat.DataAccess</RootNamespace>
+	</PropertyGroup>
 
-    <PropertyGroup>
-        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <OutputPath>$(MSBuildProjectDirectory)/../../../output</OutputPath>
-    </PropertyGroup>
+	<PropertyGroup>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<OutputPath>$(MSBuildProjectDirectory)/../../../output</OutputPath>
+	</PropertyGroup>
 
-    <!-- Libs from nuget.org -->
-    <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.1" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.1">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3" />
-    </ItemGroup>
-    
-    <!-- TCD writen libs from own artifactory -->
-    
-    <!-- Local repo refs -->
-    <ItemGroup>
-      <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.DataAccess\DiplomaChat.Common.DataAccess.csproj" />
-      <ProjectReference Include="..\DiplomaChat.Infrastructure\DiplomaChat.Infrastructure.csproj" />
-    </ItemGroup>
-    
-    <ItemGroup>
-      <Reference Include="TileGameServer.BaseLibrary.Domain">
-          <HintPath>$(OutputPath)/TileGameServer.BaseLibrary.Domain.dll</HintPath>
-      </Reference>
-      <Reference Include="TileGameServer.BaseLibrary.DataAccess">
-        <HintPath>$(OutputPath)/TileGameServer.BaseLibrary.DataAccess.dll</HintPath>
-      </Reference>
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.DataAccess\DiplomaChat.Common.DataAccess.csproj" />
+		<ProjectReference Include="..\DiplomaChat.Infrastructure\DiplomaChat.Infrastructure.csproj" />
+	</ItemGroup>
 
 </Project>

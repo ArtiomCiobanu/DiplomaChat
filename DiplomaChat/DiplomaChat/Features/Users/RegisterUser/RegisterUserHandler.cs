@@ -7,19 +7,19 @@ using DiplomaChat.DataAccess.Context;
 using DiplomaChat.DataAccess.Entities;
 using MediatR;
 
-namespace DiplomaChat.Features.Users.RegisterPlayer
+namespace DiplomaChat.Features.Users.RegisterUser
 {
-    public class RegisterPlayerHandler : IRequestHandler<RegisterPlayerCommand, IResponse<Unit>>
+    public class RegisterUserHandler : IRequestHandler<RegisterUserCommand, IResponse<Unit>>
     {
         private readonly IDiplomaChatContext _diplomaChatContext;
 
-        public RegisterPlayerHandler(IDiplomaChatContext diplomaChatContext)
+        public RegisterUserHandler(IDiplomaChatContext diplomaChatContext)
         {
             _diplomaChatContext = diplomaChatContext;
         }
 
         public async Task<IResponse<Unit>> Handle(
-            RegisterPlayerCommand request,
+            RegisterUserCommand request,
             CancellationToken cancellationToken)
         {
             var userExists = await _diplomaChatContext.EntitySet<User>()

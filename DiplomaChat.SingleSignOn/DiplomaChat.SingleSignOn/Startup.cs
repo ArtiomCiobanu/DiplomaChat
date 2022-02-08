@@ -36,8 +36,7 @@ namespace DiplomaChat.SingleSignOn
         public void ConfigureServices(IServiceCollection services)
         {
             var databaseConnectionString = Configuration.GetConnectionString(EnvironmentVariables.ConnectionString);
-            services.AddDbContext<SSOContext>(
-                options => options.UseSqlServer(databaseConnectionString).EnableDetailedErrors());
+            services.AddDbContext<SSOContext>(options => options.UseSqlServer(databaseConnectionString).EnableDetailedErrors());
 
             services.AddScoped<ISSOContext, SSOContext>();
 
@@ -48,7 +47,6 @@ namespace DiplomaChat.SingleSignOn
             services.AddJwt(jwtConfiguration);
 
             services.AddScoped<IResponseMapper, ResponseMapper>();
-            services.AddScoped<ICoalesceSelector, CoalesceSelector>();
             services.AddScoped<IEndpointInformationAccessor, EndpointInformationAccessor>();
 
             services.AddLoggingPipeline().AddLoggers().AddSanitizing(typeof(Startup).Assembly);
@@ -98,7 +96,7 @@ namespace DiplomaChat.SingleSignOn
                 if (version is not null)
                 {
                     options.SwaggerDoc("v1",
-                        new OpenApiInfo {Title = $"CeremonyPassportAPI {version.ToString()}", Version = "v1"});
+                        new OpenApiInfo { Title = $"CeremonyPassportAPI {version.ToString()}", Version = "v1" });
                 }
             });
 

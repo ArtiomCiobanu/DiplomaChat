@@ -8,19 +8,19 @@ using DiplomaChat.DataAccess.Context;
 using DiplomaChat.DataAccess.Entities;
 using MediatR;
 
-namespace DiplomaChat.Features.Users.GetPlayerProfile;
+namespace DiplomaChat.Features.Users.GetUserProfile;
 
-public class GetPlayerProfileHandler : IRequestHandler<GetPlayerProfileQuery, IResponse<GetPlayerProfileResponse>>
+public class GetUserProfileHandler : IRequestHandler<GetUserProfileQuery, IResponse<GetUserProfileResponse>>
 {
     private readonly IDiplomaChatContext _diplomaChatContext;
 
-    public GetPlayerProfileHandler(IDiplomaChatContext diplomaChatContext)
+    public GetUserProfileHandler(IDiplomaChatContext diplomaChatContext)
     {
         _diplomaChatContext = diplomaChatContext;
     }
 
-    public async Task<IResponse<GetPlayerProfileResponse>> Handle(
-        GetPlayerProfileQuery request,
+    public async Task<IResponse<GetUserProfileResponse>> Handle(
+        GetUserProfileQuery request,
         CancellationToken cancellationToken)
     {
         var user = await _diplomaChatContext.EntitySet<User>()
@@ -28,13 +28,13 @@ public class GetPlayerProfileHandler : IRequestHandler<GetPlayerProfileQuery, IR
 
         if (user == null)
         {
-            return new Response<GetPlayerProfileResponse>
+            return new Response<GetUserProfileResponse>
             {
                 Status = ResponseStatus.Conflict
             };
         }
 
-        var response = new GetPlayerProfileResponse
+        var response = new GetUserProfileResponse
         {
             Nickname = user.Nickname
         };

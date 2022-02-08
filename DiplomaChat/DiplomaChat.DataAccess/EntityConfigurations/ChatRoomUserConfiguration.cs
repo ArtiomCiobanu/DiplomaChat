@@ -14,7 +14,6 @@ namespace DiplomaChat.DataAccess.EntityConfigurations
 
             builder.HasOne(sessionPlayer => sessionPlayer.ChatRoom)
                 .WithMany(gs => gs.RoomUsers).IsRequired();
-            builder.HasOne(cru => cru.User).WithOne(u => u.ChatRoomUser).IsRequired();
         }
     }
 }

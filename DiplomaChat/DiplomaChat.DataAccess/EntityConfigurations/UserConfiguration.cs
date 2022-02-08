@@ -11,8 +11,6 @@ namespace DiplomaChat.DataAccess.EntityConfigurations
             base.Configure(builder);
 
             builder.Property(player => player.Nickname).IsRequired().HasMaxLength(50);
-
-            builder.HasOne(u => u.ChatRoomUser).WithOne(cru => cru.User).IsRequired();
         }
     }
 }

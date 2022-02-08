@@ -1,7 +1,8 @@
-﻿using System.Reflection;
-using DiplomaChat.Common.DataAccess.Context;
+﻿using DiplomaChat.Common.DataAccess.Context;
 using DiplomaChat.DataAccess.Entities;
+using DiplomaChat.DataAccess.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace DiplomaChat.DataAccess.Context
 {
@@ -11,7 +12,8 @@ namespace DiplomaChat.DataAccess.Context
         public DbSet<ChatRoomUser> RoomUsers { get; set; }
         public DbSet<User> Users { get; set; }
 
-        public DiplomaChatContext(DbContextOptions<DiplomaChatContext> options) : base(options)
+        public DiplomaChatContext(DbContextOptions<DiplomaChatContext> options)
+            : base(options, typeof(ChatRoomConfiguration).Assembly)
         {
         }
 

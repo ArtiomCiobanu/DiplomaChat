@@ -25,9 +25,9 @@ namespace DiplomaChat.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterPlayerDto registerPlayerDto)
+        public async Task<IActionResult> Register(RegisterUserDto registerPlayerDto)
         {
-            var command = new RegisterPlayerCommand
+            var command = new RegisterUserCommand
             {
                 PlayerId = AccountId,
                 PlayerNickname = registerPlayerDto.Nickname
