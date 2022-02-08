@@ -1,7 +1,8 @@
-﻿namespace DiplomaChat.Common.Infrastructure.Selectors;
-
-public interface ICoalesceSelector
+﻿namespace DiplomaChat.Common.Infrastructure.Selectors
 {
-    TValue? Coalesce<TValue>(params TValue?[] values)
-        where TValue : struct;
+    public interface ICoalesceSelector
+    {
+        TValue? Coalesce<TValue>(params TValue?[] values)
+            where TValue : struct;
+    }
 }

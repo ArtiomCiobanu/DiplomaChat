@@ -2,6 +2,6 @@
 {
     public static class EnvironmentVariables
     {
-        public const string DatabaseConnectionString = "SSO_DB_CONNECTION_STRING";
+        public const string ConnectionString = "CEREMONYPASSPORT_API_DB_CONNECTION_STRING";
     }
 }

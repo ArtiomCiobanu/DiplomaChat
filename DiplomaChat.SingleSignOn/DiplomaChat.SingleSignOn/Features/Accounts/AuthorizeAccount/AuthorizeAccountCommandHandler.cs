@@ -39,7 +39,7 @@ namespace DiplomaChat.SingleSignOn.Features.Accounts.AuthorizeAccount
 
             var account = await _ssoContext.EntitySet<Account>()
                 .Where(a => a.PasswordHash.SequenceEqual(passwordHash))
-                .Select(a => new { a.Id, a.RoleId })
+                .Select(a => new {a.Id, a.RoleId})
                 .TopOneAsync(cancellationToken);
 
             if (account == null || account.Id == default)
@@ -51,9 +51,7 @@ namespace DiplomaChat.SingleSignOn.Features.Accounts.AuthorizeAccount
                 };
             }
 
-            var token = _jwtGenerator.GenerateToken(
-                new Claim(WebApiClaimTypes.AccountId, account.Id.ToString()),
-                new Claim(WebApiClaimTypes.AccountRole, account.RoleId.ToString()));
+            var token = _jwtGenerator.GenerateToken(new Claim(WebApiClaimTypes.AccountId, account.Id.ToString()));
 
             return new Response<AuthorizeAccountResponse>
             {

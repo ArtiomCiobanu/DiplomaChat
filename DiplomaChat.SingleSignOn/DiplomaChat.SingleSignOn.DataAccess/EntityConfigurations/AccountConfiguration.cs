@@ -2,20 +2,21 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DiplomaChat.SingleSignOn.DataAccess.EntityConfigurations;
-
-public class AccountConfiguration : IEntityTypeConfiguration<Account>
+namespace DiplomaChat.SingleSignOn.DataAccess.EntityConfigurations
 {
-    public void Configure(EntityTypeBuilder<Account> builder)
+    public class AccountConfiguration : IEntityTypeConfiguration<Account>
     {
-        builder.HasKey(a => a.Id);
+        public void Configure(EntityTypeBuilder<Account> builder)
+        {
+            builder.HasKey(a => a.Id);
 
-        builder.Property(a => a.RoleId).IsRequired();
+            builder.Property(a => a.RoleId).IsRequired();
 
-        builder.Property(a => a.Email).IsRequired().HasMaxLength(50);
-        builder.Property(a => a.FirstName).IsRequired().HasMaxLength(50);
-        builder.Property(a => a.LastName).IsRequired().HasMaxLength(50);
+            builder.Property(a => a.Email).IsRequired().HasMaxLength(50);
+            builder.Property(a => a.FirstName).IsRequired().HasMaxLength(50);
+            builder.Property(a => a.LastName).IsRequired().HasMaxLength(50);
 
-        builder.Property(a => a.PasswordHash).IsRequired().HasMaxLength(100);
+            builder.Property(a => a.PasswordHash).IsRequired().HasMaxLength(100);
+        }
     }
 }

@@ -2,18 +2,18 @@
 using DiplomaChat.Common.Authorization.Configuration;
 using DiplomaChat.Common.Authorization.Extensions;
 using DiplomaChat.Common.Authorization.Generators;
-using DiplomaChat.Common.RequestPipelines;
+using DiplomaChat.SingleSignOn.RequestPipelines;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace DiplomaChat.Common.Extensions
+namespace DiplomaChat.SingleSignOn.Extensions
 {
     public static class ServiceCollectionExtensions
     {
         public static void AddJwt(
-            this IServiceCollection services,
-            JwtConfiguration jwtConfiguration)
+           this IServiceCollection services,
+           JwtConfiguration jwtConfiguration)
         {
             var secretKey = Encoding.UTF8.GetBytes(jwtConfiguration.SecretKey);
             var symmetricSecurityKey = new SymmetricSecurityKey(secretKey);

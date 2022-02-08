@@ -1,15 +1,16 @@
 using System;
 using System.Collections.Generic;
-using DiplomaChat.Common.Accessors.Endpoint;
 using DiplomaChat.Common.Authorization.Configuration;
-using DiplomaChat.Common.Authorization.Constants;
-using DiplomaChat.Common.Extensions;
 using DiplomaChat.Common.Infrastructure.Configuration;
 using DiplomaChat.Common.Infrastructure.Generators.Hashing;
+using DiplomaChat.Common.Infrastructure.Generators.QRCode;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
 using DiplomaChat.Common.Infrastructure.Selectors;
 using DiplomaChat.Common.Logging.Extensions;
+using DiplomaChat.SingleSignOn.Accessors.Endpoint;
+using DiplomaChat.SingleSignOn.Constants;
 using DiplomaChat.SingleSignOn.DataAccess.Context;
+using DiplomaChat.SingleSignOn.Extensions;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -24,34 +25,33 @@ namespace DiplomaChat.SingleSignOn
 {
     public class Startup
     {
-        private IServiceProvider _serviceProvider;
-
-        public IConfiguration Configuration { get; }
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        public IConfiguration Configuration { get; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var databaseConnectionString = Configuration.GetConnectionString("DIPLOMA_CHAT_SSO_DB_CONNECTION_STRING");
-            services.AddDbContext<SSOContext>(options => options.UseSqlServer(databaseConnectionString!));
+            var databaseConnectionString = Configuration.GetConnectionString(EnvironmentVariables.ConnectionString);
+            services.AddDbContext<SSOContext>(
+                options => options.UseSqlServer(databaseConnectionString).EnableDetailedErrors());
 
             services.AddScoped<ISSOContext, SSOContext>();
 
             var hashConfiguration = Configuration.GetSection("HashConfiguration").Get<HashConfiguration>();
-            services.AddScoped<IHashGenerator, SaltedHashGenerator>(_ => new SaltedHashGenerator(hashConfiguration));
+            services.AddScoped<IHashGenerator, SaltedHashGenerator>(s => new SaltedHashGenerator(hashConfiguration));
+
+            var jwtConfiguration = Configuration.GetSection("JwtConfiguration").Get<JwtConfiguration>();
+            services.AddJwt(jwtConfiguration);
 
             services.AddScoped<IResponseMapper, ResponseMapper>();
             services.AddScoped<ICoalesceSelector, CoalesceSelector>();
             services.AddScoped<IEndpointInformationAccessor, EndpointInformationAccessor>();
 
             services.AddLoggingPipeline().AddLoggers().AddSanitizing(typeof(Startup).Assembly);
-
-            var jwtConfiguration = Configuration.GetSection("JwtConfiguration").Get<JwtConfiguration>();
-            services.AddJwt(jwtConfiguration);
 
             services.AddAuthentication();
             services.AddAuthorization();
@@ -67,14 +67,14 @@ namespace DiplomaChat.SingleSignOn
                 var securityScheme = new OpenApiSecurityScheme
                 {
                     Description = "Json Web Token for authorization. Write: 'Bearer {your token}'",
-                    Name = HeaderNames.Authorization,
+                    Name = Headers.Authorization,
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey,
-                    Scheme = Schemes.Bearer
+                    Scheme = SecuritySchemes.Bearer
                 };
                 options.AddSecurityDefinition(securityScheme.Scheme, securityScheme);
 
-                var requirement = new OpenApiSecurityRequirement
+                var securityRequirement = new OpenApiSecurityRequirement
                 {
                     {
                         new OpenApiSecurityScheme
@@ -84,7 +84,7 @@ namespace DiplomaChat.SingleSignOn
                                 Type = ReferenceType.SecurityScheme,
                                 Id = securityScheme.Scheme
                             },
-                            Scheme = Schemes.OAuth,
+                            Scheme = SecuritySchemes.OAuth,
                             Name = securityScheme.Scheme,
                             In = securityScheme.In
                         },
@@ -92,9 +92,14 @@ namespace DiplomaChat.SingleSignOn
                     }
                 };
 
-                options.AddSecurityRequirement(requirement);
+                options.AddSecurityRequirement(securityRequirement);
 
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "DiplomaChat.SingleSignOn", Version = "v1" });
+                var version = GetType().Assembly.GetName().Version;
+                if (version is not null)
+                {
+                    options.SwaggerDoc("v1",
+                        new OpenApiInfo {Title = $"CeremonyPassportAPI {version.ToString()}", Version = "v1"});
+                }
             });
 
             services.AddMediatR(typeof(Startup));
@@ -103,14 +108,13 @@ namespace DiplomaChat.SingleSignOn
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            _serviceProvider = app.ApplicationServices;
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DiplomaChat.SingleSignOn v1"));
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("v1/swagger.json", "CeremonyPassportAPI v1"));
 
             app.UseHttpsRedirection();
 

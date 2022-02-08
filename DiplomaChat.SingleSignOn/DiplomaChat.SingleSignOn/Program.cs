@@ -25,7 +25,7 @@ namespace DiplomaChat.SingleSignOn
 
             try
             {
-                Log.Warning("Starting DiplomaChat.SingleSignOn");
+                Log.Warning("Starting CeremonyPassportAPI");
                 CreateHostBuilder(args).Build().Run();
             }
             catch (Exception ex)
