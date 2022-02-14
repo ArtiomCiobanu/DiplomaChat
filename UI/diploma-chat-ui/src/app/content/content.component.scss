@@ -1,0 +1,21 @@
+.content-card {
+    width: 400px;
+}
+
+.tab-content {
+    display: flex;
+    padding: 10px;
+    padding-top: 20px;
+    justify-content: center;
+}
+
+.centered-card {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+}
+
+:host::ng-deep.mat-tab-label,
+:host::ng-deep.mat-tab-label-active {
+    min-width: 49%;
+}
