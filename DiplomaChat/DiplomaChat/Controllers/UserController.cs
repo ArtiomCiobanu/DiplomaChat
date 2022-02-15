@@ -4,8 +4,8 @@ using DiplomaChat.Common.Authorization.Constants;
 using DiplomaChat.Common.Authorization.Extensions;
 using DiplomaChat.Common.Infrastructure.Controllers;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
-using DiplomaChat.Features.Users.GetPlayerProfile;
-using DiplomaChat.Features.Users.RegisterPlayer;
+using DiplomaChat.Features.Users.GetUserProfile;
+using DiplomaChat.Features.Users.RegisterUser;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -39,7 +39,7 @@ namespace DiplomaChat.Controllers
         [HttpGet("profile")]
         public Task<IActionResult> GetPlayerProfile()
         {
-            var query = new GetPlayerProfileQuery
+            var query = new GetUserProfileQuery
             {
                 UserId = AccountId
             };

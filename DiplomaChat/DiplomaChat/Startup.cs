@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using DiplomaChat.Common.Authorization.Configuration;
-using DiplomaChat.Common.Authorization.Generators;
 using DiplomaChat.Common.Extensions;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
 using DiplomaChat.Common.MessageQueueing.Configuration;

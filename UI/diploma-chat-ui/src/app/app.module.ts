@@ -14,6 +14,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LoginComponent } from './login/login.component';
     MatToolbarModule,
     MatCardModule,
     MatTabsModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

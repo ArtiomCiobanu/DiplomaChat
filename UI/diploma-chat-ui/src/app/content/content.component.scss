@@ -11,11 +11,10 @@
 
 .centered-card {
     display: flex;
-    padding: 10px;
     justify-content: center;
 }
 
 :host::ng-deep.mat-tab-label,
 :host::ng-deep.mat-tab-label-active {
-    min-width: 49%;
+    min-width: 49.9%;
 }

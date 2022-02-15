@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>disable</Nullable>
+        <LangVersion>9</LangVersion>
+        <RootNamespace>TileGameServer.InSession.DataAccess</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+        <PackageReference Include="WebApiBaseLibrary.DataAccess" Version="1.1.2" />
+    </ItemGroup>
+
+</Project>

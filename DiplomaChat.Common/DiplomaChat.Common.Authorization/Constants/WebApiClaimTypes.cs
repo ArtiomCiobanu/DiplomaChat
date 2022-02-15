@@ -1,6 +1,4 @@
-﻿using System.Security.Claims;
-
-namespace DiplomaChat.Common.Authorization.Constants
+﻿namespace DiplomaChat.Common.Authorization.Constants
 {
     public class WebApiClaimTypes
     {
