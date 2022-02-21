@@ -9,18 +9,14 @@ using TileGameServer.InSession.Domain.Library;
 
 namespace TileGameServer.InSession.Hubs
 {
-    public class TileGameHub : Hub
+    public class ChatHub : Hub
     {
         private readonly IInSessionContext _inSessionContext;
-        private readonly ITileLibrary _tileLibrary;
 
-        public TileGameHub(
-            IInSessionContext inSessionContext,
-            ITileLibrary tileLibrary)
+        public ChatHub(
+            IInSessionContext inSessionContext)
         {
             _inSessionContext = inSessionContext;
-
-            _tileLibrary = tileLibrary;
         }
 
         public override Task OnConnectedAsync()
@@ -53,15 +49,15 @@ namespace TileGameServer.InSession.Hubs
             return base.OnDisconnectedAsync(exception);
         }
 
-        public async Task Connect(Guid playerId)
+        public async Task Connect(Guid userId)
         {
-            if (playerId == default)
+            if (userId == default)
             {
                 return;
             }
 
             var sessionPlayer = _inSessionContext.EntitySet<SessionPlayer>()
-                .FirstOrDefault(p => p.Id == playerId);
+                .FirstOrDefault(p => p.Id == userId);
 
             if (sessionPlayer != null)
             {
@@ -69,63 +65,35 @@ namespace TileGameServer.InSession.Hubs
             }
         }
 
-        public async Task Disconnect(Guid playerId)
+        public async Task Disconnect(Guid userId)
         {
-            var players = _inSessionContext.EntitySet<SessionPlayer>();
-            var sessionPlayer = players.FirstOrDefault(p => p.Id == playerId);
+            var users = _inSessionContext.EntitySet<SessionPlayer>();
+            var sessionUser = users.FirstOrDefault(p => p.Id == userId);
 
-            if (sessionPlayer == null)
+            if (sessionUser == null)
             {
                 return;
             }
 
-            players.Remove(sessionPlayer);
+            users.Remove(sessionUser);
 
             var gameSession = _inSessionContext.EntitySet<GameSession>()
-                .FirstOrDefault(gs => gs.Players.Any(p => p.Id == playerId));
+                .FirstOrDefault(gs => gs.Players.Any(p => p.Id == userId));
             if (gameSession != null)
             {
-                var playerInSession = gameSession.Players.FirstOrDefault(p => p.Id == playerId);
+                var userInSession = gameSession.Players.FirstOrDefault(p => p.Id == userId);
 
-                gameSession.Players.Remove(playerInSession);
+                gameSession.Players.Remove(userInSession);
             }
 
-            await Clients.All.SendAsync("PlayerDisconnected", sessionPlayer.Nickname);
+            await Clients.All.SendAsync("PlayerDisconnected", sessionUser.Nickname);
         }
 
-        public async Task PlaceTile(
-            Guid playerId,
-            int tileTypeId,
-            int x,
-            int y,
-            TileRotation tileRotation)
+        public Task SendMessage(
+            Guid userId,
+            string message)
         {
-            var players = _inSessionContext.EntitySet<SessionPlayer>();
-            var sessionPlayer = players.FirstOrDefault(p => p.Id == playerId);
-
-            if (sessionPlayer == null)
-            {
-                return;
-            }
-
-            var tileField = sessionPlayer.GameSession.TileField;
-
-            var tile = _tileLibrary.GetTile(tileTypeId, tileRotation);
-
-            var position = new TilePosition
-            {
-                X = x,
-                Y = y
-            };
-
-            tileField.PlaceTile(tile, position);
-
-            await Clients.All.SendAsync("PlacedTileNotification",
-                sessionPlayer.Nickname,
-                x,
-                y,
-                tileTypeId,
-                tileRotation);
+            return null;
         }
     }
 }

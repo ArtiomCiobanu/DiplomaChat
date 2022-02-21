@@ -162,7 +162,7 @@ namespace TileGameServer.InSession
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHub<TileGameHub>("/TileGame");
+                endpoints.MapHub<ChatHub>("/TileGame");
                 endpoints.MapControllers();
             });
         }

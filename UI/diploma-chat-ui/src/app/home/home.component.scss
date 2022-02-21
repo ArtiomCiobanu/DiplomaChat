@@ -14,6 +14,10 @@
     justify-content: center;
 }
 
+.shifted-down {
+    margin-top: 30px;
+}
+
 :host::ng-deep.mat-tab-label,
 :host::ng-deep.mat-tab-label-active {
     min-width: 49.9%;

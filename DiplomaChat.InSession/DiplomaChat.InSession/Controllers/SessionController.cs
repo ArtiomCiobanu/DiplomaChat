@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TileGameServer.InSession.Features.GetTileField;
 using WebApiBaseLibrary.Controllers;
 
 namespace TileGameServer.InSession.Controllers
@@ -18,14 +17,9 @@ namespace TileGameServer.InSession.Controllers
 
         [Authorize]
         [HttpGet("{sessionId}/members")]
-        public Task<ActionResult<GetTileFieldResponse>> GetTileField(Guid sessionId)
+        public Task<IActionResult> GetTileField(Guid sessionId)
         {
-            var query = new GetTileFieldQuery
-            {
-                SessionId = sessionId
-            };
-
-            return SendToMediatorAsync(query);
+            return null;
         }
     }
 }
