@@ -6,16 +6,20 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { ChatListComponent } from './chat-list/chat-list.component';
+import { RegisterComponent } from './home/register/register.component';
+import { LoginComponent } from './home/login/login.component';
+import { ChatListElementComponent } from './chat-list/chat-list-element/chat-list-element.component';
 
+//Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
-import { RegisterComponent } from './home/register/register.component';
-import { LoginComponent } from './home/login/login.component';
 import { MatButtonModule } from '@angular/material/button';
-import { HomeComponent } from './home/home.component';
-import { ChatComponent } from './chat/chat.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { ChatComponent } from './chat/chat.component';
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    ChatComponent
+    ChatListComponent,
+    ChatListElementComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,9 @@ import { ChatComponent } from './chat/chat.component';
     MatCardModule,
     MatTabsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDividerModule,
+    MatRippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
