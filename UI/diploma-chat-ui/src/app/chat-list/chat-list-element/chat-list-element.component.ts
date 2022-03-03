@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'chat-list-element',
@@ -6,7 +7,4 @@ import { Component } from "@angular/core";
     styleUrls: ['./chat-list-element.component.scss']
 })
 export class ChatListElementComponent {
-    onClick() {
-        
-    }
 }

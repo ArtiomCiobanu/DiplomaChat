@@ -13,3 +13,8 @@
     -moz-user-select: none;
     -webkit-user-select: none;
 }
+
+.undecorated-link {
+    text-decoration: none;
+    color: inherit;
+}
