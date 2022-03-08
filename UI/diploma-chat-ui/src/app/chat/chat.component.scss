@@ -1,0 +1,26 @@
+.centered-card {
+    display: flex;
+    justify-content: center;
+}
+
+.chat-card {
+    width: 400px;
+}
+
+.shifted-down {
+    margin-top: 30px;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.chat-input {
+    border-style: none;
+    width: 88%;
+}
+
+.chat-input:focus {
+    border-style: none;
+    outline: none;
+}

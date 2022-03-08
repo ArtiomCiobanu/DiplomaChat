@@ -11,6 +11,7 @@ import { ChatListComponent } from './chat-list/chat-list.component';
 import { RegisterComponent } from './home/register/register.component';
 import { LoginComponent } from './home/login/login.component';
 import { ChatListElementComponent } from './chat-list/chat-list-element/chat-list-element.component';
+import { ChatComponent } from './chat/chat.component';
 
 //Material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -20,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRippleModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { MatRippleModule } from '@angular/material/core';
     RegisterComponent,
     LoginComponent,
     ChatListComponent,
-    ChatListElementComponent
+    ChatListElementComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { MatRippleModule } from '@angular/material/core';
     MatInputModule,
     MatButtonModule,
     MatDividerModule,
-    MatRippleModule
+    MatRippleModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
