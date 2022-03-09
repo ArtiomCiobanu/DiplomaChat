@@ -1,12 +1,16 @@
 <div class="centered-card">
     <mat-card class="chat-card shifted-down">
-        {{chatId}}
-
+        <mat-card-title> Chat: {{chatId}} </mat-card-title>
+        <mat-divider></mat-divider>
+        <mat-card-content style="padding-top: 16px;">
+            <external-chat-message text="asdas" sender="Вася"></external-chat-message>
+            <external-chat-message text="asdas" sender="Вася"></external-chat-message>
+            <proper-chat-message text="aaaaaaaaaa"></proper-chat-message>
+            <external-chat-message text="asdas" sender="Вася"></external-chat-message>
+        </mat-card-content>
+        <mat-divider></mat-divider>
         <mat-card-footer>
-            <mat-form-field style="padding: 0;">
-                <input matInput type="text" />
-            </mat-form-field>
-            <!-- <input class="chat-input" type="text"/> -->
+            <input class="chat-input" type="text" placeholder="Message" />
             <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
                 <mat-icon>send</mat-icon>
             </button>

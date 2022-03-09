@@ -12,6 +12,8 @@ import { RegisterComponent } from './home/register/register.component';
 import { LoginComponent } from './home/login/login.component';
 import { ChatListElementComponent } from './chat-list/chat-list-element/chat-list-element.component';
 import { ChatComponent } from './chat/chat.component';
+import { ExternalChatMessageComponent } from './chat/external-chat-message/external-chat-message.component';
+import { ProperChatMessageComponent } from './chat/proper-chat-message/proper-chat-message.component';
 
 //Material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -32,7 +34,9 @@ import { MatIconModule } from '@angular/material/icon';
     LoginComponent,
     ChatListComponent,
     ChatListElementComponent,
-    ChatComponent
+    ChatComponent,
+    ExternalChatMessageComponent,
+    ProperChatMessageComponent
   ],
   imports: [
     BrowserModule,
