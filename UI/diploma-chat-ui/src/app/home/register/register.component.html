@@ -1,4 +1,5 @@
-<form action="chats">
+<!-- <form action="chats"> -->
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <mat-form-field appearance="fill" class="half-width" style="width: 185px;">
         <mat-label>First name</mat-label>
         <input matInput>
@@ -18,5 +19,5 @@
         <input matInput type="password" />
     </mat-form-field>
 
-    <button mat-raised-button color="primary" class="full-width">Register</button>
+    <button mat-raised-button color="primary" class="full-width" click>Register</button>
 </form>
