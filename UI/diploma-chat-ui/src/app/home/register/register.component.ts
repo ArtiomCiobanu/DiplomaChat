@@ -18,7 +18,6 @@ export class RegisterComponent {
         private router: Router,
         private httpClient: HttpClient) { }
 
-    //onSubmit(form: NgForm) {
     onSubmit(form: any) {
         // const token = 'eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiI3Y2ZhZTJiZC05NDUzLTQ4NjgtZmRhZi0wOGRhMDQwYjM4YTgiLCJuYmYiOjE2NDcwNzc2MDIsImV4cCI6MTY0NzY4MjQwMiwiaXNzIjoiRGlwbG9tYUNoYXQiLCJhdWQiOiJEaXBsb21hQ2hhdCJ9.OQLlOXPnrrOXwD1M_ftTNUCeDLE1TcA6RLZS_vNno50'
 
@@ -26,9 +25,14 @@ export class RegisterComponent {
         //     'Authorization': `Bearer ${token}`
         // }
 
-        // var requestOptions = {
-        //     headers: new HttpHeaders(headerDictionary)
-        // }
+        const headerDictionary = {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+
+        var requestOptions = {
+            headers: new HttpHeaders(headerDictionary)
+        }
 
         // var accountDetailsObservable = this.httpClient
         //     .get("https://localhost:44317/account/details", requestOptions)
@@ -39,18 +43,20 @@ export class RegisterComponent {
         //     });
 
         //var email = form.controls["firstName"]
-        alert(form.email)
 
-        // var registrationRequestBody = {
-        //     email: "string",
-        //     password: "string",
-        //     firstName: "string",
-        //     lastName: "string"
-        // }
+        var registrationRequestBody = {
+            email: form.email,
+            password: form.password,
+            firstName: form.firstName,
+            lastName: form.lastName
+        }
 
-        // var a = this.httpClient
-        //     .post("https://localhost:44317/account/register", registrationRequestBody);
+        var response = this.httpClient
+            .post("https://localhost:44317/account/register", registrationRequestBody, requestOptions)
+            .subscribe((value: any) => {
+                alert(JSON.stringify(value))
+                //this.router.navigate(['/chats']);
+            });
 
-        this.router.navigate(['/chats']);
     }
 }
