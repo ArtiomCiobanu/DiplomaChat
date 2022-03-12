@@ -54,6 +54,14 @@ namespace DiplomaChat.SingleSignOn
             services.AddAuthentication();
             services.AddAuthorization();
 
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+            });
+
             services.AddControllers().AddFluentValidation(configuration =>
             {
                 configuration.DisableDataAnnotationsValidation = true; //Attributes shouldn't work
@@ -96,7 +104,7 @@ namespace DiplomaChat.SingleSignOn
                 if (version is not null)
                 {
                     options.SwaggerDoc("v1",
-                        new OpenApiInfo { Title = $"CeremonyPassportAPI {version.ToString()}", Version = "v1" });
+                        new OpenApiInfo { Title = $"CeremonyPassportAPI {version}", Version = "v1" });
                 }
             });
 
@@ -117,6 +125,8 @@ namespace DiplomaChat.SingleSignOn
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthentication();
             app.UseAuthorization();

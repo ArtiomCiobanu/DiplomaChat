@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using DiplomaChat.Common.Authorization.Constants;
+﻿using DiplomaChat.Common.Authorization.Constants;
 using DiplomaChat.Common.Authorization.Extensions;
 using DiplomaChat.Common.Infrastructure.Controllers;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
@@ -11,6 +8,9 @@ using DiplomaChat.SingleSignOn.Features.Accounts.RegisterAccount;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 
 namespace DiplomaChat.SingleSignOn.Features.Accounts
 {
@@ -25,13 +25,13 @@ namespace DiplomaChat.SingleSignOn.Features.Accounts
 
         [HttpPost("register")]
         public Task<IActionResult> Register(
-            [Required] [FromBody] RegisterAccountCommand registerAccountCommand)
+            [Required][FromBody] RegisterAccountCommand registerAccountCommand)
             => SendToMediatorAsync(registerAccountCommand);
 
 
         [HttpPost("login")]
         public Task<IActionResult> Login(
-            [Required] [FromBody] AuthorizeAccountRequest authorizeAccountRequest)
+            [Required][FromBody] AuthorizeAccountRequest authorizeAccountRequest)
             => SendToMediatorAsync(authorizeAccountRequest);
 
         [Authorize]
