@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -25,14 +25,14 @@ export class RegisterComponent {
         //     'Authorization': `Bearer ${token}`
         // }
 
-        const headerDictionary = {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
+        // const headerDictionary = {
+        //     'Content-Type': 'application/json',
+        //     'Accept': 'application/json'
+        // }
 
-        var requestOptions = {
-            headers: new HttpHeaders(headerDictionary)
-        }
+        // var requestOptions = {
+        //     headers: new HttpHeaders(headerDictionary)
+        // }
 
         // var accountDetailsObservable = this.httpClient
         //     .get("https://localhost:44317/account/details", requestOptions)
@@ -42,8 +42,6 @@ export class RegisterComponent {
         //         alert(JSON.stringify(value));
         //     });
 
-        //var email = form.controls["firstName"]
-
         var registrationRequestBody = {
             email: form.email,
             password: form.password,
@@ -51,12 +49,30 @@ export class RegisterComponent {
             lastName: form.lastName
         }
 
-        var response = this.httpClient
-            .post("https://localhost:44317/account/register", registrationRequestBody, requestOptions)
-            .subscribe((value: any) => {
-                alert(JSON.stringify(value))
-                //this.router.navigate(['/chats']);
-            });
+        this.httpClient
+            .post(
+                "https://localhost:44317/account/register",
+                registrationRequestBody,
+                { observe: 'response' })
+            .subscribe({
+                next: v => this.success(v),
+                error: e => this.fail(e),
+            })
+    }
+
+    success(response: HttpResponse<Object>) {
+        if (response.status == 200) {
+            this.router.navigate(['/chats']);
+        }
+    }
+
+    fail(response: any) {
+        if (response.status == 409) {
+            alert(`Status: ${response.status}, Message: ${response.error.message}`)
+        }
+        else {
+            alert(`Error. Response: ${JSON.stringify(response)}`)
+        }
 
     }
 }
