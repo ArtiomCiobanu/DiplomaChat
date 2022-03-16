@@ -1,12 +1,12 @@
-<form action="chats">
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
     <mat-form-field appearance="fill" class="full-width">
         <mat-label>Email</mat-label>
-        <input matInput type="email" />
+        <input matInput type="email" name="email" ngModel />
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="full-width">
         <mat-label>Password</mat-label>
-        <input matInput type="password" />
+        <input matInput type="password" name="password" ngModel />
     </mat-form-field>
 
     <button mat-raised-button color="primary" class="full-width">Log In</button>
