@@ -1,6 +1,5 @@
-import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
-import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 
 @Component({
@@ -9,10 +8,6 @@ import { Router } from "@angular/router";
     styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-    firstName: string = "";
-    lastName: string = "";
-    email: string = "";
-    phone: string = "";
 
     constructor(
         private router: Router,
@@ -50,20 +45,26 @@ export class RegisterComponent {
         }
 
         this.httpClient
-            .post(
-                "https://localhost:44317/account/register",
-                registrationRequestBody,
-                { observe: 'response' })
+            .post("https://localhost:44317/account/register", registrationRequestBody)
             .subscribe({
-                next: v => this.success(v),
+                next: () => this.success(registrationRequestBody),
                 error: e => this.fail(e),
             })
     }
 
-    success(response: HttpResponse<Object>) {
-        if (response.status == 200) {
-            this.router.navigate(['/chats']);
-        }
+    success(userCredentials: {
+        email: string,
+        password: string
+    }) {
+
+        this.httpClient
+            .post("https://localhost:44317/account/login", userCredentials)
+            .subscribe({
+                next: v => { alert(`token: ${JSON.stringify(v)}`) },
+                error: e => { this.fail(e) }
+            })
+
+        this.router.navigate(['/chats']);
     }
 
     fail(response: any) {
@@ -73,6 +74,5 @@ export class RegisterComponent {
         else {
             alert(`Error. Response: ${JSON.stringify(response)}`)
         }
-
     }
 }
