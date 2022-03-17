@@ -56,23 +56,18 @@ export class RegisterComponent {
         email: string,
         password: string
     }) {
-
         this.httpClient
             .post("https://localhost:44317/account/login", userCredentials)
             .subscribe({
-                next: v => { alert(`token: ${JSON.stringify(v)}`) },
+                next: v => {
+                    alert(`token: ${JSON.stringify(v)}`)
+                    this.router.navigate(['/chats']);
+                },
                 error: e => { this.fail(e) }
             })
-
-        this.router.navigate(['/chats']);
     }
 
     fail(response: any) {
-        if (response.status == 409) {
-            alert(`Status: ${response.status}, Message: ${response.error.message}`)
-        }
-        else {
-            alert(`Error. Response: ${JSON.stringify(response)}`)
-        }
+        alert(`Error. Response: ${JSON.stringify(response)}`)
     }
 }
