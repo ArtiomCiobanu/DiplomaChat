@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { CookieService } from 'ngx-cookie-service';
+
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ChatListComponent } from './chat-list/chat-list.component';
@@ -16,6 +18,7 @@ import { ChatListElementComponent } from './chat-list/chat-list-element/chat-lis
 import { ChatComponent } from './chat/chat.component';
 import { ExternalChatMessageComponent } from './chat/external-chat-message/external-chat-message.component';
 import { ProperChatMessageComponent } from './chat/proper-chat-message/proper-chat-message.component';
+import { EnterNicknameComponent } from './enter-nickname/enter-nickname.component';
 
 //Material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -27,7 +30,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { CookieService } from 'ngx-cookie-service';
     ChatListElementComponent,
     ChatComponent,
     ExternalChatMessageComponent,
-    ProperChatMessageComponent
+    ProperChatMessageComponent,
+    EnterNicknameComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@
 using DiplomaChat.Common.Infrastructure;
 using MediatR;
 
-namespace DiplomaChat.Features.Menu.LeaveChatRoom
+namespace DiplomaChat.Features.Rooms.LeaveChatRoom
 {
     public class LeaveChatRoomCommand : IQuery<Unit>
     {

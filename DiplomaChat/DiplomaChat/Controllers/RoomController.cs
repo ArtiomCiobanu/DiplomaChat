@@ -4,13 +4,13 @@ using DiplomaChat.Common.Authorization.Constants;
 using DiplomaChat.Common.Authorization.Extensions;
 using DiplomaChat.Common.Infrastructure.Controllers;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
-using DiplomaChat.Features.Menu.CreateChatRoom;
-using DiplomaChat.Features.Menu.JoinChatRoom;
-using DiplomaChat.Features.Menu.LeaveChatRoom;
-using DiplomaChat.Features.Menu.ListCreatedChatRoom;
-using DiplomaChat.Features.Menu.Notifications.CreateChatRoom;
-using DiplomaChat.Features.Menu.Notifications.JoinChatRoom;
-using DiplomaChat.Features.Menu.Notifications.LeaveChatRoom;
+using DiplomaChat.Features.Rooms.CreateChatRoom;
+using DiplomaChat.Features.Rooms.JoinChatRoom;
+using DiplomaChat.Features.Rooms.LeaveChatRoom;
+using DiplomaChat.Features.Rooms.ListCreatedChatRoom;
+using DiplomaChat.Features.Rooms.Notifications.CreateChatRoom;
+using DiplomaChat.Features.Rooms.Notifications.JoinChatRoom;
+using DiplomaChat.Features.Rooms.Notifications.LeaveChatRoom;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,14 +29,12 @@ namespace DiplomaChat.Controllers
         {
         }
 
-        [HttpPost("create")]
-        public async Task<IActionResult> CreateGame(
-            [FromBody] CreateGameSessionDto dto)
+        [HttpGet("create")]
+        public async Task<IActionResult> CreateGame()
         {
             var command = new CreateChatRoomCommand
             {
-                AccountId = AccountId,
-                SessionCapacity = dto.SessionCapacity
+                AccountId = AccountId
             };
             var response = await Mediator.Send(command);
 

@@ -9,7 +9,7 @@ using DiplomaChat.DataAccess.Context;
 using DiplomaChat.DataAccess.Entities;
 using MediatR;
 
-namespace DiplomaChat.Features.Menu.Notifications.JoinChatRoom
+namespace DiplomaChat.Features.Rooms.Notifications.JoinChatRoom
 {
     public class JoinGameSessionNotificationHandler : IRequestHandler<JoinChatRoomNotificationCommand>
     {

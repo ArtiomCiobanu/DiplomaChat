@@ -9,14 +9,24 @@ import { CookieService } from "ngx-cookie-service";
     styleUrls: ['./chat-list.component.scss']
 })
 export class ChatListComponent {
-    FullName: string = ""
+    Nickname: string = ""
 
     constructor(
+        private httpClient: HttpClient,
         private router: Router,
-        private cookieService: CookieService,
-        private httpClient: HttpClient) {
+        private cookieService: CookieService) {
 
-        var authorizationToken = cookieService.get('AuthorizationToken');
+        this.Nickname = cookieService.get('Nickname')
+    }
+
+    logout() {
+        this.cookieService.deleteAll();
+
+        this.router.navigate(['']);
+    }
+
+    createNewChat() {
+        var authorizationToken = this.cookieService.get('AuthorizationToken');
 
         var requestOptions = {
             headers: new HttpHeaders({
@@ -25,19 +35,12 @@ export class ChatListComponent {
         }
 
         this.httpClient
-            .get("https://localhost:44317/account/details", requestOptions)
+            .get("https://localhost:44306/rooms/create", requestOptions)
             .subscribe({
-                next: response => this.setFullName(response)
+                next: response => alert(response),
+                error: e => alert(e)
             });
-    }
 
-    setFullName(response: any) {
-        this.FullName = `${response.firstName} ${response.lastName}`
-    }
-
-    logout() {
-        this.cookieService.delete('AuthorizationToken');
-
-        this.router.navigate(['']);        
+        //this.router.navigate(['chats/new']);
     }
 }

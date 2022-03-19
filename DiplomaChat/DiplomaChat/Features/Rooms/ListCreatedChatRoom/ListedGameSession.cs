@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DiplomaChat.Features.Menu.ListCreatedChatRoom
+namespace DiplomaChat.Features.Rooms.ListCreatedChatRoom
 {
     public class ListedGameSession
     {

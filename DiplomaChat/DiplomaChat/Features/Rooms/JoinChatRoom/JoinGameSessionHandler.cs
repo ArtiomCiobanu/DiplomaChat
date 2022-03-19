@@ -9,7 +9,7 @@ using DiplomaChat.DataAccess.Context;
 using DiplomaChat.DataAccess.Entities;
 using MediatR;
 
-namespace DiplomaChat.Features.Menu.JoinChatRoom
+namespace DiplomaChat.Features.Rooms.JoinChatRoom
 {
     public class JoinGameSessionCommandHandler : IRequestHandler<JoinChatRoomCommand, IResponse<Unit>>
     {

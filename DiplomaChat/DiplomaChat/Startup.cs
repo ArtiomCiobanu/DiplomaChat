@@ -67,7 +67,15 @@ namespace DiplomaChat
 
             services.AddAuthentication();
             services.AddAuthorization();
-
+            
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+            });
+            
             services.AddControllers()
                 .AddFluentValidation(configuration =>
                 {
@@ -128,6 +136,8 @@ namespace DiplomaChat
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthentication();
             app.UseAuthorization();

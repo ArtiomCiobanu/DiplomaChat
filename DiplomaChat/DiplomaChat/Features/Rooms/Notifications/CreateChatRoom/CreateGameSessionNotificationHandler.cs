@@ -5,7 +5,7 @@ using DiplomaChat.Common.Infrastructure.Enums;
 using DiplomaChat.Common.MessageQueueing.MessageQueueing;
 using MediatR;
 
-namespace DiplomaChat.Features.Menu.Notifications.CreateChatRoom
+namespace DiplomaChat.Features.Rooms.Notifications.CreateChatRoom
 {
     public class CreateGameSessionNotificationHandler : IRequestHandler<CreateChatRoomNotificationCommand>
     {

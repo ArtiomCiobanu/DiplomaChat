@@ -7,7 +7,7 @@ using DiplomaChat.DataAccess.Context;
 using DiplomaChat.DataAccess.Entities;
 using MediatR;
 
-namespace DiplomaChat.Features.Menu.CreateChatRoom
+namespace DiplomaChat.Features.Rooms.CreateChatRoom
 {
     public class CreateGameSessionCommandHandler
         : IRequestHandler<CreateChatRoomCommand, IResponse<CreateChatRoomResponse>>

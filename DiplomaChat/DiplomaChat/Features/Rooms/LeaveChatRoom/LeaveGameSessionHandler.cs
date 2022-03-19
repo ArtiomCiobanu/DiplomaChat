@@ -8,7 +8,7 @@ using DiplomaChat.DataAccess.Context;
 using DiplomaChat.DataAccess.Entities;
 using MediatR;
 
-namespace DiplomaChat.Features.Menu.LeaveChatRoom
+namespace DiplomaChat.Features.Rooms.LeaveChatRoom
 {
     public class LeaveGameSessionCommandHandler
         : IRequestHandler<LeaveChatRoomCommand, IResponse<Unit>>

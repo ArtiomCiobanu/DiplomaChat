@@ -1,11 +1,10 @@
 ﻿using System;
 using DiplomaChat.Common.Infrastructure;
 
-namespace DiplomaChat.Features.Menu.CreateChatRoom
+namespace DiplomaChat.Features.Rooms.CreateChatRoom
 {
     public class CreateChatRoomCommand : IQuery<CreateChatRoomResponse>
     {
         public Guid AccountId { get; init; }
-        public int SessionCapacity { get; init; }
     }
 }

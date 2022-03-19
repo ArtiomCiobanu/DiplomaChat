@@ -9,7 +9,7 @@ using DiplomaChat.Domain.Models.Configurations;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace DiplomaChat.Features.Menu.ListCreatedChatRoom
+namespace DiplomaChat.Features.Rooms.ListCreatedChatRoom
 {
     public class ListCreatedGameSessionsHandler :
         IRequestHandler<ListCreatedChatRoomsRequest, IResponse<ListCreatedChatRoomsResponse>>

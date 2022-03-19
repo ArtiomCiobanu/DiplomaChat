@@ -69,7 +69,7 @@ export class RegisterComponent {
     saveTokenAndLoadChat(response: any) {
         this.cookieService.set('AuthorizationToken', response.token)
 
-        this.router.navigate(['/chats']);
+        this.router.navigate(['/enter-nickname']);
     }
 
     fail(response: any) {

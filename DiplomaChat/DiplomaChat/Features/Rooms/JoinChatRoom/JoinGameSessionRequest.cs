@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DiplomaChat.Features.Menu.JoinChatRoom
+namespace DiplomaChat.Features.Rooms.JoinChatRoom
 {
     public class JoinGameSessionRequest
     {

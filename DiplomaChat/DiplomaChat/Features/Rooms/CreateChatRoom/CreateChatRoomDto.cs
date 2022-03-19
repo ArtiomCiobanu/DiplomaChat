@@ -1,4 +1,4 @@
-﻿namespace DiplomaChat.Features.Menu.CreateChatRoom
+﻿namespace DiplomaChat.Features.Rooms.CreateChatRoom
 {
     public class CreateGameSessionDto
     {

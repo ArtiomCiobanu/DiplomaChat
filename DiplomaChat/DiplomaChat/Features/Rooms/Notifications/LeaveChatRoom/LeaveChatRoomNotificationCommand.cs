@@ -2,7 +2,7 @@
 using DiplomaChat.Common.Infrastructure.Enums;
 using MediatR;
 
-namespace DiplomaChat.Features.Menu.Notifications.LeaveChatRoom
+namespace DiplomaChat.Features.Rooms.Notifications.LeaveChatRoom
 {
     public class LeaveChatRoomNotificationCommand : IRequest
     {

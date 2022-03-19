@@ -2,7 +2,7 @@
 using DiplomaChat.Common.Infrastructure.Enums;
 using MediatR;
 
-namespace DiplomaChat.Features.Menu.Notifications.CreateChatRoom
+namespace DiplomaChat.Features.Rooms.Notifications.CreateChatRoom
 {
     public class CreateChatRoomNotificationCommand : IRequest
     {
