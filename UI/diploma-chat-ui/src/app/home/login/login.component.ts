@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { CookieService } from "ngx-cookie-service";
 
 @Component({
     selector: 'login',
@@ -10,7 +11,8 @@ import { Router } from "@angular/router";
 export class LoginComponent {
     constructor(
         private router: Router,
-        private httpClient: HttpClient) { }
+        private httpClient: HttpClient,
+        private cookieService: CookieService) { }
 
     onSubmit(form: any) {
         var loginRequestBody = {
@@ -21,18 +23,18 @@ export class LoginComponent {
         this.httpClient
             .post("https://localhost:44317/account/login", loginRequestBody)
             .subscribe({
-                next: v => this.success(v),
+                next: v => this.saveTokenAndLoadChat(v),
                 error: e => { this.fail(e) }
             })
     }
 
-    success(response: any) {
-        alert(`token: ${JSON.stringify(response)}`)
+    saveTokenAndLoadChat(response: any) {
+        this.cookieService.set('AuthorizationToken', response.token);
+
         this.router.navigate(['/chats']);
     }
 
     fail(response: any) {
         alert(`Status: ${response.status}, Message: ${response.error.message}`)
-
     }
 }

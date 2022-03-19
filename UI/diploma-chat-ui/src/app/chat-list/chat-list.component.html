@@ -1,6 +1,11 @@
 <div class="centered-card">
     <mat-card class="chat-card shifted-down">
-        <div style="text-align: center; padding: 10px; font-size: 25px;"> CHATS </div>
+        <div class="chat-list-header">CHATS</div>
+        <div class="chat-account-details">
+            You are logged as: <b>{{FullName}}</b>&nbsp;
+            <button color="primary" (click)="logout()" mat-stroked-button>Log Out</button>
+        </div>
+        <button mat-flat-button class="full-width">Create new chat</button>
         <div>
             <chat-list-element></chat-list-element>
             <mat-divider></mat-divider>
