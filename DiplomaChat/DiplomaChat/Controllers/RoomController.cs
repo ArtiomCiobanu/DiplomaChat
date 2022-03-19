@@ -5,6 +5,7 @@ using DiplomaChat.Common.Authorization.Extensions;
 using DiplomaChat.Common.Infrastructure.Controllers;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
 using DiplomaChat.Features.Rooms.CreateChatRoom;
+using DiplomaChat.Features.Rooms.GetChatRoomDetails;
 using DiplomaChat.Features.Rooms.JoinChatRoom;
 using DiplomaChat.Features.Rooms.LeaveChatRoom;
 using DiplomaChat.Features.Rooms.ListCreatedChatRoom;
@@ -88,6 +89,14 @@ namespace DiplomaChat.Controllers
             await Mediator.Send(leaveGameNotificationCommand);
 
             return await ResponseMapper.ExecuteAndMapStatusAsync(response);
+        }
+
+        [HttpGet("{chatRoomId:guid}/details")]
+        public async Task<IActionResult> GetChatRoomDetails(Guid chatRoomId)
+        {
+            var query = new GetChatRoomDetailsQuery(chatRoomId);
+
+            return await SendToMediatorAsync(query);
         }
 
         [HttpGet("created/{offset:int?}/{limit:int?}")]

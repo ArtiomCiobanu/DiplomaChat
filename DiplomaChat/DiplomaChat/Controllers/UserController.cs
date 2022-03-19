@@ -37,7 +37,10 @@ namespace DiplomaChat.Controllers
         }
 
         [HttpGet("profile")]
-        public Task<IActionResult> GetPlayerProfile()
+        public Task<IActionResult> GetUserProfile() => GetUserProfile(AccountId);
+
+        [HttpGet("{userId}/profile")]
+        public Task<IActionResult> GetUserProfile(Guid userId)
         {
             var query = new GetUserProfileQuery
             {

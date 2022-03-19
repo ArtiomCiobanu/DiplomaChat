@@ -2,7 +2,7 @@
 
 namespace DiplomaChat.Features.Rooms.JoinChatRoom
 {
-    public class JoinGameSessionRequest
+    public class JoinChatRoomRequest
     {
         public Guid GameSessionId { get; set; }
     }

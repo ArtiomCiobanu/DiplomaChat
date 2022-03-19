@@ -11,12 +11,12 @@ using MediatR;
 
 namespace DiplomaChat.Features.Rooms.JoinChatRoom
 {
-    public class JoinGameSessionCommandHandler : IRequestHandler<JoinChatRoomCommand, IResponse<Unit>>
+    public class JoinChatRoomHandler : IRequestHandler<JoinChatRoomCommand, IResponse<Unit>>
     {
         private readonly IDiplomaChatContext _diplomaChatContext;
         private readonly IJwtGenerator _jwtGenerator;
 
-        public JoinGameSessionCommandHandler(
+        public JoinChatRoomHandler(
             IDiplomaChatContext diplomaChatContext,
             IJwtGenerator jwtGenerator)
         {

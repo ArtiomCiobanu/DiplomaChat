@@ -37,10 +37,12 @@ export class ChatListComponent {
         this.httpClient
             .get("https://localhost:44306/rooms/create", requestOptions)
             .subscribe({
-                next: response => alert(response),
+                next: response => this.successfullyCreated(response),
                 error: e => alert(e)
             });
+    }
 
-        //this.router.navigate(['chats/new']);
+    successfullyCreated(response: any) {
+        this.router.navigate([`chats/${response.sessionId}`]);
     }
 }
