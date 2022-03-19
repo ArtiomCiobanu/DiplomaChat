@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 
@@ -9,7 +10,14 @@ import { ActivatedRoute } from "@angular/router";
 export class ChatComponent {
     chatId: string;
 
-    constructor(private route: ActivatedRoute) {
+    CreatorNickname: string;
+
+    constructor(
+        route: ActivatedRoute,
+        httpClient: HttpClient) {
+
         this.chatId = route.snapshot.params['chatId']
+
+        httpClient.get(`https://localhost:44306/user/${}/create`)
     }
 }
