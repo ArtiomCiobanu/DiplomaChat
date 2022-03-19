@@ -45,6 +45,11 @@ export class EnterNicknameComponent {
             alert("Error")
             this.router.navigate(['']);
         }
+
+        let content = document.getElementById('content')
+        if (content != null) {
+            content.className = "block"
+        }
     }
 
     onSubmit(form: any) {

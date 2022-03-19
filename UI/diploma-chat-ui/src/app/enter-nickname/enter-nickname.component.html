@@ -1,6 +1,6 @@
 <div class="centered-card">
     <mat-card class="chat-card shifted-down">
-        <div style="display: none;">
+        <div id="content" class="hidden">
             <div class="chat-list-header">Enter your nickname:</div>
             <br>
             <form #enterNicknameForm="ngForm" (ngSubmit)="onSubmit(enterNicknameForm.value)">
