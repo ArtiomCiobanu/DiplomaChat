@@ -9,14 +9,36 @@ import { CookieService } from "ngx-cookie-service";
     styleUrls: ['./chat-list.component.scss']
 })
 export class ChatListComponent {
-    Nickname: string = ""
+    nickname: string = ""
+    requestOptions: {
+        headers: HttpHeaders
+    }
 
     constructor(
         private httpClient: HttpClient,
         private router: Router,
         private cookieService: CookieService) {
 
-        this.Nickname = cookieService.get('Nickname')
+        this.nickname = cookieService.get('Nickname')
+
+        var authorizationToken = this.cookieService.get('AuthorizationToken');
+
+        this.requestOptions = {
+            headers: new HttpHeaders({
+                'Authorization': `Bearer ${authorizationToken}`
+            })
+        }
+
+        this.loadChats()
+    }
+
+    loadChats() {
+        var offset = 0;
+        var limit = 10;
+
+        this.httpClient
+            .get(`https://localhost:44306/rooms/created?offset=${offset}&limit=${limit}`)
+            .subscribe
     }
 
     logout() {
@@ -26,16 +48,8 @@ export class ChatListComponent {
     }
 
     createNewChat() {
-        var authorizationToken = this.cookieService.get('AuthorizationToken');
-
-        var requestOptions = {
-            headers: new HttpHeaders({
-                'Authorization': `Bearer ${authorizationToken}`
-            })
-        }
-
         this.httpClient
-            .get("https://localhost:44306/rooms/create", requestOptions)
+            .get("https://localhost:44306/rooms/create", this.requestOptions)
             .subscribe({
                 next: response => this.successfullyCreated(response),
                 error: e => alert(e)

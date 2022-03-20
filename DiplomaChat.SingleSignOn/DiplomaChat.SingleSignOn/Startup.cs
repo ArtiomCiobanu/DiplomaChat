@@ -120,7 +120,7 @@ namespace DiplomaChat.SingleSignOn
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("v1/swagger.json", "CeremonyPassportAPI v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("v1/swagger.json", "DiplomaChat.SingleSignOn v1"));
 
             app.UseHttpsRedirection();
 

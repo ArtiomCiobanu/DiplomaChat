@@ -8,7 +8,7 @@ using DiplomaChat.Features.Rooms.CreateChatRoom;
 using DiplomaChat.Features.Rooms.GetChatRoomDetails;
 using DiplomaChat.Features.Rooms.JoinChatRoom;
 using DiplomaChat.Features.Rooms.LeaveChatRoom;
-using DiplomaChat.Features.Rooms.ListCreatedChatRoom;
+using DiplomaChat.Features.Rooms.ListCreatedChatRooms;
 using DiplomaChat.Features.Rooms.Notifications.CreateChatRoom;
 using DiplomaChat.Features.Rooms.Notifications.JoinChatRoom;
 using DiplomaChat.Features.Rooms.Notifications.LeaveChatRoom;
@@ -99,9 +99,8 @@ namespace DiplomaChat.Controllers
             return await SendToMediatorAsync(query);
         }
 
-        [HttpGet("created/{offset:int?}/{limit:int?}")]
-        public async Task<IActionResult>
-            ListCreatedGameSessions(int offset = 0, int limit = 10)
+        [HttpGet("created")]
+        public async Task<IActionResult> ListCreatedChatRooms(int offset = 0, int limit = 10)
         {
             var command = new ListCreatedChatRoomsRequest
             {

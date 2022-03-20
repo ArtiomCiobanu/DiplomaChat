@@ -9,7 +9,7 @@ namespace DiplomaChat.DataAccess.Context
     public class DiplomaChatContext : DatabaseContext, IDiplomaChatContext
     {
         public DbSet<ChatRoom> ChatRooms { get; set; }
-        public DbSet<ChatRoomUser> RoomUsers { get; set; }
+        public DbSet<ChatRoomUser> ChatRoomUsers { get; set; }
         public DbSet<User> Users { get; set; }
 
         public DiplomaChatContext(DbContextOptions<DiplomaChatContext> options)

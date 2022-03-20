@@ -1,6 +1,6 @@
 ﻿using DiplomaChat.Common.Infrastructure;
 
-namespace DiplomaChat.Features.Rooms.ListCreatedChatRoom
+namespace DiplomaChat.Features.Rooms.ListCreatedChatRooms
 {
     public class ListCreatedChatRoomsRequest : IQuery<ListCreatedChatRoomsResponse>
     {

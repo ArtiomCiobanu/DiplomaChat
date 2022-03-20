@@ -9,7 +9,7 @@ using DiplomaChat.Domain.Models.Configurations;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace DiplomaChat.Features.Rooms.ListCreatedChatRoom
+namespace DiplomaChat.Features.Rooms.ListCreatedChatRooms
 {
     public class ListCreatedGameSessionsHandler :
         IRequestHandler<ListCreatedChatRoomsRequest, IResponse<ListCreatedChatRoomsResponse>>
@@ -63,7 +63,7 @@ namespace DiplomaChat.Features.Rooms.ListCreatedChatRoom
                     {
                         Id = cr.Id,
                         CreatorNickname = user.Nickname,
-                        PlayerAmount = cr.RoomUserAmount
+                        UserAmount = cr.RoomUserAmount
                     };
                 });
 
