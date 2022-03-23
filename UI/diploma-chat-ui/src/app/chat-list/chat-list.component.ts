@@ -37,8 +37,14 @@ export class ChatListComponent {
         var limit = 10;
 
         this.httpClient
-            .get(`https://localhost:44306/rooms/created?offset=${offset}&limit=${limit}`)
-            .subscribe
+            .get(`https://localhost:44306/rooms/created?offset=${offset}&limit=${limit}`, this.requestOptions)
+            .subscribe({
+                next: response => this.chatListReceived(response)
+            })
+    }
+
+    chatListReceived(response: any) {
+        alert(JSON.stringify(response.gameSessions))
     }
 
     logout() {
