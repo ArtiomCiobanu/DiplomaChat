@@ -69,7 +69,7 @@ namespace DiplomaChat.Features.Rooms.ListCreatedChatRooms
 
             var response = new ListCreatedChatRoomsResponse
             {
-                GameSessions = chatRoomList.ToArray()
+                ChatRooms = chatRoomList.ToArray()
             };
 
             return response.Success();

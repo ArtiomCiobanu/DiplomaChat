@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { Component, ComponentFactoryResolver, ViewChild, ViewContainerRef } from "@angular/core";
 import { Router } from "@angular/router";
 import { CookieService } from "ngx-cookie-service";
+import { ChatListElementComponent } from "./chat-list-element/chat-list-element.component";
 
 @Component({
     selector: 'chat-list',
@@ -9,7 +10,11 @@ import { CookieService } from "ngx-cookie-service";
     styleUrls: ['./chat-list.component.scss']
 })
 export class ChatListComponent {
+    @ViewChild('chatContainer', { read: ViewContainerRef }) chatContainer: ViewContainerRef;
+    chats = [];
+
     nickname: string = ""
+
     requestOptions: {
         headers: HttpHeaders
     }
@@ -43,10 +48,6 @@ export class ChatListComponent {
             })
     }
 
-    chatListReceived(response: any) {
-        alert(JSON.stringify(response.gameSessions))
-    }
-
     logout() {
         this.cookieService.deleteAll();
 
@@ -64,5 +65,20 @@ export class ChatListComponent {
 
     successfullyCreated(response: any) {
         this.router.navigate([`chats/${response.sessionId}`]);
+    }
+
+    chatListReceived(response: any) {
+        for (let i = 0; i < response.chatRooms.length; i++) {
+            var chatRoom = response.chatRooms[i]
+            this.addChatToList(`Chat ${i.toString()}`, chatRoom.Id, chatRoom.creatorNickname, chatRoom.userAmount)
+        }
+    }
+
+    addChatToList(title: string, roomId: string, creatorNickname: string, userAmount: number) {
+        var chatListElement = this.chatContainer.createComponent(ChatListElementComponent).instance
+
+        chatListElement.Title = title
+        chatListElement.CreatorNickname = creatorNickname
+        chatListElement.RoomId = roomId
     }
 }

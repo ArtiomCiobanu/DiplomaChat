@@ -6,4 +6,8 @@ import { Component } from "@angular/core";
     styleUrls: ['./chat-list-element.component.scss']
 })
 export class ChatListElementComponent {
+    public Title: string
+    public CreatorNickname: string
+
+    public RoomId: string
 }
