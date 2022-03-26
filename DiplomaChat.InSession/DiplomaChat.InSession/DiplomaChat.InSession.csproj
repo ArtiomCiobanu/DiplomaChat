@@ -15,16 +15,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="MediatR" Version="9.0.0" />
+        <PackageReference Include="MediatR" Version="10.0.1" />
         <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
         <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.2.3" />
-        <PackageReference Include="WebApiBaseLibrary" Version="1.0.6" />
-        <PackageReference Include="WebApiBaseLibrary.Infrastructure" Version="1.1.7" />
-        <PackageReference Include="WebApiBaseLibrary.MessageQueueing" Version="1.0.1" />
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.MessageQueueing\DiplomaChat.Common.MessageQueueing.csproj" />
+        <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common\DiplomaChat.Common.csproj" />
         <ProjectReference Include="..\DiplomaChat.InSession.DataAccess\DiplomaChat.InSession.DataAccess.csproj" />
         <ProjectReference Include="..\DiplomaChat.InSession.Domain\DiplomaChat.InSession.Domain.csproj" />
     </ItemGroup>
@@ -33,10 +32,6 @@
         <Reference Include="TileGameServer.BaseLibrary.Domain">
             <HintPath>$(OutputPath)/TileGameServer.BaseLibrary.Domain.dll</HintPath>
         </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Features" />
     </ItemGroup>
 
 </Project>

@@ -1,32 +1,27 @@
+using DiplomaChat.Common.Authorization.Configuration;
+using DiplomaChat.Common.Authorization.Constants;
+using DiplomaChat.Common.Extensions;
+using DiplomaChat.Common.Infrastructure.ResponseMappers;
+using DiplomaChat.Common.MessageQueueing.Configuration;
+using DiplomaChat.Common.MessageQueueing.Extensions.RabbitMQ;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
-using Microsoft.OpenApi.Models;
 using TileGameServer.InSession.Constants;
 using TileGameServer.InSession.DataAccess.Context;
-using TileGameServer.InSession.Domain.Configuration;
-using TileGameServer.InSession.Domain.Creators;
-using TileGameServer.InSession.Domain.Library;
 using TileGameServer.InSession.Hubs;
-using WebApiBaseLibrary.Authorization.Configurators;
-using WebApiBaseLibrary.Authorization.Constants;
-using WebApiBaseLibrary.Authorization.Extensions;
-using WebApiBaseLibrary.MessageQueueing.Configuration;
-using WebApiBaseLibrary.MessageQueueing.Extensions.RabbitMQ;
 using HeaderNames = Microsoft.Net.Http.Headers.HeaderNames;
 
 namespace TileGameServer.InSession
 {
     public class Startup
     {
-        private IServiceProvider _serviceProvider;
-
         public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
@@ -48,61 +43,27 @@ namespace TileGameServer.InSession
             services.AddMessageQueueingServices(typeof(Startup));
             services.AddRabbitMQ(rabbitMqConfiguration);
 
-            services.AddSingletonJwtConfiguration(Configuration);
-            services.AddSingleton<IJwtConfigurator, JwtConfigurator>();
+            services.AddScoped<IResponseMapper, ResponseMapper>();
 
-            //services.AddScoped<IJwtReader, JwtReader>();
+            var jwtConfiguration = Configuration.GetSection("JwtConfiguration").Get<JwtConfiguration>();
+            services.AddJwt(jwtConfiguration);
 
-            var tileConfiguration = Configuration.GetSection("TileGameConfiguration").Get<TileGameConfiguration>();
-            services.AddScoped<TileGameConfiguration, TileGameConfiguration>();
-            services.AddScoped<ITileLibrary, TileLibrary>(s => new TileLibrary(tileConfiguration));
-            services.AddScoped<ITileFieldFactory, TileFieldFactory>();
-
-            /*services.AddConfiguredJwtBearer(() =>
-            {
-                var jwtConfigurator = _serviceProvider.GetService<IJwtConfigurator>();
-
-                return jwtConfigurator?.ValidationParameters;
-            });*/
-
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
-            {
-                var jwtConfigurator = _serviceProvider.GetService<IJwtConfigurator>();
-
-                options.RequireHttpsMetadata = true;
-                options.TokenValidationParameters = jwtConfigurator?.ValidationParameters;
-
-                /*options.Events = new JwtBearerEvents
-                {
-                    OnTokenValidated = a =>
-                    {
-                        Console.WriteLine(a.SecurityToken);
-                        return Task.CompletedTask;
-                    },
-                    OnMessageReceived = context =>
-                    {
-                        var token = context.Request.Query["access_token"];
-                        var path = context.HttpContext.Request.Path;
-                        
-                        context.Token = token;
-                        
-                        Console.WriteLine(token);
-
-                        return Task.CompletedTask;
-                    }
-                };*/
-            });
+            services.AddAuthentication();
             services.AddAuthorization();
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+            });
 
             services.AddControllers();
 
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "TileGameServer", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "DiplomaChat.InSession", Version = "v1" });
 
                 var securityScheme = new OpenApiSecurityScheme
                 {
@@ -142,8 +103,6 @@ namespace TileGameServer.InSession
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            _serviceProvider = app.ApplicationServices;
-
             app.UseMessageQueueingServices(typeof(Startup));
 
             if (env.IsDevelopment())
@@ -157,12 +116,14 @@ namespace TileGameServer.InSession
 
             app.UseRouting();
 
+            app.UseCors();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHub<ChatHub>("/TileGame");
+                endpoints.MapHub<ChatHub>("/ChatHub");
                 endpoints.MapControllers();
             });
         }

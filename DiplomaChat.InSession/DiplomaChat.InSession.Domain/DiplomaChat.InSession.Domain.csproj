@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="WebApiBaseLibrary.DataAccess" Version="1.1.2" />
+      <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.DataAccess\DiplomaChat.Common.DataAccess.csproj" />
     </ItemGroup>
 
 </Project>

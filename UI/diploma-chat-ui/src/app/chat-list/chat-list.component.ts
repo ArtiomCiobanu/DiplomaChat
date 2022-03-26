@@ -70,7 +70,7 @@ export class ChatListComponent {
     chatListReceived(response: any) {
         for (let i = 0; i < response.chatRooms.length; i++) {
             var chatRoom = response.chatRooms[i]
-            this.addChatToList(`Chat ${i.toString()}`, chatRoom.Id, chatRoom.creatorNickname, chatRoom.userAmount)
+            this.addChatToList(`Chat ${(i + 1).toString()}`, chatRoom.id, chatRoom.creatorNickname, chatRoom.userAmount)
         }
     }
 

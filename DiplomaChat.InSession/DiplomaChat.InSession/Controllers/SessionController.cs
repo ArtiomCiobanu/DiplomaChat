@@ -1,9 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using DiplomaChat.Common.Infrastructure.Controllers;
+using DiplomaChat.Common.Infrastructure.ResponseMappers;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebApiBaseLibrary.Controllers;
+using System;
+using System.Threading.Tasks;
 
 namespace TileGameServer.InSession.Controllers
 {
@@ -11,13 +12,15 @@ namespace TileGameServer.InSession.Controllers
     [ApiController]
     public class SessionController : BaseMediatorController
     {
-        public SessionController(IMediator mediator) : base(mediator)
+        public SessionController(IMediator mediator, IResponseMapper responseMapper)
+            : base(mediator, responseMapper)
         {
         }
 
+
         [Authorize]
-        [HttpGet("{sessionId}/members")]
-        public Task<IActionResult> GetTileField(Guid sessionId)
+        [HttpGet("{roomId}/members")]
+        public Task<IActionResult> GetChatRoomMembers(Guid roomId)
         {
             return null;
         }

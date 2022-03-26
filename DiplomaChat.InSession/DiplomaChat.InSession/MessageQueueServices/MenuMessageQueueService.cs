@@ -1,8 +1,8 @@
-﻿using MediatR;
-using TileGameServer.InSession.Notifications.CreateGameSession;
-using TileGameServer.InSession.Notifications.JoinGameSession;
+﻿using DiplomaChat.Common.MessageQueueing.Attributes;
+using MediatR;
+using TileGameServer.InSession.Notifications.CreateChatRoom;
+using TileGameServer.InSession.Notifications.JoinChatRoom;
 using TileGameServer.InSession.Notifications.LeaveGameSession;
-using WebApiBaseLibrary.MessageQueueing.Attributes;
 
 namespace TileGameServer.InSession.MessageQueueServices
 {
@@ -17,19 +17,19 @@ namespace TileGameServer.InSession.MessageQueueServices
         }
 
         [MessageQueueAction("CreateGameQueue")]
-        public void ReceiveJoinGameNotification(CreateGameSessionNotificationCommand command)
+        public void ReceiveJoinGameNotification(CreateChatRoomNotificationCommand command)
         {
             _mediator.Send(command);
         }
 
         [MessageQueueAction("JoinGameQueue")]
-        public void ReceiveJoinGameNotification(JoinGameSessionNotificationCommand command)
+        public void ReceiveJoinGameNotification(JoinChatRoomNotificationCommand command)
         {
             _mediator.Send(command);
         }
 
         [MessageQueueAction("LeaveGameQueue")]
-        public void ReceiveLeaveGameNotification(LeaveGameSessionNotificationCommand command)
+        public void ReceiveLeaveGameNotification(LeaveChatRoomNotificationCommand command)
         {
             _mediator.Send(command);
         }

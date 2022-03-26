@@ -9,7 +9,10 @@
 
     <ItemGroup>
         <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
-        <PackageReference Include="WebApiBaseLibrary.DataAccess" Version="1.1.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.DataAccess\DiplomaChat.Common.DataAccess.csproj" />
     </ItemGroup>
 
 </Project>

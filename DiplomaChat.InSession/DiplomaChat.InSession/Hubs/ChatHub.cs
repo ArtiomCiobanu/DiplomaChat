@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.SignalR;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.SignalR;
 using TileGameServer.InSession.DataAccess.Context;
 using TileGameServer.InSession.Domain.Entities;
-using TileGameServer.InSession.Domain.Enums;
-using TileGameServer.InSession.Domain.Library;
 
 namespace TileGameServer.InSession.Hubs
 {
@@ -56,7 +54,7 @@ namespace TileGameServer.InSession.Hubs
                 return;
             }
 
-            var sessionPlayer = _inSessionContext.EntitySet<SessionPlayer>()
+            var sessionPlayer = _inSessionContext.EntitySet<ChatMember>()
                 .FirstOrDefault(p => p.Id == userId);
 
             if (sessionPlayer != null)
@@ -67,7 +65,7 @@ namespace TileGameServer.InSession.Hubs
 
         public async Task Disconnect(Guid userId)
         {
-            var users = _inSessionContext.EntitySet<SessionPlayer>();
+            var users = _inSessionContext.EntitySet<ChatMember>();
             var sessionUser = users.FirstOrDefault(p => p.Id == userId);
 
             if (sessionUser == null)
@@ -77,13 +75,13 @@ namespace TileGameServer.InSession.Hubs
 
             users.Remove(sessionUser);
 
-            var gameSession = _inSessionContext.EntitySet<GameSession>()
-                .FirstOrDefault(gs => gs.Players.Any(p => p.Id == userId));
+            var gameSession = _inSessionContext.EntitySet<ChatRoom>()
+                .FirstOrDefault(gs => gs.ChatMembers.Any(p => p.Id == userId));
             if (gameSession != null)
             {
-                var userInSession = gameSession.Players.FirstOrDefault(p => p.Id == userId);
+                var userInSession = gameSession.ChatMembers.FirstOrDefault(p => p.Id == userId);
 
-                gameSession.Players.Remove(userInSession);
+                gameSession.ChatMembers.Remove(userInSession);
             }
 
             await Clients.All.SendAsync("PlayerDisconnected", sessionUser.Nickname);

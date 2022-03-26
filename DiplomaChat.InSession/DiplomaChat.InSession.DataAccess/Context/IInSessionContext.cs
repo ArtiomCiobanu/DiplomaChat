@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using WebApiBaseLibrary.DataAccess.Entities;
+﻿using DiplomaChat.Common.DataAccess.Entities;
+using System.Collections.Generic;
 
 namespace TileGameServer.InSession.DataAccess.Context
 {
