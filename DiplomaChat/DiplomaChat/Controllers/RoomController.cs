@@ -49,7 +49,7 @@ namespace DiplomaChat.Controllers
             return await ResponseMapper.ExecuteAndMapStatusAsync(response);
         }
 
-        [HttpPost("{roomId:guid}/join")]
+        [HttpGet("{roomId:guid}/join")]
         public async Task<IActionResult> JoinGame(Guid roomId)
         {
             var command = new JoinChatRoomCommand

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { CookieService } from "ngx-cookie-service";
 
 @Component({
@@ -9,35 +9,55 @@ import { CookieService } from "ngx-cookie-service";
     styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent {
-    chatId: string
+    creatorNickname: string;
 
-    creatorNickname: string = ""
+    private chatId: string;
+
+    private requestOptions: {
+        headers: HttpHeaders
+    }
 
     constructor(
-        route: ActivatedRoute,
-        httpClient: HttpClient,
-        cookieService: CookieService) {
+        private httpClient: HttpClient,
+        private cookieService: CookieService,
+        router: Router,
+        route: ActivatedRoute) {
 
         this.chatId = route.snapshot.params['chatId']
 
         var authorizationToken = cookieService.get('AuthorizationToken');
-
-        var requestOptions = {
+        this.requestOptions = {
             headers: new HttpHeaders({
                 'Authorization': `Bearer ${authorizationToken}`
             })
         }
 
-        httpClient
-            .get(`https://localhost:44306/rooms/${this.chatId}/details`, requestOptions)
+        this.showChatDetails()
+        this.joinChatRoom()
+    }
+
+    showChatDetails() {
+        this.httpClient
+            .get(`https://localhost:44306/rooms/${this.chatId}/details`, this.requestOptions)
             .subscribe({
-                next: response => this.success(response),
+                next: (response: any) => { this.creatorNickname = response.creatorNickname },
                 error: e => alert(JSON.stringify(e))
             })
     }
 
-    success(response: any) {
-        this.creatorNickname = response.creatorNickname
+    joinChatRoom() {
+        this.httpClient
+            .get(`https://localhost:44306/rooms/${this.chatId}/join`, this.requestOptions)
+            .subscribe({
+                error: e => alert(JSON.stringify(e))
+            })
     }
 
+    leaveChatRoom() {
+        this.httpClient
+            .get(`https://localhost:44306/rooms/${this.chatId}/leave`, this.requestOptions)
+            .subscribe({
+                error: e => alert(JSON.stringify(e))
+            })
+    }
 }

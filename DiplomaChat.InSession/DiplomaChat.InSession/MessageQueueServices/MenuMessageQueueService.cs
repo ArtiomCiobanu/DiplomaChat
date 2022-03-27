@@ -16,20 +16,20 @@ namespace TileGameServer.InSession.MessageQueueServices
             _mediator = mediator;
         }
 
-        [MessageQueueAction("CreateGameQueue")]
-        public void ReceiveJoinGameNotification(CreateChatRoomNotificationCommand command)
+        [MessageQueueAction("CreateChatRoomQueue")]
+        public void ReceiveJoinChatRoomNotification(CreateChatRoomNotificationCommand command)
         {
             _mediator.Send(command);
         }
 
-        [MessageQueueAction("JoinGameQueue")]
-        public void ReceiveJoinGameNotification(JoinChatRoomNotificationCommand command)
+        [MessageQueueAction("JoinChatRoomQueue")]
+        public void ReceiveJoinChatRoomNotification(JoinChatRoomNotificationCommand command)
         {
             _mediator.Send(command);
         }
 
-        [MessageQueueAction("LeaveGameQueue")]
-        public void ReceiveLeaveGameNotification(LeaveChatRoomNotificationCommand command)
+        [MessageQueueAction("LeaveChatRoomQueue")]
+        public void ReceiveLeaveChatRoomNotification(LeaveChatRoomNotificationCommand command)
         {
             _mediator.Send(command);
         }
