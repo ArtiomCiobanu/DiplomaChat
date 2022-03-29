@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using DiplomaChat.Common.Authorization.Constants;
+﻿using DiplomaChat.Common.Authorization.Constants;
 using DiplomaChat.Common.Authorization.Extensions;
 using DiplomaChat.Common.Infrastructure.Controllers;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
@@ -9,8 +7,10 @@ using DiplomaChat.Features.Users.RegisterUser;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
-namespace DiplomaChat.Controllers
+namespace DiplomaChat.Features.Users
 {
     [Authorize]
     [ApiController]

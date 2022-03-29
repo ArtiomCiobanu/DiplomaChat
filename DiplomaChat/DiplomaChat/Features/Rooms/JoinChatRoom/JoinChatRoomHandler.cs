@@ -1,13 +1,14 @@
-﻿using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using DiplomaChat.Common.Authorization.Generators;
+﻿using DiplomaChat.Common.Authorization.Generators;
 using DiplomaChat.Common.DataAccess.Extensions;
 using DiplomaChat.Common.Infrastructure.Enums;
 using DiplomaChat.Common.Infrastructure.Responses;
 using DiplomaChat.DataAccess.Context;
 using DiplomaChat.DataAccess.Entities;
 using MediatR;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DiplomaChat.Features.Rooms.JoinChatRoom
 {
@@ -44,7 +45,8 @@ namespace DiplomaChat.Features.Rooms.JoinChatRoom
 
             var chatRoomUser = new ChatRoomUser
             {
-                Id = request.AccountId,
+                Id = Guid.NewGuid(),
+                UserId = request.AccountId,
                 ChatRoomId = room.Id
             };
 

@@ -17,7 +17,7 @@ namespace TileGameServer.InSession.MessageQueueServices
         }
 
         [MessageQueueAction("CreateChatRoomQueue")]
-        public void ReceiveJoinChatRoomNotification(CreateChatRoomNotificationCommand command)
+        public void ReceiveCreateChatRoomNotification(CreateChatRoomNotificationCommand command)
         {
             _mediator.Send(command);
         }

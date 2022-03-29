@@ -35,6 +35,7 @@ export class ChatListComponent {
         }
 
         this.loadChats()
+        this.leaveAllChatRooms()
     }
 
     loadChats() {
@@ -80,5 +81,13 @@ export class ChatListComponent {
         chatListElement.Title = title
         chatListElement.CreatorNickname = creatorNickname
         chatListElement.RoomId = roomId
+    }
+
+    leaveAllChatRooms() {
+        this.httpClient
+            .get(`https://localhost:44306/rooms/leave-all`, this.requestOptions)
+            .subscribe({
+                error: e => alert(JSON.stringify(e))
+            })
     }
 }

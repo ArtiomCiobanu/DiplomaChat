@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using DiplomaChat.Common.Authorization.Configuration;
 using DiplomaChat.Common.Extensions;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
@@ -18,6 +16,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using HeaderNames = DiplomaChat.Constants.HeaderNames;
 using Schemes = DiplomaChat.Constants.Schemes;
 

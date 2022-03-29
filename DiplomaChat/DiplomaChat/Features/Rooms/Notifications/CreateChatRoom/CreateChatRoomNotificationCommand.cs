@@ -8,6 +8,6 @@ namespace DiplomaChat.Features.Rooms.Notifications.CreateChatRoom
     {
         public ResponseStatus ResponseStatus { get; set; }
 
-        public Guid GameSessionId { get; set; }
+        public Guid ChatRoomId { get; set; }
     }
 }

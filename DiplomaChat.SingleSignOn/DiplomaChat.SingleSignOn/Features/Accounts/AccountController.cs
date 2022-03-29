@@ -28,7 +28,6 @@ namespace DiplomaChat.SingleSignOn.Features.Accounts
             [Required][FromBody] RegisterAccountCommand registerAccountCommand)
             => SendToMediatorAsync(registerAccountCommand);
 
-
         [HttpPost("login")]
         public Task<IActionResult> Login(
             [Required][FromBody] AuthorizeAccountRequest authorizeAccountRequest)

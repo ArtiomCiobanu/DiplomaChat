@@ -28,10 +28,4 @@
         <ProjectReference Include="..\DiplomaChat.InSession.Domain\DiplomaChat.InSession.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-        <Reference Include="TileGameServer.BaseLibrary.Domain">
-            <HintPath>$(OutputPath)/TileGameServer.BaseLibrary.Domain.dll</HintPath>
-        </Reference>
-    </ItemGroup>
-
 </Project>

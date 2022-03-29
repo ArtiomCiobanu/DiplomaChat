@@ -1,22 +1,17 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace TileGameServer.InSession.Constants
+﻿namespace DiplomaChat.Constants
 {
     public static class EnvironmentVariables
     {
-        [SuppressMessage("ReSharper", "InconsistentNaming")]
-        public const string RabbitMQHostName = "CORE_RABBITMQ_HOSTNAME";
+        public const string DatabaseConnectionString = "DIPLOMA_CHAT_CORE_DB_CONNECTION_STRING";
+        
+        public const string RabbitMQHostName = "DIPLOMA_CHAT_CORE_RABBITMQ_HOSTNAME";
 
-        [SuppressMessage("ReSharper", "InconsistentNaming")]
-        public const string RabbitMQPort = "CORE_RABBITMQ_PORT";
+        public const string RabbitMQPort = "DIPLOMA_CHAT_CORE_RABBITMQ_PORT";
 
-        [SuppressMessage("ReSharper", "InconsistentNaming")]
-        public const string RabbitMQVirtualHost = "CORE_RABBITMQ_VIRTUALHOST";
+        public const string RabbitMQVirtualHost = "DIPLOMA_CHAT_CORE_RABBITMQ_VIRTUALHOST";
 
-        [SuppressMessage("ReSharper", "InconsistentNaming")]
-        public const string RabbitMQUserName = "CORE_RABBITMQ_USERNAME";
+        public const string RabbitMQUserName = "DIPLOMA_CHAT_CORE_RABBITMQ_USERNAME";
 
-        [SuppressMessage("ReSharper", "InconsistentNaming")]
-        public const string RabbitMQPassword = "CORE_RABBITMQ_PASSWORD";
+        public const string RabbitMQPassword = "DIPLOMA_CHAT_CORE_RABBITMQ_PASSWORD";
     }
 }

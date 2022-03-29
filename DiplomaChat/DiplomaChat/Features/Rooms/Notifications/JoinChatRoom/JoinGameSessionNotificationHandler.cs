@@ -44,8 +44,8 @@ namespace DiplomaChat.Features.Rooms.Notifications.JoinChatRoom
                     _messageQueuePublisher.PublishMessage(
                         new JoinGameSessionNotification
                         {
-                            PlayerId = request.UserId,
-                            PlayerNickname = user.Nickname,
+                            UserId = request.UserId,
+                            UserNickname = user.Nickname,
                             GameSessionId = request.ChatRoomId
                         });
                     _messageQueuePublisher.Dispose();
@@ -58,8 +58,8 @@ namespace DiplomaChat.Features.Rooms.Notifications.JoinChatRoom
 
     public class JoinGameSessionNotification
     {
-        public Guid PlayerId { get; set; }
+        public Guid UserId { get; set; }
         public Guid GameSessionId { get; set; }
-        public string PlayerNickname { get; set; }
+        public string UserNickname { get; set; }
     }
 }

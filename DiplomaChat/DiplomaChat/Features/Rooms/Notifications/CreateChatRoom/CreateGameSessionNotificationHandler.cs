@@ -23,7 +23,7 @@ namespace DiplomaChat.Features.Rooms.Notifications.CreateChatRoom
                 _messageQueuePublisher.PublishMessage(
                     new CreateGameSessionNotification
                     {
-                        GameSessionId = request.GameSessionId
+                        ChatRoomId = request.ChatRoomId
                     });
 
                 _messageQueuePublisher.Dispose();
@@ -35,6 +35,6 @@ namespace DiplomaChat.Features.Rooms.Notifications.CreateChatRoom
 
     public class CreateGameSessionNotification
     {
-        public Guid GameSessionId { get; set; }
+        public Guid ChatRoomId { get; set; }
     }
 }

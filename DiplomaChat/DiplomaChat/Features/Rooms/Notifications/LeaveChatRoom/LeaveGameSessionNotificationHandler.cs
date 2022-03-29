@@ -37,7 +37,7 @@ namespace DiplomaChat.Features.Rooms.Notifications.LeaveChatRoom
                 {
                     var message = new LeaveGameSessionNotification
                     {
-                        PlayerId = request.UserId
+                        UserId = request.UserId
                     };
 
                     _leaveChatRoomPublisher.PublishMessage(message);
@@ -51,6 +51,6 @@ namespace DiplomaChat.Features.Rooms.Notifications.LeaveChatRoom
 
     public class LeaveGameSessionNotification
     {
-        public Guid PlayerId { get; set; }
+        public Guid UserId { get; set; }
     }
 }

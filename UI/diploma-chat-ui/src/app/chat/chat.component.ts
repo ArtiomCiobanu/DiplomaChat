@@ -43,19 +43,18 @@ export class ChatComponent {
                 next: (response: any) => { this.creatorNickname = response.creatorNickname },
                 error: e => alert(JSON.stringify(e))
             })
+
+        this.httpClient
+            .get(`https://localhost:44373/sessions/${this.chatId}/members`, this.requestOptions)
+            .subscribe({
+                next: (response: any) => alert(response),
+                error: e => alert(e)
+            })
     }
 
     joinChatRoom() {
         this.httpClient
             .get(`https://localhost:44306/rooms/${this.chatId}/join`, this.requestOptions)
-            .subscribe({
-                error: e => alert(JSON.stringify(e))
-            })
-    }
-
-    leaveChatRoom() {
-        this.httpClient
-            .get(`https://localhost:44306/rooms/${this.chatId}/leave`, this.requestOptions)
             .subscribe({
                 error: e => alert(JSON.stringify(e))
             })
