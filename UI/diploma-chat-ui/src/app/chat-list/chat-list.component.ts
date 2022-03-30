@@ -34,8 +34,8 @@ export class ChatListComponent {
             })
         }
 
-        this.loadChats()
         this.leaveAllChatRooms()
+        this.loadChats()
     }
 
     loadChats() {

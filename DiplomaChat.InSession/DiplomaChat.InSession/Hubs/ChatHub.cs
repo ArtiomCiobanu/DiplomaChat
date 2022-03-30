@@ -54,44 +54,44 @@ namespace TileGameServer.InSession.Hubs
                 return;
             }
 
-            var sessionPlayer = _inSessionContext.EntitySet<ChatMember>()
+            var chatMember = _inSessionContext.EntitySet<ChatMember>()
                 .FirstOrDefault(p => p.Id == userId);
 
-            if (sessionPlayer != null)
+            if (chatMember != null)
             {
-                await Clients.All.SendAsync("PlayerConnected", sessionPlayer.Nickname);
+                await Clients.All.SendAsync("PlayerConnected", chatMember.Nickname);
             }
         }
 
         public async Task Disconnect(Guid userId)
         {
             var users = _inSessionContext.EntitySet<ChatMember>();
-            var sessionUser = users.FirstOrDefault(p => p.Id == userId);
+            var sessionMember = users.FirstOrDefault(p => p.Id == userId);
 
-            if (sessionUser == null)
+            if (sessionMember == null)
             {
                 return;
             }
 
-            users.Remove(sessionUser);
+            users.Remove(sessionMember);
 
-            var gameSession = _inSessionContext.EntitySet<ChatRoom>()
+            var chatRoom = _inSessionContext.EntitySet<ChatRoom>()
                 .FirstOrDefault(gs => gs.ChatMembers.Any(p => p.Id == userId));
-            if (gameSession != null)
+            if (chatRoom != null)
             {
-                var userInSession = gameSession.ChatMembers.FirstOrDefault(p => p.Id == userId);
+                var userInSession = chatRoom.ChatMembers.FirstOrDefault(p => p.Id == userId);
 
-                gameSession.ChatMembers.Remove(userInSession);
+                chatRoom.ChatMembers.Remove(userInSession);
             }
 
-            await Clients.All.SendAsync("PlayerDisconnected", sessionUser.Nickname);
+            await Clients.All.SendAsync("PlayerDisconnected", sessionMember.Nickname);
         }
 
-        public Task SendMessage(
+        public async Task SendMessage(
             Guid userId,
             string message)
         {
-            return null;
+            await Clients.All.SendAsync("ReceiveMessage", userId, message);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace DiplomaChat.Features.Rooms.LeaveAllChatRooms
             _diplomaChatContext.EntitySet<ChatRoomUser>()
                 .RemoveRange(chatRoomUsersToRemove);
 
-            foreach (var roomId in roomIds)
+            /*foreach (var roomId in roomIds)
             {
                 var anyUsersInRoom = await _diplomaChatContext.EntitySet<ChatRoomUser>()
                     .ExistsAsync(cru => cru.ChatRoomId == roomId);
@@ -51,7 +51,7 @@ namespace DiplomaChat.Features.Rooms.LeaveAllChatRooms
                     _diplomaChatContext.EntitySet<ChatRoom>()
                         .RemoveRange(roomToRemove);
                 }
-            }
+            }*/
 
             await _diplomaChatContext.SaveChangesAsync(cancellationToken);
 

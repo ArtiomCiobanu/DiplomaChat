@@ -104,7 +104,7 @@ namespace DiplomaChat.SingleSignOn
                 if (version is not null)
                 {
                     options.SwaggerDoc("v1",
-                        new OpenApiInfo { Title = $"CeremonyPassportAPI {version}", Version = "v1" });
+                        new OpenApiInfo { Title = $"DiplomaChat.SingleSignOn {version}", Version = "v1" });
                 }
             });
 
