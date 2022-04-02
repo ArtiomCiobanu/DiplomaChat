@@ -5,24 +5,21 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using TileGameServer.InSession.Features.Chats.GetChatRoomMembers;
 
 namespace TileGameServer.InSession.Controllers
 {
-    [Route("sessions")]
+    [Route("chatRooms")]
     [ApiController]
-    public class SessionController : BaseMediatorController
+    public class ChatRoomController : BaseMediatorController
     {
-        public SessionController(IMediator mediator, IResponseMapper responseMapper)
+        public ChatRoomController(IMediator mediator, IResponseMapper responseMapper)
             : base(mediator, responseMapper)
         {
         }
 
-
         [Authorize]
         [HttpGet("{roomId}/members")]
-        public Task<IActionResult> GetChatRoomMembers(Guid roomId)
-        {
-            return null;
-        }
+        public Task<IActionResult> GetChatRoomMembers(Guid roomId) => SendToMediatorAsync(new GetChatRoomMembersQuery(roomId));
     }
 }

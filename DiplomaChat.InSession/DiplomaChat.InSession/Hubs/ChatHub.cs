@@ -59,7 +59,7 @@ namespace TileGameServer.InSession.Hubs
 
             if (chatMember != null)
             {
-                await Clients.All.SendAsync("PlayerConnected", chatMember.Nickname);
+                await Clients.All.SendAsync("UserConnected", chatMember.Nickname);
             }
         }
 
@@ -84,7 +84,7 @@ namespace TileGameServer.InSession.Hubs
                 chatRoom.ChatMembers.Remove(userInSession);
             }
 
-            await Clients.All.SendAsync("PlayerDisconnected", sessionMember.Nickname);
+            await Clients.All.SendAsync("UserDisconnected", sessionMember.Nickname);
         }
 
         public async Task SendMessage(

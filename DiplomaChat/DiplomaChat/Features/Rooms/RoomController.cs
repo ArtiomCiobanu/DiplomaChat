@@ -44,7 +44,7 @@ namespace DiplomaChat.Features.Rooms
             var createGameNotificationCommand = new CreateChatRoomNotificationCommand
             {
                 ResponseStatus = response.Status,
-                ChatRoomId = response.Result.SessionId
+                ChatRoomId = response.Result.ChatRoomId
             };
             await Mediator.Send(createGameNotificationCommand);
 

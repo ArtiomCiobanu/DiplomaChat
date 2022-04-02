@@ -4,6 +4,6 @@ namespace DiplomaChat.Features.Rooms.CreateChatRoom
 {
     public class CreateChatRoomResponse
     {
-        public Guid SessionId { get; set; }
+        public Guid ChatRoomId { get; set; }
     }
 }

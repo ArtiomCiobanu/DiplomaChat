@@ -38,7 +38,7 @@ namespace DiplomaChat.Features.Rooms.CreateChatRoom
 
             var createGameSessionResponse = new CreateChatRoomResponse
             {
-                SessionId = chatRoom.Id
+                ChatRoomId = chatRoom.Id
             };
 
             return createGameSessionResponse.Success();

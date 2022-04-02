@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TileGameServer.InSession.DataAccess.Context;
 using TileGameServer.InSession.Hubs;
 using HeaderNames = Microsoft.Net.Http.Headers.HeaderNames;
@@ -54,7 +55,7 @@ namespace TileGameServer.InSession
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
-                    builder => builder.AllowAnyOrigin()
+                    builder => builder.WithOrigins("http://localhost:4200")
                         .AllowAnyHeader()
                         .AllowAnyMethod());
             });

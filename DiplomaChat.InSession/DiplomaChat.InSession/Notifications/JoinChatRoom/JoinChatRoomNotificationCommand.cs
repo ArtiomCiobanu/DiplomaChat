@@ -8,6 +8,6 @@ namespace TileGameServer.InSession.Notifications.JoinChatRoom
         public Guid UserId { get; set; }
         public Guid ChatRoomId { get; set; }
 
-        public string PlayerNickname { get; set; }
+        public string UserNickname { get; set; }
     }
 }

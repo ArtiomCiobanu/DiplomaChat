@@ -36,6 +36,7 @@ export class EnterNicknameComponent {
 
     success(response: any) {
         this.cookieService.set('Nickname', response.nickname);
+        this.cookieService.set('userId', response.userId);
 
         this.router.navigate(['chats']);
     }

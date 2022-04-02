@@ -40,7 +40,7 @@ namespace DiplomaChat.Features.Rooms.LeaveChatRoom
 
             var roomUser = await _diplomaChatContext.EntitySet<ChatRoomUser>()
                 .Where(u => u.ChatRoomId == room.Id)
-                .Select(u => new { u.Id })
+                .Select(u => new { u.UserId })
                 .TopOneAsync(cancellationToken);
 
             if (roomUser == null)
@@ -52,7 +52,7 @@ namespace DiplomaChat.Features.Rooms.LeaveChatRoom
             }
 
             var userToRemove = _diplomaChatContext.EntitySet<ChatRoomUser>()
-                .Where(u => u.Id == roomUser.Id);
+                .Where(u => u.UserId == roomUser.UserId);
             _diplomaChatContext.EntitySet<ChatRoomUser>()
                 .RemoveRange(userToRemove);
 

@@ -1,6 +1,8 @@
-create table ChatRoomUsers
+create --drop
+table ChatRoomUsers
 (
-	Id uniqueidentifier,
 	ChatRoomId uniqueidentifier,
-	UserId uniqueidentifier
+	UserId uniqueidentifier,
+
+	constraint PK_ChatRoomUsers primary key (ChatRoomId, UserId)
 )

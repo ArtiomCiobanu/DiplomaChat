@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using DiplomaChat.Common.DataAccess.Extensions;
 using DiplomaChat.Common.Infrastructure.Enums;
@@ -23,21 +24,22 @@ public class GetUserProfileHandler : IRequestHandler<GetUserProfileQuery, IRespo
         GetUserProfileQuery request,
         CancellationToken cancellationToken)
     {
-        var user = await _diplomaChatContext.EntitySet<User>()
-            .TopOneAsync(u => u.Id == request.UserId, cancellationToken);
+        var response = await _diplomaChatContext.EntitySet<User>()
+            .Where(u => u.Id == request.UserId)
+            .Select(u => new GetUserProfileResponse
+            {
+                UserId = u.Id,
+                Nickname = u.Nickname
+            })
+            .TopOneAsync(cancellationToken);
 
-        if (user == null)
+        if (response == null)
         {
             return new Response<GetUserProfileResponse>
             {
                 Status = ResponseStatus.Conflict
             };
         }
-
-        var response = new GetUserProfileResponse
-        {
-            Nickname = user.Nickname
-        };
 
         return response.Success();
     }

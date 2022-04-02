@@ -65,7 +65,7 @@ export class ChatListComponent {
     }
 
     successfullyCreated(response: any) {
-        this.router.navigate([`chats/${response.sessionId}`]);
+        this.router.navigate([`chats/${response.chatRoomId}`]);
     }
 
     chatListReceived(response: any) {
@@ -80,7 +80,7 @@ export class ChatListComponent {
 
         chatListElement.Title = title
         chatListElement.CreatorNickname = creatorNickname
-        chatListElement.RoomId = roomId
+        chatListElement.roomId = roomId
     }
 
     leaveAllChatRooms() {

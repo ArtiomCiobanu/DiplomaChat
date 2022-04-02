@@ -15,14 +15,10 @@ namespace DiplomaChat.Features.Rooms.JoinChatRoom
     public class JoinChatRoomHandler : IRequestHandler<JoinChatRoomCommand, IResponse<Unit>>
     {
         private readonly IDiplomaChatContext _diplomaChatContext;
-        private readonly IJwtGenerator _jwtGenerator;
 
-        public JoinChatRoomHandler(
-            IDiplomaChatContext diplomaChatContext,
-            IJwtGenerator jwtGenerator)
+        public JoinChatRoomHandler(IDiplomaChatContext diplomaChatContext)
         {
             _diplomaChatContext = diplomaChatContext;
-            _jwtGenerator = jwtGenerator;
         }
 
         public async Task<IResponse<Unit>> Handle(
@@ -45,7 +41,6 @@ namespace DiplomaChat.Features.Rooms.JoinChatRoom
 
             var chatRoomUser = new ChatRoomUser
             {
-                Id = Guid.NewGuid(),
                 UserId = request.AccountId,
                 ChatRoomId = room.Id
             };

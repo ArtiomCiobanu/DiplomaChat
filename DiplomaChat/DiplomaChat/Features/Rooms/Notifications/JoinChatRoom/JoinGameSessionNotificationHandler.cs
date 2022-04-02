@@ -30,14 +30,14 @@ namespace DiplomaChat.Features.Rooms.Notifications.JoinChatRoom
             {
                 var user = await _diplomaChatContext.EntitySet<ChatRoomUser>()
                     .JoinSet(cru => cru.User)
-                    .Where(u => u.Id == request.UserId)
+                    .Where(u => u.UserId == request.UserId)
                     .Select(u => new
                     {
-                        u.Id,
+                        u.UserId,
                         ChatRoomId = u.ChatRoomId,
                         u.User.Nickname
                     })
-                    .TopOneAsync(cancellationToken);
+                    .TopOneAsync(cancellationToken);                
 
                 if (user != null)
                 {
@@ -46,7 +46,7 @@ namespace DiplomaChat.Features.Rooms.Notifications.JoinChatRoom
                         {
                             UserId = request.UserId,
                             UserNickname = user.Nickname,
-                            GameSessionId = request.ChatRoomId
+                            ChatRoomId = request.ChatRoomId
                         });
                     _messageQueuePublisher.Dispose();
                 }
@@ -59,7 +59,7 @@ namespace DiplomaChat.Features.Rooms.Notifications.JoinChatRoom
     public class JoinGameSessionNotification
     {
         public Guid UserId { get; set; }
-        public Guid GameSessionId { get; set; }
+        public Guid ChatRoomId { get; set; }
         public string UserNickname { get; set; }
     }
 }

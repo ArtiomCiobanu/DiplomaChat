@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { CookieService } from "ngx-cookie-service";
 
 @Component({
     selector: 'chat-list-element',
@@ -10,12 +12,37 @@ export class ChatListElementComponent {
     public Title: string
     public CreatorNickname: string
 
-    public RoomId: string
+    public roomId: string
 
-    constructor(private router: Router) {
+    private requestOptions: {
+        headers: HttpHeaders
+    }
+
+    constructor(
+        private httpClient: HttpClient,
+        private router: Router,
+        cookieService: CookieService,
+        route: ActivatedRoute) {
+        var authorizationToken = cookieService.get('AuthorizationToken');
+
+        this.requestOptions = {
+            headers: new HttpHeaders({
+                'Authorization': `Bearer ${authorizationToken}`
+            })
+        }
+        this.roomId = route.snapshot.params['chatId']
     }
 
     onClick() {
-        this.router.navigate([`chats/${this.RoomId}`]);
+        this.joinChatRoom()
+        this.router.navigate([`chats/${this.roomId}`]);
+    }
+
+    joinChatRoom() {
+        this.httpClient
+            .get(`https://localhost:44306/rooms/${this.roomId}/join`, this.requestOptions)
+            .subscribe({
+                error: e => alert(JSON.stringify(e))
+            })
     }
 }
