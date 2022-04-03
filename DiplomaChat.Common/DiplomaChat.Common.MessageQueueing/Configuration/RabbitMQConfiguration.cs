@@ -1,8 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace DiplomaChat.Common.MessageQueueing.Configuration
+﻿namespace DiplomaChat.Common.MessageQueueing.Configuration
 {
-    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class RabbitMQConfiguration
     {
         public string HostName { get; set; }

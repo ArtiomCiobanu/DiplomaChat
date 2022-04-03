@@ -3,17 +3,21 @@
         <mat-card-title> Chat created by: {{creatorNickname}} </mat-card-title>
         <mat-divider></mat-divider>
         <mat-card-content style="padding-top: 16px;">
-            <external-chat-message text="asdas" sender="Вася"></external-chat-message>
+            <!-- <external-chat-message text="asdas" sender="Вася"></external-chat-message>
             <external-chat-message text="asdas" sender="Вася"></external-chat-message>
             <proper-chat-message text="aaaaaaaaaa"></proper-chat-message>
-            <external-chat-message text="asdas" sender="Вася"></external-chat-message>
+            <external-chat-message text="asdas" sender="Вася"></external-chat-message> -->
+
+            <ng-component #messageContainer> </ng-component>
         </mat-card-content>
         <mat-divider></mat-divider>
         <mat-card-footer>
-            <input class="chat-input" type="text" placeholder="Message" />
-            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
-                <mat-icon>send</mat-icon>
-            </button>
+            <form #sendMessageForm="ngForm" (ngSubmit)="sendMessageToChat(sendMessageForm.value.message)">
+                <input class="chat-input" placeholder="Message" type="text" name="message" ngModel />
+                <button mat-icon-button color="primary" type="submit" aria-label="Example icon button with a home icon">
+                    <mat-icon>send</mat-icon>
+                </button>
+            </form>
         </mat-card-footer>
     </mat-card>
 </div>

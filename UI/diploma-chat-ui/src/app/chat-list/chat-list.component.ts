@@ -65,6 +65,12 @@ export class ChatListComponent {
     }
 
     successfullyCreated(response: any) {
+        this.httpClient
+            .get(`https://localhost:44306/rooms/${response.chatRoomId}/join`, this.requestOptions)
+            .subscribe({
+                error: e => alert(JSON.stringify(e))
+            })
+
         this.router.navigate([`chats/${response.chatRoomId}`]);
     }
 

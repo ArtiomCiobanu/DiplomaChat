@@ -59,7 +59,7 @@ namespace TileGameServer.InSession.Hubs
 
             if (chatMember != null)
             {
-                await Clients.All.SendAsync("UserConnected", chatMember.Nickname);
+                await Clients.All.SendAsync("UserConnected", userId, chatMember.Nickname);
             }
         }
 

@@ -18,20 +18,20 @@ namespace TileGameServer.InSession.Notifications.JoinChatRoom
 
         public Task<Unit> Handle(JoinChatRoomNotificationCommand request, CancellationToken cancellationToken)
         {
-            var chatRooms = _inSessionContext.EntitySet<ChatRoom>();
-            var session = chatRooms.FirstOrDefault(s => s.Id == request.ChatRoomId);
+            var chatRoom = _inSessionContext.EntitySet<ChatRoom>()
+                .FirstOrDefault(s => s.Id == request.ChatRoomId);
 
-            if (session != null && chatRooms.All(s => s.ChatMembers.All(p => p.Id != request.UserId)))
+            if (chatRoom != null && chatRoom.ChatMembers.All(p => p.Id != request.UserId))
             {
                 var chatMember = new ChatMember
                 {
                     Id = request.UserId,
                     Nickname = request.UserNickname,
 
-                    ChatRoom = session
+                    ChatRoom = chatRoom
                 };
 
-                session.ChatMembers.Add(chatMember);
+                chatRoom.ChatMembers.Add(chatMember);
 
                 var players = _inSessionContext.EntitySet<ChatMember>();
                 if (players.All(s => s.Id != request.UserId))

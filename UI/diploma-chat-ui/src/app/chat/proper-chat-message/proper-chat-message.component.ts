@@ -6,5 +6,6 @@ import { Component, Input } from "@angular/core";
     styleUrls: ['./proper-chat-message.component.scss']
 })
 export class ProperChatMessageComponent {
-    @Input() text: string = "";
+    @Input()
+    public text: string = "";
 }

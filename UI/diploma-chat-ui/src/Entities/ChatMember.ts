@@ -1,4 +1,4 @@
 export class ChatMember {
-    constructor(UserId: string, Nickname: string) {
+    constructor(public userId: string, public nickname: string) {
     }
 }

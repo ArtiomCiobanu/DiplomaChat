@@ -6,6 +6,6 @@ import { Component, Input } from "@angular/core";
     styleUrls: ['./external-chat-message.component.scss']
 })
 export class ExternalChatMessageComponent {
-    @Input() text: string = "";
-    @Input() sender: string = "";
+    @Input() public text: string = "";
+    @Input() public sender: string = "";
 }

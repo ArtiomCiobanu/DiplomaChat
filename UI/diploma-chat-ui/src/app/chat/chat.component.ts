@@ -1,10 +1,12 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { Component, ViewChild, ViewContainerRef } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CookieService } from "ngx-cookie-service";
 import { ChatMember } from "src/Entities/ChatMember";
 
 import * as signalR from "@aspnet/signalr";
+import { ProperChatMessageComponent } from "./proper-chat-message/proper-chat-message.component";
+import { ExternalChatMessageComponent } from "./external-chat-message/external-chat-message.component";
 
 @Component({
     selector: 'chat',
@@ -12,6 +14,9 @@ import * as signalR from "@aspnet/signalr";
     styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent {
+    @ViewChild('messageContainer', { read: ViewContainerRef }) messageContainer: ViewContainerRef;
+    messages = [];
+
     creatorNickname: string;
 
     private chatId: string;
@@ -27,13 +32,12 @@ export class ChatComponent {
 
     constructor(
         private httpClient: HttpClient,
-        private cookieService: CookieService,
-        router: Router,
+        cookieService: CookieService,
         route: ActivatedRoute) {
 
         this.chatId = route.snapshot.params['chatId']
-        this.userId = route.snapshot.params['userId']
 
+        this.userId = cookieService.get('userId')
         var authorizationToken = cookieService.get('AuthorizationToken');
         this.requestOptions = {
             headers: new HttpHeaders({
@@ -41,11 +45,10 @@ export class ChatComponent {
             })
         }
 
+        this.updateChatMembers()
         this.showChatDetails()
-        this.getChatMembers()
 
         this.hubConnection = this.connectToChatHub()
-        //this.hubConnection.send('SendMessage', this.userId, 'Test!')
     }
 
     showChatDetails() {
@@ -57,7 +60,7 @@ export class ChatComponent {
             })
     }
 
-    getChatMembers() {
+    updateChatMembers() {
         this.httpClient
             .get(`https://localhost:44373/chatRooms/${this.chatId}/members`, this.requestOptions)
             .subscribe({
@@ -69,31 +72,64 @@ export class ChatComponent {
     }
 
     connectToChatHub(): signalR.HubConnection {
-        Object.defineProperty(WebSocket, 'OPEN', { value: 1, });
+        //Object.defineProperty(WebSocket, 'OPEN', { value: 1 });
         let hubConnection = new signalR.HubConnectionBuilder()
             .configureLogging(signalR.LogLevel.Trace)
-            .withUrl('https://localhost:44373/ChatHub'
-            // ,
-            //     {
-            //         skipNegotiation: true,
-            //         transport: signalR.HttpTransportType.WebSockets
-            //     }
+            .withUrl('https://localhost:44373/ChatHub',
+                {
+                    skipNegotiation: true,
+                    transport: signalR.HttpTransportType.WebSockets
+                }
             )
             .build();
 
-        hubConnection.on('UserConnected', (input) => { alert(input) })
-        hubConnection.on('UserDisconnected', (input) => { alert(input) })
-        hubConnection.on('ReceiveMessage', (input) => { alert(input) })
+        hubConnection.on('UserConnected', (userId, nickname) => this.UserConnected(userId, nickname))
+        hubConnection.on('UserDisconnected', (input) => this.userDisconnected(input))
+        hubConnection.on('ReceiveMessage', (userId, message) => this.receiveMessage(userId, message))
 
         hubConnection
             .start()
             .then(() => {
-                hubConnection.send('Connect', this.userId)
-                    .then(() => { alert('done') })
-                    .catch(err => alert(err))
+                this.hubConnection.invoke(
+                    'Connect',
+                    this.userId);
             })
             .catch(err => alert('Error while starting connection: ' + err))
 
         return hubConnection
+    }
+
+    UserConnected(userId: string, nickname: string) {
+        this.chatMembers.push(new ChatMember(userId, nickname))
+
+        this.addExternalMessage(`${nickname} has joined the chat.`, 'System')
+    }
+
+    userDisconnected(user: any) {
+        alert(user)
+    }
+
+    receiveMessage(userId: string, message: string) {
+        if (userId == this.userId) {
+            let chatMessage = this.messageContainer.createComponent(ProperChatMessageComponent).instance
+            chatMessage.text = message
+        }
+        else {
+            this.chatMembers.forEach((member: any) => {
+                if (member.userId == userId) {
+                    this.addExternalMessage(message, member.nickname)
+                }
+            });
+        }
+    }
+
+    sendMessageToChat(message: string) {
+        this.hubConnection.send('SendMessage', this.userId, message)
+    }
+
+    addExternalMessage(text: string, sender: string) {
+        let chatMessage = this.messageContainer.createComponent(ExternalChatMessageComponent).instance
+        chatMessage.text = text
+        chatMessage.sender = sender
     }
 }

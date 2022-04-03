@@ -1,18 +1,16 @@
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 using DiplomaChat.Common.Infrastructure.Reflection;
 using DiplomaChat.Common.MessageQueueing.Attributes;
 using DiplomaChat.Common.MessageQueueing.Configuration;
 using DiplomaChat.Common.MessageQueueing.MessageQueueing;
 using DiplomaChat.Common.MessageQueueing.MessageQueueing.RabbitMQ;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Reflection;
 
 namespace DiplomaChat.Common.MessageQueueing.Extensions.RabbitMQ
 {
     public static class ServiceCollectionExtensions
     {
-        [SuppressMessage("ReSharper", "InconsistentNaming")]
         public static IServiceCollection AddRabbitMQ(
             this IServiceCollection services,
             RabbitMQConfiguration rabbitMqConfiguration)

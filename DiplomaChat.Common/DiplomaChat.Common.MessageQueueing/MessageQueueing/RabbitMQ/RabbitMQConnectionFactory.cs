@@ -1,11 +1,9 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using DiplomaChat.Common.MessageQueueing.Configuration;
+﻿using DiplomaChat.Common.MessageQueueing.Configuration;
 using RabbitMQ.Client;
+using System;
 
 namespace DiplomaChat.Common.MessageQueueing.MessageQueueing.RabbitMQ
 {
-    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class RabbitMQConnectionFactory : IMessageQueueConnectionFactory
     {
         private readonly ConnectionFactory _connectionFactory;
@@ -15,6 +13,7 @@ namespace DiplomaChat.Common.MessageQueueing.MessageQueueing.RabbitMQ
             _connectionFactory = new ConnectionFactory
             {
                 Uri = new Uri("amqp://guest:guest@localhost:5672")
+                //Uri = new Uri("amqp://DiplomaChat:DiplomaChat@rabbit-server:5672")
                 /*HostName = rabbitMqConfiguration.HostName,
                 Port = rabbitMqConfiguration.Port,
                 VirtualHost = rabbitMqConfiguration.VirtualHost,
