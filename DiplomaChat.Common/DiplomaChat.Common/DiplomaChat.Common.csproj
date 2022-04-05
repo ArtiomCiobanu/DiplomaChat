@@ -6,7 +6,12 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<RootNamespace>DiplomaChat.Common</RootNamespace>
     </PropertyGroup>
-    
+
+	<PropertyGroup>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<OutputPath>$(MSBuildProjectDirectory)/../../../output</OutputPath>
+	</PropertyGroup>
+	
     <ItemGroup>
         <PackageReference Include="MediatR" Version="10.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />

@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>2da04ef5-0e32-4030-b2d7-7ee6842bf03e</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<OutputPath>$(MSBuildProjectDirectory)/../../../output</OutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentValidation" Version="10.3.6" />
+		<PackageReference Include="FluentValidation.AspNetCore" Version="10.3.6" />
+		<PackageReference Include="MediatR" Version="10.0.1" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.2.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.Infrastructure\DiplomaChat.Common.Infrastructure.csproj" />
+	  <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.MessageQueueing\DiplomaChat.Common.MessageQueueing.csproj" />
+	  <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common\DiplomaChat.Common.csproj" />
+	  <ProjectReference Include="..\DiplomaChat.DataAccess\DiplomaChat.DataAccess.csproj" />
+	  <ProjectReference Include="..\DiplomaChat.Domain\DiplomaChat.Domain.csproj" />
+	</ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="DiplomaChat.Common.Infrastructure">
+          <HintPath>$(OutputPath)/DiplomaChat.Common.Infrastructure.dll</HintPath>
+        </Reference>
+        <Reference Include="DiplomaChat.Common.MessageQueueing">
+            <HintPath>$(OutputPath)/DiplomaChat.Common.MessageQueueing.dll</HintPath>
+        </Reference>
+		<Reference Include="DiplomaChat.Common">
+			<HintPath>$(OutputPath)/DiplomaChat.Common.dll</HintPath>
+		</Reference>
+    </ItemGroup>
+
+</Project>
