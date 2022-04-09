@@ -33,23 +33,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.Infrastructure\DiplomaChat.Common.Infrastructure.csproj" />
-	  <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.MessageQueueing\DiplomaChat.Common.MessageQueueing.csproj" />
-	  <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common\DiplomaChat.Common.csproj" />
-	  <ProjectReference Include="..\DiplomaChat.DataAccess\DiplomaChat.DataAccess.csproj" />
-	  <ProjectReference Include="..\DiplomaChat.Domain\DiplomaChat.Domain.csproj" />
+		<ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.Infrastructure\DiplomaChat.Common.Infrastructure.csproj" />
+		<ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.DataAccess\DiplomaChat.Common.DataAccess.csproj" />
+		<ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.MessageQueueing\DiplomaChat.Common.MessageQueueing.csproj" />
+		<ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common\DiplomaChat.Common.csproj" />
+		<ProjectReference Include="..\DiplomaChat.DataAccess\DiplomaChat.DataAccess.csproj" />
+		<ProjectReference Include="..\DiplomaChat.Domain\DiplomaChat.Domain.csproj" />
 	</ItemGroup>
 
-    <ItemGroup>
-        <Reference Include="DiplomaChat.Common.Infrastructure">
-          <HintPath>$(OutputPath)/DiplomaChat.Common.Infrastructure.dll</HintPath>
-        </Reference>
-        <Reference Include="DiplomaChat.Common.MessageQueueing">
-            <HintPath>$(OutputPath)/DiplomaChat.Common.MessageQueueing.dll</HintPath>
-        </Reference>
+	<ItemGroup>
+		<Reference Include="DiplomaChat.Common.Infrastructure">
+			<HintPath>$(OutputPath)/DiplomaChat.Common.Infrastructure.dll</HintPath>
+		</Reference>
+		<Reference Include="DiplomaChat.Common.MessageQueueing">
+			<HintPath>$(OutputPath)/DiplomaChat.Common.MessageQueueing.dll</HintPath>
+		</Reference>
 		<Reference Include="DiplomaChat.Common">
 			<HintPath>$(OutputPath)/DiplomaChat.Common.dll</HintPath>
 		</Reference>
-    </ItemGroup>
+	</ItemGroup>
 
 </Project>

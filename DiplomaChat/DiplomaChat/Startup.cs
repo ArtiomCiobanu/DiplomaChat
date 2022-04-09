@@ -28,13 +28,12 @@ namespace DiplomaChat
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var databaseConnectionString =
-                Configuration.GetConnectionString(EnvironmentVariables.DatabaseConnectionString);
+            var databaseConnectionString = Configuration.GetConnectionString(EnvironmentVariables.DatabaseConnectionString);
             services.AddDbContext<DiplomaChatContext>(options => options.UseSqlServer(databaseConnectionString).EnableDetailedErrors());
 
             services.AddScoped<IDiplomaChatContext, DiplomaChatContext>();
 
-            var rabbitMqConfiguration = Configuration.GetSection("RabbitMQCOnfiguration").Get<RabbitMQConfiguration>();
+            var rabbitMqConfiguration = Configuration.GetSection("RabbitMQConfiguration").Get<RabbitMQConfiguration>();
             services.AddRabbitMQ(rabbitMqConfiguration);
 
             services.AddSingleton(_ =>

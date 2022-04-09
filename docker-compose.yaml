@@ -1,7 +1,7 @@
 ﻿version: "3.9"
 services:
   rabbit_server:
-    container_name: RabbbitMQ
+    container_name: RabbitMQ
     image: "rabbitmq:3.9-management"
     ports:
       - "5672:5672"
@@ -13,16 +13,26 @@ services:
       retries: 30
 
   diploma_chat:
-    depends_on: 
+    depends_on:
       rabbit_server:
         condition: service_healthy
-    container_name: DiplomaWork
+    container_name: DiplomaChat
     restart: on-failure
     build:
-      dockerfile: ./Dockerfile
+      dockerfile: ./DiplomaChat/Dockerfile
       context: ./
     ports:
       - "8080:80"
-      - "49443:443"
     links:
       - "rabbit_server:rabbit"
+
+  diploma_chat_sso:
+    container_name: DiplomaChat_SingleSignOn
+    restart: on-failure
+    build:
+      dockerfile: ./DiplomaChat.SingleSignOn/Dockerfile
+      context: ./
+    ports:
+      - "18080:80"
+      - "11443:443"
+      - "44317:44317"

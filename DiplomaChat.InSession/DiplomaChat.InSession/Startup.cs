@@ -4,7 +4,6 @@ using DiplomaChat.Common.Extensions;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
 using DiplomaChat.Common.MessageQueueing.Configuration;
 using DiplomaChat.Common.MessageQueueing.Extensions.RabbitMQ;
-using DiplomaChat.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,9 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using TileGameServer.InSession.DataAccess.Context;
 using TileGameServer.InSession.Hubs;
 using HeaderNames = Microsoft.Net.Http.Headers.HeaderNames;
@@ -32,17 +29,9 @@ namespace TileGameServer.InSession
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var rabbitMqConfiguration = new RabbitMQConfiguration
-            {
-                HostName = Environment.GetEnvironmentVariable(EnvironmentVariables.RabbitMQHostName),
-                Port = int.Parse(Environment.GetEnvironmentVariable(EnvironmentVariables.RabbitMQPort)!),
-                VirtualHost = Environment.GetEnvironmentVariable(EnvironmentVariables.RabbitMQVirtualHost),
-                UserName = Environment.GetEnvironmentVariable(EnvironmentVariables.RabbitMQUserName),
-                Password = Environment.GetEnvironmentVariable(EnvironmentVariables.RabbitMQPassword)
-            };
-
-            services.AddMessageQueueingServices(typeof(Startup));
+            var rabbitMqConfiguration = Configuration.GetSection("RabbitMQCOnfiguration").Get<RabbitMQConfiguration>();
             services.AddRabbitMQ(rabbitMqConfiguration);
+            services.AddMessageQueueingServices(typeof(Startup));
 
             services.AddScoped<IResponseMapper, ResponseMapper>();
 
