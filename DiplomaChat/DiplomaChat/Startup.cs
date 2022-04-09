@@ -33,7 +33,15 @@ namespace DiplomaChat
 
             services.AddScoped<IDiplomaChatContext, DiplomaChatContext>();
 
-            var rabbitMqConfiguration = Configuration.GetSection("RabbitMQConfiguration").Get<RabbitMQConfiguration>();
+            //var rabbitMqConfiguration = Configuration.GetSection("RabbitMQConfiguration").Get<RabbitMQConfiguration>();
+            var rabbitMqConfiguration = new RabbitMQConfiguration
+            {
+                HostName = "rabbit",
+                Port = 5672,
+                VirtualHost = "/",
+                UserName = "guest",
+                Password = "guest"
+            };
             services.AddRabbitMQ(rabbitMqConfiguration);
 
             services.AddSingleton(_ =>

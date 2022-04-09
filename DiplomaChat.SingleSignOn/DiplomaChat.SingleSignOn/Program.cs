@@ -11,6 +11,8 @@ namespace DiplomaChat.SingleSignOn
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("Starting DiplomaChat-SingleSignOn");
+
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production";
 
             IConfigurationRoot configuration = new ConfigurationBuilder()
