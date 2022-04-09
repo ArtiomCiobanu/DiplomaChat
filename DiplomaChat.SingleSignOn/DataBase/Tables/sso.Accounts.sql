@@ -1,4 +1,5 @@
-create table Accounts
+create --drop
+table Accounts
 (
 	Id uniqueidentifier,
 	RoleId int,
