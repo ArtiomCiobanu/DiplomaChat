@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using System.Security.Claims;
-using System.Threading;
-using System.Threading.Tasks;
-using DiplomaChat.Common.Authorization.Constants;
+﻿using DiplomaChat.Common.Authorization.Constants;
 using DiplomaChat.Common.Authorization.Generators;
 using DiplomaChat.Common.DataAccess.Extensions;
 using DiplomaChat.Common.Infrastructure.Enums;
@@ -11,11 +7,14 @@ using DiplomaChat.Common.Infrastructure.Responses;
 using DiplomaChat.SingleSignOn.DataAccess.Context;
 using DiplomaChat.SingleSignOn.DataAccess.Entities;
 using MediatR;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DiplomaChat.SingleSignOn.Features.Accounts.AuthorizeAccount
 {
-    public class AuthorizeAccountCommandHandler :
-        IRequestHandler<AuthorizeAccountRequest, IResponse<AuthorizeAccountResponse>>
+    public class AuthorizeAccountCommandHandler : IRequestHandler<AuthorizeAccountRequest, IResponse<AuthorizeAccountResponse>>
     {
         private readonly ISSOContext _ssoContext;
         private readonly IHashGenerator _hashGenerator;
@@ -39,7 +38,7 @@ namespace DiplomaChat.SingleSignOn.Features.Accounts.AuthorizeAccount
 
             var account = await _ssoContext.EntitySet<Account>()
                 .Where(a => a.PasswordHash.SequenceEqual(passwordHash))
-                .Select(a => new {a.Id, a.RoleId})
+                .Select(a => new { a.Id, a.RoleId })
                 .TopOneAsync(cancellationToken);
 
             if (account == null || account.Id == default)
