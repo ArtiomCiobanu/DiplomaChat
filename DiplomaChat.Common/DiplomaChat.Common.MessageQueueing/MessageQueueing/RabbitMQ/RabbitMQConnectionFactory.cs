@@ -1,7 +1,5 @@
 ﻿using DiplomaChat.Common.MessageQueueing.Configuration;
-using Newtonsoft.Json;
 using RabbitMQ.Client;
-using System;
 
 namespace DiplomaChat.Common.MessageQueueing.MessageQueueing.RabbitMQ
 {
@@ -11,7 +9,6 @@ namespace DiplomaChat.Common.MessageQueueing.MessageQueueing.RabbitMQ
 
         public RabbitMQConnectionFactory(RabbitMQConfiguration rabbitMqConfiguration)
         {
-            Console.WriteLine(JsonConvert.SerializeObject(rabbitMqConfiguration));
             _connectionFactory = new ConnectionFactory
             {
                 HostName = rabbitMqConfiguration.HostName,
@@ -25,7 +22,6 @@ namespace DiplomaChat.Common.MessageQueueing.MessageQueueing.RabbitMQ
         public IMessageQueueConnection CreateConnection()
         {
             var connection = _connectionFactory.CreateConnection();
-            Console.WriteLine("\n We're connected to rabbit;\n");
 
             return new RabbitMQConnection(connection);
         }

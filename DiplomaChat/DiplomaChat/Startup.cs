@@ -1,6 +1,7 @@
 using DiplomaChat.Common.Authorization.Configuration;
 using DiplomaChat.Common.Extensions;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
+using DiplomaChat.Common.Logging.Extensions;
 using DiplomaChat.Common.MessageQueueing.Configuration;
 using DiplomaChat.Common.MessageQueueing.Extensions.RabbitMQ;
 using DiplomaChat.Constants;
@@ -56,7 +57,10 @@ namespace DiplomaChat
             services.AddScoped<IResponseMapper, ResponseMapper>();
 
             var jwtConfiguration = Configuration.GetSection("JwtConfiguration").Get<JwtConfiguration>();
+            Console.WriteLine($"jwtConfiguration: {jwtConfiguration}");
             services.AddJwt(jwtConfiguration);
+
+            services.AddLoggingPipeline().AddLoggers().AddSanitizing(typeof(Startup).Assembly);
 
             services.AddAuthentication();
             services.AddAuthorization();

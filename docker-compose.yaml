@@ -21,6 +21,8 @@ services:
       ACCEPT_EULA: "Y"
 
   diploma_chat:
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Production"
     depends_on:
       rabbit_server:
         condition: service_healthy
@@ -35,9 +37,9 @@ services:
       - "rabbit_server:rabbit"
 
   diploma_chat_sso:
-    # depends_on:
-    #   sql_server:
-    #     condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Production"
+      ASPNETCORE_URLS: "https://+:443;http://+:80"
     container_name: DiplomaChat_SingleSignOn
     restart: on-failure
     build:
@@ -45,3 +47,4 @@ services:
       context: ./
     ports:
       - "18080:80"
+      - "11443:443"
