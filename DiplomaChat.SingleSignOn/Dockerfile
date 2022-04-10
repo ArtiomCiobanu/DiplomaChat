@@ -6,11 +6,11 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY . .
 RUN dotnet restore DiplomaChat_Master.sln
-RUN dotnet build --no-restore DiplomaChat_Master.sln -c Debug -o /output/build
+RUN dotnet build --no-restore DiplomaChat_Master.sln -c Release -o /output/build
 
 FROM build AS publish
 
-RUN dotnet publish DiplomaChat_Master.sln -c Debug -o /output/publish
+RUN dotnet publish DiplomaChat_Master.sln -c Release -o /output/publish
 
 FROM base AS final
 WORKDIR /app
