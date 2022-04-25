@@ -44,7 +44,7 @@ namespace DiplomaChat.Features.Users
         {
             var query = new GetUserProfileQuery
             {
-                UserId = AccountId
+                UserId = userId
             };
 
             return SendToMediatorAsync(query);
