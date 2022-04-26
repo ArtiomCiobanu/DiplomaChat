@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using DiplomaChat.Common.DataAccess.Context;
+﻿using DiplomaChat.Common.DataAccess.Context;
 using DiplomaChat.SingleSignOn.DataAccess.Entities;
 using DiplomaChat.SingleSignOn.DataAccess.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;

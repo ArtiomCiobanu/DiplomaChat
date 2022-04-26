@@ -1,7 +1,6 @@
 ﻿using DiplomaChat.Common.DataAccess.Entities;
-using System.Collections.Generic;
 
-namespace TileGameServer.InSession.DataAccess.Context
+namespace TileGameServer.InSession.DataAccess.Contracts.Context
 {
     public interface IInSessionContext
     {

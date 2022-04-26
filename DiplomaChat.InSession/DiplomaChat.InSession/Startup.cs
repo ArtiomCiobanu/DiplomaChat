@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System.Collections.Generic;
 using TileGameServer.InSession.DataAccess.Context;
+using TileGameServer.InSession.DataAccess.Contracts.Context;
 using TileGameServer.InSession.Hubs;
 using HeaderNames = Microsoft.Net.Http.Headers.HeaderNames;
 

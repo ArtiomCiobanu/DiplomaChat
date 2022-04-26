@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TileGameServer.InSession.DataAccess.Contracts.Context;
 
 namespace TileGameServer.InSession.DataAccess.Context
 {

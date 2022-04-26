@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using TileGameServer.InSession.DataAccess.Context;
+using TileGameServer.InSession.DataAccess.Contracts.Context;
 using TileGameServer.InSession.Domain.Entities;
 
 namespace TileGameServer.InSession.Notifications.CreateChatRoom
