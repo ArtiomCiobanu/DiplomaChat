@@ -1,4 +1,5 @@
 ﻿using DiplomaChat.Common.DataAccess.Context;
+using DiplomaChat.DataAccess.Contracts.Context;
 using DiplomaChat.DataAccess.Entities;
 using DiplomaChat.DataAccess.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;

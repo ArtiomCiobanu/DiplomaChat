@@ -1,6 +1,6 @@
 ﻿using DiplomaChat.Common.Infrastructure.Extensions;
 using DiplomaChat.Common.Infrastructure.Responses;
-using DiplomaChat.DataAccess.Context;
+using DiplomaChat.DataAccess.Contracts.Context;
 using DiplomaChat.DataAccess.Entities;
 using DiplomaChat.Domain.Models.Configurations;
 using MediatR;

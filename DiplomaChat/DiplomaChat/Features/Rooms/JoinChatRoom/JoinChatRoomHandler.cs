@@ -1,14 +1,9 @@
-﻿using DiplomaChat.Common.Authorization.Generators;
-using DiplomaChat.Common.DataAccess.Extensions;
+﻿using DiplomaChat.Common.DataAccess.Extensions;
 using DiplomaChat.Common.Infrastructure.Enums;
 using DiplomaChat.Common.Infrastructure.Responses;
-using DiplomaChat.DataAccess.Context;
+using DiplomaChat.DataAccess.Contracts.Context;
 using DiplomaChat.DataAccess.Entities;
 using MediatR;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace DiplomaChat.Features.Rooms.JoinChatRoom
 {

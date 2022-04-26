@@ -14,7 +14,8 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings:DIPLOMA_CHAT_SSO_DB_CONNECTION_STRING": "Data Source=localhost;Initial Catalog=DiplomaChat;User ID=SA;Password=yourStrong(!)Password"
       }
     },
     "Development": {

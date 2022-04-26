@@ -13,6 +13,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.DataAccess\DiplomaChat.Common.DataAccess.csproj" />
+		<ProjectReference Include="..\..\DiplomaChat.DataAccess.Contracts\DiplomaChat.DataAccess.Contracts.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -2,13 +2,9 @@
 using DiplomaChat.Common.Infrastructure;
 using DiplomaChat.Common.Infrastructure.Extensions;
 using DiplomaChat.Common.Infrastructure.Responses;
-using DiplomaChat.DataAccess.Context;
+using DiplomaChat.DataAccess.Contracts.Context;
 using DiplomaChat.DataAccess.Entities;
 using MediatR;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace DiplomaChat.Features.Rooms.LeaveAllChatRooms
 {
@@ -38,20 +34,6 @@ namespace DiplomaChat.Features.Rooms.LeaveAllChatRooms
 
             _diplomaChatContext.EntitySet<ChatRoomUser>()
                 .RemoveRange(chatRoomUsersToRemove);
-
-            /*foreach (var roomId in roomIds)
-            {
-                var anyUsersInRoom = await _diplomaChatContext.EntitySet<ChatRoomUser>()
-                    .ExistsAsync(cru => cru.ChatRoomId == roomId);
-
-                if (anyUsersInRoom)
-                {
-                    var roomToRemove = _diplomaChatContext.EntitySet<ChatRoom>()
-                    .Where(cr => cr.Id == roomId);
-                    _diplomaChatContext.EntitySet<ChatRoom>()
-                        .RemoveRange(roomToRemove);
-                }
-            }*/
 
             await _diplomaChatContext.SaveChangesAsync(cancellationToken);
 

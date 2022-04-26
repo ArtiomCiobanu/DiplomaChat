@@ -20,26 +20,28 @@ services:
       SA_PASSWORD: "yourStrong(!)Password"
       ACCEPT_EULA: "Y"
 
-  diploma_chat:
-    environment:
-      ASPNETCORE_ENVIRONMENT: "Production"
-    depends_on:
-      rabbit_server:
-        condition: service_healthy
-    container_name: DiplomaChat
-    restart: on-failure
-    build:
-      dockerfile: ./DiplomaChat/Dockerfile
-      context: ./
-    ports:
-      - "8080:80"
-    links:
-      - "rabbit_server:rabbit"
+  # diploma_chat:
+  #   environment:
+  #     ASPNETCORE_ENVIRONMENT: "Production"
+  #   depends_on:
+  #     rabbit_server:
+  #       condition: service_healthy
+  #   container_name: DiplomaChat
+  #   restart: on-failure
+  #   build:
+  #     dockerfile: ./DiplomaChat/Dockerfile
+  #     context: ./
+  #   ports:
+  #     - "8080:80"
+  #   links:
+  #     - "rabbit_server:rabbit"
 
   diploma_chat_sso:
     environment:
       ASPNETCORE_ENVIRONMENT: "Production"
       ASPNETCORE_URLS: "https://+:443;http://+:80"
+      ASPNETCORE_Kestrel__Certificates__Default__Password: DiplomaChat
+      ASPNETCORE_Kestrel__Certificates__Default__Path: ./DiplomaChat.SingleSignOn/CERTS/DiplomaChat_Certificate.pfx
     container_name: DiplomaChat_SingleSignOn
     restart: on-failure
     build:

@@ -1,7 +1,7 @@
 ﻿using DiplomaChat.Common.DataAccess.Extensions;
 using DiplomaChat.Common.Infrastructure.Enums;
 using DiplomaChat.Common.MessageQueueing.MessageQueueing;
-using DiplomaChat.DataAccess.Context;
+using DiplomaChat.DataAccess.Contracts.Context;
 using DiplomaChat.DataAccess.Entities;
 using MediatR;
 

@@ -37,6 +37,7 @@ namespace DiplomaChat.SingleSignOn
             Console.WriteLine($"Environment: {Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}");
 
             var databaseConnectionString = Configuration.GetConnectionString(EnvironmentVariables.ConnectionString);
+            Console.WriteLine($"Connection String: {databaseConnectionString}");
             services.AddDbContext<SSOContext>(options => options.UseSqlServer(databaseConnectionString).EnableDetailedErrors());
 
             services.AddScoped<ISSOContext, SSOContext>();
@@ -54,15 +55,14 @@ namespace DiplomaChat.SingleSignOn
 
             services.AddLoggingPipeline().AddLoggers().AddSanitizing(typeof(Startup).Assembly);
 
-            services.AddAuthentication();
             services.AddAuthorization();
 
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
                     builder => builder.AllowAnyOrigin()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod());
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
             });
 
             services.AddControllers().AddFluentValidation(configuration =>

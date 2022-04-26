@@ -6,6 +6,7 @@ using DiplomaChat.Common.MessageQueueing.Configuration;
 using DiplomaChat.Common.MessageQueueing.Extensions.RabbitMQ;
 using DiplomaChat.Constants;
 using DiplomaChat.DataAccess.Context;
+using DiplomaChat.DataAccess.Contracts.Context;
 using DiplomaChat.Domain.Models.Configurations;
 using FluentValidation.AspNetCore;
 using MediatR;
