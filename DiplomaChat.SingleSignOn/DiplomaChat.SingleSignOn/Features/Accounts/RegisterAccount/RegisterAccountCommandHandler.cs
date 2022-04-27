@@ -1,15 +1,15 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using DiplomaChat.Common.Authorization.Enums;
+﻿using DiplomaChat.Common.Authorization.Enums;
 using DiplomaChat.Common.DataAccess.Extensions;
 using DiplomaChat.Common.Infrastructure.Enums;
 using DiplomaChat.Common.Infrastructure.Generators.Hashing;
 using DiplomaChat.Common.Infrastructure.Responses;
-using DiplomaChat.SingleSignOn.DataAccess.Context;
+using DiplomaChat.SingleSignOn.DataAccess.Contracts.Context;
 using DiplomaChat.SingleSignOn.DataAccess.Entities;
 using MediatR;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DiplomaChat.SingleSignOn.Features.Accounts.RegisterAccount
 {

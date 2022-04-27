@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using TileGameServer.InSession.DataAccess.Contracts.Context;
-using TileGameServer.InSession.Domain.Entities;
+using DiplomaChat.InSession.DataAccess.Contracts.Context;
+using DiplomaChat.InSession.Domain.Entities;
 
-namespace TileGameServer.InSession.Notifications.JoinChatRoom
+namespace DiplomaChat.InSession.Notifications.JoinChatRoom
 {
     public class JoinChatRoomNotificationHandler : IRequestHandler<JoinChatRoomNotificationCommand>
     {

@@ -12,12 +12,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System.Collections.Generic;
-using TileGameServer.InSession.DataAccess.Context;
-using TileGameServer.InSession.DataAccess.Contracts.Context;
-using TileGameServer.InSession.Hubs;
+using DiplomaChat.InSession.DataAccess.Context;
+using DiplomaChat.InSession.DataAccess.Contracts.Context;
+using DiplomaChat.InSession.Hubs;
 using HeaderNames = Microsoft.Net.Http.Headers.HeaderNames;
 
-namespace TileGameServer.InSession
+namespace DiplomaChat.InSession
 {
     public class Startup
     {
@@ -83,7 +83,7 @@ namespace TileGameServer.InSession
                         new List<string>()
                     }
                 };
-
+    
                 options.AddSecurityRequirement(requirement);
             });
 

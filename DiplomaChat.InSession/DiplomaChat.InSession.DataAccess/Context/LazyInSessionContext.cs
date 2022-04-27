@@ -2,9 +2,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TileGameServer.InSession.DataAccess.Contracts.Context;
+using DiplomaChat.InSession.DataAccess.Contracts.Context;
 
-namespace TileGameServer.InSession.DataAccess.Context
+namespace DiplomaChat.InSession.DataAccess.Context
 {
     public class LazyInSessionContext : IInSessionContext
     {

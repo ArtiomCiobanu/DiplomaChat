@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TileGameServer.InSession.Domain.Entities
+namespace DiplomaChat.InSession.Domain.Entities
 {
     public class ChatRoom : BaseEntity
     {

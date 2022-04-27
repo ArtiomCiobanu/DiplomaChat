@@ -1,7 +1,7 @@
 ﻿using System;
 using MediatR;
 
-namespace TileGameServer.InSession.Notifications.JoinChatRoom
+namespace DiplomaChat.InSession.Notifications.JoinChatRoom
 {
     public class JoinChatRoomNotificationCommand : IRequest
     {

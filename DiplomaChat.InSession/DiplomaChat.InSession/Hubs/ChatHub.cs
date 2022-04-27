@@ -2,10 +2,10 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using TileGameServer.InSession.DataAccess.Contracts.Context;
-using TileGameServer.InSession.Domain.Entities;
+using DiplomaChat.InSession.DataAccess.Contracts.Context;
+using DiplomaChat.InSession.Domain.Entities;
 
-namespace TileGameServer.InSession.Hubs
+namespace DiplomaChat.InSession.Hubs
 {
     public class ChatHub : Hub
     {

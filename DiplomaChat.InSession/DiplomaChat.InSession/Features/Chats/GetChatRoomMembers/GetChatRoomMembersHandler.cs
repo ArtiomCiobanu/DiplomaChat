@@ -6,10 +6,10 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using TileGameServer.InSession.DataAccess.Contracts.Context;
-using TileGameServer.InSession.Domain.Entities;
+using DiplomaChat.InSession.DataAccess.Contracts.Context;
+using DiplomaChat.InSession.Domain.Entities;
 
-namespace TileGameServer.InSession.Features.Chats.GetChatRoomMembers
+namespace DiplomaChat.InSession.Features.Chats.GetChatRoomMembers
 {
     public record class GetChatRoomMembersQuery(Guid ChatRoomId) : IQuery<GetChatRoomMembersResponse>;
 

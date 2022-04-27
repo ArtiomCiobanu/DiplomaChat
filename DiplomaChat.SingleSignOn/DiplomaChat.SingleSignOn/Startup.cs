@@ -6,6 +6,7 @@ using DiplomaChat.Common.Logging.Extensions;
 using DiplomaChat.SingleSignOn.Accessors.Endpoint;
 using DiplomaChat.SingleSignOn.Constants;
 using DiplomaChat.SingleSignOn.DataAccess.Context;
+using DiplomaChat.SingleSignOn.DataAccess.Contracts.Context;
 using DiplomaChat.SingleSignOn.Extensions;
 using FluentValidation.AspNetCore;
 using MediatR;

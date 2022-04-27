@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using TileGameServer.InSession.Features.Chats.GetChatRoomMembers;
+using DiplomaChat.InSession.Features.Chats.GetChatRoomMembers;
 
-namespace TileGameServer.InSession.Controllers
+namespace DiplomaChat.InSession.Controllers
 {
     [Route("chatRooms")]
     [ApiController]

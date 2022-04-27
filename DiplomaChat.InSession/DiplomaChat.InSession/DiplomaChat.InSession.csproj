@@ -6,7 +6,7 @@
         <VersionPrefix>1.0.2</VersionPrefix>
         <VersionSuffix>develop</VersionSuffix>
         <Nullable>disable</Nullable>
-        <RootNamespace>TileGameServer.InSession</RootNamespace>
+        <RootNamespace>DiplomaChat.InSession</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup>
