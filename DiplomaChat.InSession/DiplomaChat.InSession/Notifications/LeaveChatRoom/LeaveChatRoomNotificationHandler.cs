@@ -1,11 +1,8 @@
-﻿using MediatR;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using TileGameServer.InSession.DataAccess.Contracts.Context;
+﻿using DiplomaChat.InSession.DataAccess.Contracts.Context;
+using MediatR;
 using TileGameServer.InSession.Domain.Entities;
 
-namespace TileGameServer.InSession.Notifications.LeaveGameSession
+namespace TileGameServer.InSession.Notifications.LeaveChatRoom
 {
     public class LeaveChatRoomNotificationHandler : IRequestHandler<LeaveChatRoomNotificationCommand>
     {

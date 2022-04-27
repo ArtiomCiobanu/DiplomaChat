@@ -1,4 +1,4 @@
-using DiplomaChat.Common.Logging.Extensions;
+using DiplomaChat.Common.Infrastructure.Logging.Extensions;
 using Serilog;
 
 namespace DiplomaChat

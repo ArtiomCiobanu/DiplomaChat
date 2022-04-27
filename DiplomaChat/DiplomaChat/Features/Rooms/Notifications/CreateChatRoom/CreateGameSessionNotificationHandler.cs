@@ -1,5 +1,5 @@
 ﻿using DiplomaChat.Common.Infrastructure.Enums;
-using DiplomaChat.Common.MessageQueueing.MessageQueueing;
+using DiplomaChat.Common.Infrastructure.MessageQueueing.MessageQueueing;
 using MediatR;
 
 namespace DiplomaChat.Features.Rooms.Notifications.CreateChatRoom

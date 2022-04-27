@@ -1,7 +1,6 @@
 ﻿using MediatR;
-using System;
 
-namespace TileGameServer.InSession.Notifications.LeaveGameSession
+namespace TileGameServer.InSession.Notifications.LeaveChatRoom
 {
     public class LeaveChatRoomNotificationCommand : IRequest
     {

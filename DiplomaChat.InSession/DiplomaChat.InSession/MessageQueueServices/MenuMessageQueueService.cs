@@ -1,8 +1,8 @@
-﻿using DiplomaChat.Common.MessageQueueing.Attributes;
+﻿using DiplomaChat.Common.Infrastructure.MessageQueueing.Attributes;
 using MediatR;
 using TileGameServer.InSession.Notifications.CreateChatRoom;
 using TileGameServer.InSession.Notifications.JoinChatRoom;
-using TileGameServer.InSession.Notifications.LeaveGameSession;
+using TileGameServer.InSession.Notifications.LeaveChatRoom;
 
 namespace TileGameServer.InSession.MessageQueueServices
 {

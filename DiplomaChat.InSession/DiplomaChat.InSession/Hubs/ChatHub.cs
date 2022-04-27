@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using TileGameServer.InSession.DataAccess.Contracts.Context;
+using DiplomaChat.InSession.DataAccess.Contracts.Context;
 using TileGameServer.InSession.Domain.Entities;
 
 namespace TileGameServer.InSession.Hubs

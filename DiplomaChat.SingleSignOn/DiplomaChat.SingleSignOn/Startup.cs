@@ -2,7 +2,6 @@ using DiplomaChat.Common.Authorization.Configuration;
 using DiplomaChat.Common.Infrastructure.Configuration;
 using DiplomaChat.Common.Infrastructure.Generators.Hashing;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
-using DiplomaChat.Common.Logging.Extensions;
 using DiplomaChat.SingleSignOn.Accessors.Endpoint;
 using DiplomaChat.SingleSignOn.Constants;
 using DiplomaChat.SingleSignOn.DataAccess.Context;
@@ -19,6 +18,7 @@ using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using DiplomaChat.Common.Infrastructure.Logging.Extensions;
 
 namespace DiplomaChat.SingleSignOn
 {

@@ -1,5 +1,5 @@
 ﻿using DiplomaChat.Common.Infrastructure;
-using DiplomaChat.Common.Logging.Attributes;
+using DiplomaChat.Common.Infrastructure.Logging.Attributes;
 
 namespace DiplomaChat.SingleSignOn.Features.Accounts.AuthorizeAccount
 {
