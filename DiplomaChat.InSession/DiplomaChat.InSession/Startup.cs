@@ -2,8 +2,6 @@ using DiplomaChat.Common.Authorization.Configuration;
 using DiplomaChat.Common.Authorization.Constants;
 using DiplomaChat.Common.Extensions;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
-using DiplomaChat.Common.MessageQueueing.Configuration;
-using DiplomaChat.Common.MessageQueueing.Extensions.RabbitMQ;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

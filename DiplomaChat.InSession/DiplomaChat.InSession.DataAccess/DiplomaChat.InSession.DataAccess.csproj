@@ -2,18 +2,18 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
-        <LangVersion>9</LangVersion>
         <RootNamespace>TileGameServer.InSession.DataAccess</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+        <PackageReference Include="System.Linq.Queryable" Version="4.3.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.DataAccess\DiplomaChat.Common.DataAccess.csproj" />
-      <ProjectReference Include="..\..\DiplomaChat.InSession.DataAccess.Contracts\DiplomaChat.InSession.DataAccess.Contracts.csproj" />
+        <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.DataAccess\DiplomaChat.Common.DataAccess.csproj"/>
+        <ProjectReference Include="..\..\DiplomaChat.InSession.DataAccess.Contracts\DiplomaChat.InSession.DataAccess.Contracts.csproj"/>
     </ItemGroup>
 
 </Project>

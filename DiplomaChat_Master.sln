@@ -23,9 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Common.DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Common.Infrastructure", "DiplomaChat.Common\DiplomaChat.Common.Infrastructure\DiplomaChat.Common.Infrastructure.csproj", "{1B739474-DBC3-48EB-A3B6-5AB9A743BCD6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Common.Logging", "DiplomaChat.Common\DiplomaChat.Common.Logging\DiplomaChat.Common.Logging.csproj", "{F6B5009A-636B-4033-9FA7-85E50CBA3433}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Common.Infrastructure.Logging", "DiplomaChat.Common\DiplomaChat.Common.Infrastructure.Logging\DiplomaChat.Common.Infrastructure.Logging.csproj", "{F6B5009A-636B-4033-9FA7-85E50CBA3433}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Common.MessageQueueing", "DiplomaChat.Common\DiplomaChat.Common.MessageQueueing\DiplomaChat.Common.MessageQueueing.csproj", "{CBCC8893-5B7D-40B5-9473-69D74D609CF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Common.Infrastructure.MessageQueueing", "DiplomaChat.Common\DiplomaChat.Common.Infrastructure.MessageQueueing\DiplomaChat.Common.Infrastructure.MessageQueueing.csproj", "{CBCC8893-5B7D-40B5-9473-69D74D609CF4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.InSession", "DiplomaChat.InSession\DiplomaChat.InSession\DiplomaChat.InSession.csproj", "{A4EB0143-9CAD-4328-8433-DAE2C945F935}"
 EndProject

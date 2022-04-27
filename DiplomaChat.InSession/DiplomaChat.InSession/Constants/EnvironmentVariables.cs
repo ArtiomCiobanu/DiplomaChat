@@ -1,4 +1,4 @@
-﻿namespace DiplomaChat.Constants
+﻿namespace TileGameServer.InSession.Constants
 {
     public static class EnvironmentVariables
     {

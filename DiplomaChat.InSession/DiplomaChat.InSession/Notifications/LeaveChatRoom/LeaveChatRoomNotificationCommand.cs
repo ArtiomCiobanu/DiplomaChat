@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using System;
 
 namespace DiplomaChat.InSession.Notifications.LeaveGameSession
 {

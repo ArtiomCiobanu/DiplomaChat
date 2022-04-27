@@ -1,9 +1,9 @@
 using DiplomaChat.Common.Authorization.Configuration;
 using DiplomaChat.Common.Extensions;
+using DiplomaChat.Common.Infrastructure.Logging.Extensions;
+using DiplomaChat.Common.Infrastructure.MessageQueueing.Configuration;
+using DiplomaChat.Common.Infrastructure.MessageQueueing.Extensions.RabbitMQ;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
-using DiplomaChat.Common.Logging.Extensions;
-using DiplomaChat.Common.MessageQueueing.Configuration;
-using DiplomaChat.Common.MessageQueueing.Extensions.RabbitMQ;
 using DiplomaChat.Constants;
 using DiplomaChat.DataAccess.Context;
 using DiplomaChat.DataAccess.Contracts.Context;

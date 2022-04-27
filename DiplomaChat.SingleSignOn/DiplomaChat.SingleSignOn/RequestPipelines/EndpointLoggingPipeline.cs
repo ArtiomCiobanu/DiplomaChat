@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using DiplomaChat.Common.Infrastructure.Logging.Entries;
+using DiplomaChat.Common.Infrastructure.Logging.EntryLoggers;
+using DiplomaChat.Common.Infrastructure.Logging.Sanitizers.Endpoint;
 using DiplomaChat.Common.Infrastructure.Responses;
-using DiplomaChat.Common.Logging.Entries;
-using DiplomaChat.Common.Logging.EntryLoggers;
-using DiplomaChat.Common.Logging.Sanitizers.Endpoint;
 using DiplomaChat.SingleSignOn.Accessors.Endpoint;
 using MediatR;
 

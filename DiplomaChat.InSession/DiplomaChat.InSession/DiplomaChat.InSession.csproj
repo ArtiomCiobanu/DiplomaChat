@@ -2,6 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
         <IsPackable>true</IsPackable>
         <VersionPrefix>1.0.2</VersionPrefix>
         <VersionSuffix>develop</VersionSuffix>
@@ -22,7 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.MessageQueueing\DiplomaChat.Common.MessageQueueing.csproj" />
+        <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.Infrastructure.MessageQueueing\DiplomaChat.Common.Infrastructure.MessageQueueing.csproj" />
         <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common\DiplomaChat.Common.csproj" />
         <ProjectReference Include="..\DiplomaChat.InSession.DataAccess\DiplomaChat.InSession.DataAccess.csproj" />
         <ProjectReference Include="..\DiplomaChat.InSession.Domain\DiplomaChat.InSession.Domain.csproj" />

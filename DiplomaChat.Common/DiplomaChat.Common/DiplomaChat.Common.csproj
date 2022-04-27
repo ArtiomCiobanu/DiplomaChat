@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-		<Nullable>disable</Nullable>
-		<ImplicitUsings>disable</ImplicitUsings>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
 		<RootNamespace>DiplomaChat.Common</RootNamespace>
     </PropertyGroup>
 
@@ -26,7 +26,7 @@
     <ItemGroup>
       <ProjectReference Include="..\DiplomaChat.Common.Authorization\DiplomaChat.Common.Authorization.csproj" />
       <ProjectReference Include="..\DiplomaChat.Common.Infrastructure\DiplomaChat.Common.Infrastructure.csproj" />
-      <ProjectReference Include="..\DiplomaChat.Common.Logging\DiplomaChat.Common.Logging.csproj" />
+      <ProjectReference Include="..\DiplomaChat.Common.Infrastructure.Logging\DiplomaChat.Common.Infrastructure.Logging.csproj" />
     </ItemGroup>
 
 </Project>

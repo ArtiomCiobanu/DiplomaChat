@@ -1,5 +1,5 @@
 using System;
-using DiplomaChat.Common.Logging.Extensions;
+using DiplomaChat.Common.Infrastructure.Logging.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;

@@ -2,10 +2,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using DiplomaChat.Common.Accessors.Endpoint;
+using DiplomaChat.Common.Infrastructure.Logging.Entries;
+using DiplomaChat.Common.Infrastructure.Logging.EntryLoggers;
+using DiplomaChat.Common.Infrastructure.Logging.Sanitizers.Endpoint;
 using DiplomaChat.Common.Infrastructure.Responses;
-using DiplomaChat.Common.Logging.Entries;
-using DiplomaChat.Common.Logging.EntryLoggers;
-using DiplomaChat.Common.Logging.Sanitizers.Endpoint;
 using MediatR;
 
 namespace DiplomaChat.Common.RequestPipelines
