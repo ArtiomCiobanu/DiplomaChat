@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
 		<UserSecretsId>2da04ef5-0e32-4030-b2d7-7ee6842bf03e</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 	</PropertyGroup>
@@ -41,17 +41,17 @@
 		<ProjectReference Include="..\DiplomaChat.Domain\DiplomaChat.Domain.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<Reference Include="DiplomaChat.Common.Infrastructure">
-			<HintPath>$(OutputPath)/DiplomaChat.Common.Infrastructure.dll</HintPath>
-		</Reference>
-		<Reference Include="DiplomaChat.Common.MessageQueueing">
-			<HintPath>$(OutputPath)/DiplomaChat.Common.MessageQueueing.dll</HintPath>
-		</Reference>
-		<Reference Include="DiplomaChat.Common">
-			<HintPath>$(OutputPath)/DiplomaChat.Common.dll</HintPath>
-		</Reference>
-	</ItemGroup>
+<!--	<ItemGroup>-->
+<!--		<Reference Include="DiplomaChat.Common.Infrastructure">-->
+<!--			<HintPath>$(OutputPath)/DiplomaChat.Common.Infrastructure.dll</HintPath>-->
+<!--		</Reference>-->
+<!--		<Reference Include="DiplomaChat.Common.MessageQueueing">-->
+<!--			<HintPath>$(OutputPath)/DiplomaChat.Common.MessageQueueing.dll</HintPath>-->
+<!--		</Reference>-->
+<!--		<Reference Include="DiplomaChat.Common">-->
+<!--			<HintPath>$(OutputPath)/DiplomaChat.Common.dll</HintPath>-->
+<!--		</Reference>-->
+<!--	</ItemGroup>-->
 
 	<ItemGroup>
 	  <Content Update="appsettings.Development.json">

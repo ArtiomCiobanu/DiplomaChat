@@ -1,25 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+    </PropertyGroup>
 
-	<PropertyGroup>
-		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-		<OutputPath>$(MSBuildProjectDirectory)/../../../output</OutputPath>
-	</PropertyGroup>
+    <PropertyGroup>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <OutputPath>$(MSBuildProjectDirectory)/../../../output</OutputPath>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.DataAccess\DiplomaChat.Common.DataAccess.csproj" />
-		<ProjectReference Include="..\..\DiplomaChat.DataAccess.Contracts\DiplomaChat.DataAccess.Contracts.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.DataAccess\DiplomaChat.Common.DataAccess.csproj"/>
+        <ProjectReference Include="..\..\DiplomaChat.DataAccess.Contracts\DiplomaChat.DataAccess.Contracts.csproj"/>
+    </ItemGroup>
 
-	<ItemGroup>
-		<Reference Include="DiplomaChat.Common.DataAccess">
-			<HintPath>$(OutputPath)/DiplomaChat.Common.DataAccess.dll</HintPath>
-		</Reference>
-	</ItemGroup>
+    <ItemGroup>
+        <Reference Include="DiplomaChat.Common.DataAccess">
+            <HintPath>$(OutputPath)/DiplomaChat.Common.DataAccess.dll</HintPath>
+        </Reference>
+    </ItemGroup>
 
 </Project>

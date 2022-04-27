@@ -2,10 +2,11 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
         <IsPackable>true</IsPackable>
         <VersionPrefix>1.0.2</VersionPrefix>
         <VersionSuffix>develop</VersionSuffix>
-        <Nullable>disable</Nullable>
         <RootNamespace>TileGameServer.InSession</RootNamespace>
     </PropertyGroup>
 
