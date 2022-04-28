@@ -1,18 +1,14 @@
 using DiplomaChat.Common.Authorization.Configuration;
 using DiplomaChat.Common.Authorization.Constants;
 using DiplomaChat.Common.Extensions;
+using DiplomaChat.Common.Infrastructure.MessageQueueing.Configuration;
+using DiplomaChat.Common.Infrastructure.MessageQueueing.Extensions.RabbitMQ;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
-using MediatR;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using System.Collections.Generic;
 using DiplomaChat.InSession.DataAccess.Context;
 using DiplomaChat.InSession.DataAccess.Contracts.Context;
 using DiplomaChat.InSession.Hubs;
+using MediatR;
+using Microsoft.OpenApi.Models;
 using HeaderNames = Microsoft.Net.Http.Headers.HeaderNames;
 
 namespace DiplomaChat.InSession
@@ -28,7 +24,7 @@ namespace DiplomaChat.InSession
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var rabbitMqConfiguration = Configuration.GetSection("RabbitMQCOnfiguration").Get<RabbitMQConfiguration>();
+            var rabbitMqConfiguration = Configuration.GetSection("RabbitMQConfiguration").Get<RabbitMQConfiguration>();
             services.AddRabbitMQ(rabbitMqConfiguration);
             services.AddMessageQueueingServices(typeof(Startup));
 

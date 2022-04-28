@@ -1,4 +1,4 @@
-﻿using DiplomaChat.Common.MessageQueueing.Attributes;
+﻿using DiplomaChat.Common.Infrastructure.MessageQueueing.Attributes;
 using DiplomaChat.InSession.Notifications.CreateChatRoom;
 using DiplomaChat.InSession.Notifications.JoinChatRoom;
 using DiplomaChat.InSession.Notifications.LeaveGameSession;
