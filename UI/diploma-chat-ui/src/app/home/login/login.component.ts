@@ -21,7 +21,7 @@ export class LoginComponent {
         }
 
         this.httpClient
-            .post("https://localhost:49161/account/login", loginRequestBody)
+            .post("https://localhost:44317/account/login", loginRequestBody)
             .subscribe({
                 next: v => this.saveTokenAndLoadChat(v),
                 error: e => { this.fail(e) }

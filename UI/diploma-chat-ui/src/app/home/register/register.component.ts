@@ -24,7 +24,7 @@ export class RegisterComponent {
         }
 
         this.httpClient
-            .post("https://localhost:49161/account/register", registrationRequestBody)
+            .post("https://localhost:44317/account/register", registrationRequestBody)
             .subscribe({
                 next: () => this.success(registrationRequestBody),
                 error: e => this.fail(e),
@@ -36,7 +36,7 @@ export class RegisterComponent {
         password: string
     }) {
         this.httpClient
-            .post("https://localhost:49161/account/login", userCredentials)
+            .post("https://localhost:44317/account/login", userCredentials)
             .subscribe({
                 next: response => this.saveTokenAndLoadChat(response),
                 error: error => { this.fail(error) }

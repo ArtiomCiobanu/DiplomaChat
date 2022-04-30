@@ -1,8 +1,6 @@
 ﻿using DiplomaChat.Common.DataAccess.Entities;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DiplomaChat.InSession.DataAccess.Contracts.Context;
+using System.Collections;
 
 namespace DiplomaChat.InSession.DataAccess.Context
 {
