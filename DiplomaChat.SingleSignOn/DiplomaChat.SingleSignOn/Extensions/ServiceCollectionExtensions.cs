@@ -1,8 +1,6 @@
 ﻿using DiplomaChat.Common.Authorization.Configuration;
 using DiplomaChat.Common.Authorization.Extensions;
 using DiplomaChat.Common.Authorization.Generators;
-using DiplomaChat.Common.Infrastructure.Logging.RequestPipelines;
-using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -21,13 +19,6 @@ namespace DiplomaChat.SingleSignOn.Extensions
 
             var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256Signature);
             services.AddScoped<IJwtGenerator, JwtGenerator>(s => new JwtGenerator(jwtConfiguration, signingCredentials));
-        }
-
-        public static IServiceCollection AddLoggingPipeline(this IServiceCollection services)
-        {
-            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(EndpointLoggingPipeline<,>));
-
-            return services;
         }
     }
 }

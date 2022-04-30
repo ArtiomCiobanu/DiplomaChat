@@ -1,9 +1,9 @@
-﻿using System.Reflection;
-using DiplomaChat.Common.Infrastructure.Logging.Attributes;
+﻿using DiplomaChat.Common.Infrastructure.Logging.Attributes;
 using DiplomaChat.Common.Infrastructure.Logging.Entries;
 using DiplomaChat.Common.Infrastructure.Logging.EntryLoggers;
 using DiplomaChat.Common.Infrastructure.Logging.NotLoggedStores.Properties;
 using DiplomaChat.Common.Infrastructure.Logging.NotLoggedStores.Types;
+using DiplomaChat.Common.Infrastructure.Logging.RequestPipelines;
 using DiplomaChat.Common.Infrastructure.Logging.Sanitizers.Endpoint;
 using DiplomaChat.Common.Infrastructure.Logging.Sanitizers.Endpoint.Request;
 using DiplomaChat.Common.Infrastructure.Logging.Sanitizers.Endpoint.Response;
@@ -11,11 +11,19 @@ using DiplomaChat.Common.Infrastructure.Logging.Sanitizers.Objects;
 using DiplomaChat.Common.Infrastructure.Logging.Sanitizers.Objects.Generic;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace DiplomaChat.Common.Infrastructure.Logging.Extensions
 {
     public static class ServiceCollectionExtensions
     {
+        public static IServiceCollection AddLoggingPipeline(this IServiceCollection services)
+        {
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(EndpointLoggingPipeline<,>));
+
+            return services;
+        }
+
         public static IServiceCollection AddLoggers(this IServiceCollection services)
         {
             services.AddScoped<IEntryLogger<EndpointLogEntry>, EndpointEntryLogger>();
