@@ -9,7 +9,7 @@ namespace DiplomaChat.Common.Authorization.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void AddJwt(
+        public static void AddJwtAuthentication(
            this IServiceCollection services,
            JwtConfiguration jwtConfiguration)
         {

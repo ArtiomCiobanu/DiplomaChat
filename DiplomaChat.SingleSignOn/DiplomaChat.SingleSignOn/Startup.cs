@@ -1,4 +1,5 @@
 using DiplomaChat.Common.Authorization.Configuration;
+using DiplomaChat.Common.Authorization.Constants;
 using DiplomaChat.Common.Authorization.Extensions;
 using DiplomaChat.Common.Infrastructure.Configuration;
 using DiplomaChat.Common.Infrastructure.Generators.Hashing;
@@ -49,13 +50,7 @@ namespace DiplomaChat.SingleSignOn
 
             var jwtConfiguration = Configuration.GetSection("JwtConfiguration").Get<JwtConfiguration>();
             Console.WriteLine($"Jwt Configuration: {JsonConvert.SerializeObject(jwtConfiguration)}");
-            services.AddJwt(jwtConfiguration);
-
-            services.AddScoped<IResponseMapper, ResponseMapper>();
-            services.AddScoped<IEndpointInformationAccessor, EndpointInformationAccessor>();
-
-            services.AddLoggingPipeline().AddLoggers().AddSanitizing(typeof(Startup).Assembly);
-
+            services.AddJwtAuthentication(jwtConfiguration);
             services.AddAuthorization();
 
             services.AddCors(options =>
@@ -65,6 +60,11 @@ namespace DiplomaChat.SingleSignOn
                         .AllowAnyMethod()
                         .AllowAnyHeader());
             });
+
+            services.AddScoped<IResponseMapper, ResponseMapper>();
+            services.AddScoped<IEndpointInformationAccessor, EndpointInformationAccessor>();
+
+            services.AddLoggingPipeline().AddLoggers().AddSanitizing(typeof(Startup).Assembly);
 
             services.AddControllers().AddFluentValidation(configuration =>
             {
@@ -80,7 +80,7 @@ namespace DiplomaChat.SingleSignOn
                     Name = Headers.Authorization,
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey,
-                    Scheme = SecuritySchemes.Bearer
+                    Scheme = Schemes.Bearer
                 };
                 options.AddSecurityDefinition(securityScheme.Scheme, securityScheme);
 
@@ -94,7 +94,7 @@ namespace DiplomaChat.SingleSignOn
                                 Type = ReferenceType.SecurityScheme,
                                 Id = securityScheme.Scheme
                             },
-                            Scheme = SecuritySchemes.OAuth,
+                            Scheme = Schemes.OAuth,
                             Name = securityScheme.Scheme,
                             In = securityScheme.In
                         },

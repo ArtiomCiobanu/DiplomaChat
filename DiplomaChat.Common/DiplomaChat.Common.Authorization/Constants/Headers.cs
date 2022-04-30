@@ -1,6 +1,6 @@
 ﻿namespace DiplomaChat.Common.Authorization.Constants
 {
-    public static class HeaderNames
+    public static class Headers
     {
         public const string Authorization = "Authorization";
     }

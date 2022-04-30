@@ -17,13 +17,13 @@ namespace DiplomaChat
 
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(configuration)
-                .Enrich.WithMachineName()
+                //.Enrich.WithMachineName()
                 .Enrich.WithCorrelationId()
                 .CreateLogger();
 
             try
             {
-                Log.Warning("Starting DiplomaChat-SingleSignOn");
+                Log.Warning("Starting DiplomaChat");
                 CreateHostBuilder(args).Build().Run();
             }
             catch (Exception ex)

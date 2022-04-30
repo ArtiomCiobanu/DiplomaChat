@@ -1,5 +1,6 @@
 using DiplomaChat.Common.Authorization.Configuration;
-using DiplomaChat.Common.Extensions;
+using DiplomaChat.Common.Authorization.Extensions;
+using DiplomaChat.Common.Infrastructure.Logging.Accessors.Endpoint;
 using DiplomaChat.Common.Infrastructure.Logging.Extensions;
 using DiplomaChat.Common.Infrastructure.MessageQueueing.Configuration;
 using DiplomaChat.Common.Infrastructure.MessageQueueing.Extensions.RabbitMQ;
@@ -38,7 +39,7 @@ namespace DiplomaChat
             //var rabbitMqConfiguration = Configuration.GetSection("RabbitMQConfiguration").Get<RabbitMQConfiguration>();
             var rabbitMqConfiguration = new RabbitMQConfiguration
             {
-                HostName = "rabbit",
+                HostName = "localhost",
                 Port = 5672,
                 VirtualHost = "/",
                 UserName = "guest",
@@ -56,15 +57,14 @@ namespace DiplomaChat
             });
 
             services.AddScoped<IResponseMapper, ResponseMapper>();
+            services.AddScoped<IEndpointInformationAccessor, EndpointInformationAccessor>();
 
             var jwtConfiguration = Configuration.GetSection("JwtConfiguration").Get<JwtConfiguration>();
             Console.WriteLine($"jwtConfiguration: {jwtConfiguration}");
-            services.AddJwt(jwtConfiguration);
+            services.AddJwtAuthentication(jwtConfiguration);
+            services.AddAuthorization();
 
             services.AddLoggingPipeline().AddLoggers().AddSanitizing(typeof(Startup).Assembly);
-
-            services.AddAuthentication();
-            services.AddAuthorization();
 
             services.AddCors(options =>
             {
