@@ -1,4 +1,5 @@
 using DiplomaChat.Common.Authorization.Configuration;
+using DiplomaChat.Common.Authorization.Extensions;
 using DiplomaChat.Common.Infrastructure.Configuration;
 using DiplomaChat.Common.Infrastructure.Generators.Hashing;
 using DiplomaChat.Common.Infrastructure.Logging.Accessors.Endpoint;
@@ -7,7 +8,6 @@ using DiplomaChat.Common.Infrastructure.ResponseMappers;
 using DiplomaChat.SingleSignOn.Constants;
 using DiplomaChat.SingleSignOn.DataAccess.Context;
 using DiplomaChat.SingleSignOn.DataAccess.Contracts.Context;
-using DiplomaChat.SingleSignOn.Extensions;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
