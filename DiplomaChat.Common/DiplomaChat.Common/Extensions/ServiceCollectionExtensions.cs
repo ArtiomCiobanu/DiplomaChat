@@ -11,7 +11,7 @@ namespace DiplomaChat.Common.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void AddJwt(
+        /*public static void AddJwt(
             this IServiceCollection services,
             JwtConfiguration jwtConfiguration)
         {
@@ -28,6 +28,6 @@ namespace DiplomaChat.Common.Extensions
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(EndpointLoggingPipeline<,>));
 
             return services;
-        }
+        }*/
     }
 }

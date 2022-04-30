@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DiplomaChat.SingleSignOn.Accessors.Endpoint
+﻿namespace DiplomaChat.Common.Infrastructure.Logging.Accessors.Endpoint
 {
     public interface IEndpointInformationAccessor
     {

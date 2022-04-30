@@ -1,7 +1,7 @@
 ﻿using DiplomaChat.Common.Authorization.Configuration;
 using DiplomaChat.Common.Authorization.Extensions;
 using DiplomaChat.Common.Authorization.Generators;
-using DiplomaChat.SingleSignOn.RequestPipelines;
+using DiplomaChat.Common.Infrastructure.Logging.RequestPipelines;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;

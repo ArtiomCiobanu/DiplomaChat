@@ -1,14 +1,12 @@
-﻿using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using DiplomaChat.Common.Infrastructure.Logging.Accessors.Endpoint;
 using DiplomaChat.Common.Infrastructure.Logging.Entries;
 using DiplomaChat.Common.Infrastructure.Logging.EntryLoggers;
 using DiplomaChat.Common.Infrastructure.Logging.Sanitizers.Endpoint;
 using DiplomaChat.Common.Infrastructure.Responses;
-using DiplomaChat.SingleSignOn.Accessors.Endpoint;
 using MediatR;
+using System.Diagnostics;
 
-namespace DiplomaChat.SingleSignOn.RequestPipelines
+namespace DiplomaChat.Common.Infrastructure.Logging.RequestPipelines
 {
     public class EndpointLoggingPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IRequest<TResponse>

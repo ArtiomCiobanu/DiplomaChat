@@ -17,11 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Common.DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Common.Infrastructure", "..\DiplomaChat.Common\DiplomaChat.Common.Infrastructure\DiplomaChat.Common.Infrastructure.csproj", "{C9AAA803-6CE9-4D71-A126-2CE8D7D536BA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Common.Logging", "..\DiplomaChat.Common\DiplomaChat.Common.Logging\DiplomaChat.Common.Logging.csproj", "{BF926EEF-8665-464B-B176-0B21D874220B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Common.MessageQueueing", "..\DiplomaChat.Common\DiplomaChat.Common.MessageQueueing\DiplomaChat.Common.MessageQueueing.csproj", "{E0DB2E79-CBFE-4F40-BDA1-12793BD6C0FA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiplomaChat.SingleSignOn.DataAccess.Contracts", "DiplomaChat.SingleSignOn.DataAccess.Contracts\DiplomaChat.SingleSignOn.DataAccess.Contracts.csproj", "{D6507BD6-0E3E-43FF-A4C9-06E0976B3305}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.SingleSignOn.DataAccess.Contracts", "DiplomaChat.SingleSignOn.DataAccess.Contracts\DiplomaChat.SingleSignOn.DataAccess.Contracts.csproj", "{D6507BD6-0E3E-43FF-A4C9-06E0976B3305}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Common.Infrastructure.Logging", "..\DiplomaChat.Common\DiplomaChat.Common.Infrastructure.Logging\DiplomaChat.Common.Infrastructure.Logging.csproj", "{08EB89D7-C808-47A9-A31E-1A7FF0968692}"
 EndProject
@@ -55,14 +51,6 @@ Global
 		{C9AAA803-6CE9-4D71-A126-2CE8D7D536BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9AAA803-6CE9-4D71-A126-2CE8D7D536BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9AAA803-6CE9-4D71-A126-2CE8D7D536BA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF926EEF-8665-464B-B176-0B21D874220B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF926EEF-8665-464B-B176-0B21D874220B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF926EEF-8665-464B-B176-0B21D874220B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF926EEF-8665-464B-B176-0B21D874220B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E0DB2E79-CBFE-4F40-BDA1-12793BD6C0FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0DB2E79-CBFE-4F40-BDA1-12793BD6C0FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E0DB2E79-CBFE-4F40-BDA1-12793BD6C0FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E0DB2E79-CBFE-4F40-BDA1-12793BD6C0FA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D6507BD6-0E3E-43FF-A4C9-06E0976B3305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D6507BD6-0E3E-43FF-A4C9-06E0976B3305}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6507BD6-0E3E-43FF-A4C9-06E0976B3305}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -80,8 +68,6 @@ Global
 		{7B587E3A-5D3F-4441-8245-7FE15216EDB9} = {809859E5-AFC5-4652-B4B3-C93C766D22A4}
 		{366D397A-0CB0-4A07-B53E-61FFB1772527} = {809859E5-AFC5-4652-B4B3-C93C766D22A4}
 		{C9AAA803-6CE9-4D71-A126-2CE8D7D536BA} = {809859E5-AFC5-4652-B4B3-C93C766D22A4}
-		{BF926EEF-8665-464B-B176-0B21D874220B} = {809859E5-AFC5-4652-B4B3-C93C766D22A4}
-		{E0DB2E79-CBFE-4F40-BDA1-12793BD6C0FA} = {809859E5-AFC5-4652-B4B3-C93C766D22A4}
 		{08EB89D7-C808-47A9-A31E-1A7FF0968692} = {809859E5-AFC5-4652-B4B3-C93C766D22A4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Security.Claims;
-using DiplomaChat.Common.Authorization.Constants;
+﻿using DiplomaChat.Common.Authorization.Constants;
 using DiplomaChat.Common.Authorization.Extensions;
 using Microsoft.AspNetCore.Http;
 
-namespace DiplomaChat.SingleSignOn.Accessors.Endpoint
+namespace DiplomaChat.Common.Infrastructure.Logging.Accessors.Endpoint
 {
     public class EndpointInformationAccessor : IEndpointInformationAccessor
     {
