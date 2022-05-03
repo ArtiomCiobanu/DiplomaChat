@@ -6,9 +6,9 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
-	<PropertyGroup>
+	<!--<PropertyGroup>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<OutputPath>$(MSBuildProjectDirectory)/../../../output</OutputPath>
-	</PropertyGroup>
+	</PropertyGroup>-->
 
 </Project>

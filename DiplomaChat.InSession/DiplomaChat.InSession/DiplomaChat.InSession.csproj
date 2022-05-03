@@ -11,10 +11,10 @@
         <RootNamespace>DiplomaChat.InSession</RootNamespace>
     </PropertyGroup>
 
-    <PropertyGroup>
+    <!--<PropertyGroup>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <OutputPath>$(MSBuildProjectDirectory)/../../../output</OutputPath>
-    </PropertyGroup>
+    </PropertyGroup>-->
 
     <ItemGroup>
         <PackageReference Include="MediatR" Version="10.0.1" />

@@ -14,9 +14,9 @@ namespace DiplomaChat.Common.Infrastructure.Logging.Sanitizers.Objects
 
         public string GetSanitizedJson(object value)
         {
-            var valueType = value.GetType();
-
-            return GetSanitizedJson(value, valueType);
+            return value == null
+                ? string.Empty
+                : GetSanitizedJson(value, value.GetType());
         }
 
         public string GetSanitizedJson(object value, Type valueType)

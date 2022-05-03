@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.SignalR;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using DiplomaChat.InSession.DataAccess.Contracts.Context;
+﻿using DiplomaChat.InSession.DataAccess.Contracts.Context;
 using DiplomaChat.InSession.Domain.Entities;
+using Microsoft.AspNetCore.SignalR;
 
 namespace DiplomaChat.InSession.Hubs
 {
@@ -19,26 +16,6 @@ namespace DiplomaChat.InSession.Hubs
 
         public override Task OnConnectedAsync()
         {
-            //For testing purposes
-            /*var tileField = new TileField(
-                new Tile(),
-                new TilePosition { X = 50, Y = 50 },
-                new FieldSize { Height = 100, Width = 100 });
-
-            var gameSession = new GameSession(tileField)
-            {
-                Id = new Guid("231d304e-fb83-4738-8507-30807ad400b8")
-            };
-            var player = new SessionPlayer
-            {
-                Id = new Guid("321d304e-fb83-4738-8507-30807ad400a7"),
-                Nickname = "Nickname!",
-                GameSession = gameSession
-            };
-            gameSession.Players.Add(player);
-            _inSessionContext.EntitySet<SessionPlayer>().Add(player);
-            _inSessionContext.EntitySet<GameSession>().Add(gameSession);*/
-
             return base.OnConnectedAsync();
         }
 

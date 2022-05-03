@@ -18,7 +18,7 @@ namespace DiplomaChat.InSession.Controllers
         {
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("{roomId}/members")]
         public Task<IActionResult> GetChatRoomMembers(Guid roomId) => SendToMediatorAsync(new GetChatRoomMembersQuery(roomId));
     }

@@ -39,13 +39,14 @@ namespace DiplomaChat.InSession
             services.AddMessageQueueingServices(typeof(Startup));
 
             services.AddScoped<IResponseMapper, ResponseMapper>();
-            services.AddScoped<IEndpointInformationAccessor, EndpointInformationAccessor>();
-
+            //services.AddScoped<IEndpointInformationAccessor, EndpointInformationAccessor>();
+            
             var jwtConfiguration = Configuration.GetSection("JwtConfiguration").Get<JwtConfiguration>();
+            Console.WriteLine($"jwtConfiguration: {jwtConfiguration}");
             services.AddJwtAuthentication(jwtConfiguration);
             services.AddAuthorization();
 
-            services.AddLoggingPipeline().AddLoggers().AddSanitizing(typeof(Startup).Assembly);
+            //services.AddLoggingPipeline().AddLoggers().AddSanitizing(typeof(Startup).Assembly);
 
             services.AddCors(options =>
             {
@@ -92,7 +93,7 @@ namespace DiplomaChat.InSession
                 options.AddSecurityRequirement(requirement);
             });
 
-            services.AddSingleton<IInSessionContext, LazyInSessionContext>();
+            services.AddSingleton<IInSessionContext, InMemoryInSessionContext>();
             services.AddSignalR();
             services.AddMediatR(typeof(Startup));
         }
@@ -104,9 +105,10 @@ namespace DiplomaChat.InSession
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DiplomaChat.InSession v1"));
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DiplomaChat v1"));
 
             app.UseHttpsRedirection();
 

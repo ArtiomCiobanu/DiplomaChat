@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace DiplomaChat.InSession.DataAccess.Context
 {
-    public class LazyInSessionContext : IInSessionContext
+    public class InMemoryInSessionContext : IInSessionContext
     {
         private readonly Dictionary<Type, ICollection> _entitySets = new();
 

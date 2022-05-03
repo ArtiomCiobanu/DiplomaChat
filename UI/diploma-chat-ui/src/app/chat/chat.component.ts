@@ -72,7 +72,6 @@ export class ChatComponent {
     }
 
     connectToChatHub(): signalR.HubConnection {
-        //Object.defineProperty(WebSocket, 'OPEN', { value: 1 });
         let hubConnection = new signalR.HubConnectionBuilder()
             .configureLogging(signalR.LogLevel.Trace)
             .withUrl('https://localhost:44373/ChatHub',

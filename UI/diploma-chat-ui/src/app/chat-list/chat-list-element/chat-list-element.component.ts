@@ -35,13 +35,13 @@ export class ChatListElementComponent {
 
     onClick() {
         this.joinChatRoom()
-        this.router.navigate([`chats/${this.roomId}`]);
     }
 
     joinChatRoom() {
         this.httpClient
             .get(`https://localhost:44306/rooms/${this.roomId}/join`, this.requestOptions)
             .subscribe({
+                next: () => this.router.navigate([`chats/${this.roomId}`]),
                 error: e => alert(JSON.stringify(e))
             })
     }
