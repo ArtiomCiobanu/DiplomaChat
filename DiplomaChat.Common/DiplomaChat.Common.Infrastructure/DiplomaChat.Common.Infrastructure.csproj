@@ -3,13 +3,9 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>disable</Nullable>
+		<Nullable>enable</Nullable>
 		<RootNamespace>DiplomaChat.Common.Infrastructure</RootNamespace>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\DiplomaChat.Common.Authorization\DiplomaChat.Common.Infrastructure.Authorization.csproj" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="MediatR" Version="10.0.1" />

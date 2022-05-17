@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+﻿using DiplomaChat.Common.Infrastructure.Extensions;
 using System.Security.Claims;
 
 namespace DiplomaChat.Common.Infrastructure.Authorization.Extensions
@@ -18,12 +18,9 @@ namespace DiplomaChat.Common.Infrastructure.Authorization.Extensions
         public static TValue? GetClaimValueIfExists<TValue>(this IEnumerable<Claim> claims, string claimType)
             where TValue : struct
         {
-            TypeConverter converter = TypeDescriptor.GetConverter(typeof(TValue));
-
             var claim = claims.FirstOrDefault(c => c.Type == claimType);
 
-            TValue? result = claim != null ? (TValue)converter.ConvertFromString(claim.Value) : null;
-            return result;
+            return claim?.Value.ConvertTo<TValue>();
         }
     }
 }
