@@ -1,5 +1,5 @@
-using DiplomaChat.Common.Authorization.Configuration;
-using DiplomaChat.Common.Authorization.Extensions;
+using DiplomaChat.Common.Infrastructure.Authorization.Configuration;
+using DiplomaChat.Common.Infrastructure.Authorization.Extensions;
 using DiplomaChat.Common.Infrastructure.Logging.Accessors.Endpoint;
 using DiplomaChat.Common.Infrastructure.Logging.Extensions;
 using DiplomaChat.Common.Infrastructure.MessageQueueing.Configuration;

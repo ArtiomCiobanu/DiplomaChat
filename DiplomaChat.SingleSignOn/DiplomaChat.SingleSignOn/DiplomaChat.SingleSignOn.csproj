@@ -25,7 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.Authorization\DiplomaChat.Common.Authorization.csproj" />
+        <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.Authorization\DiplomaChat.Common.Infrastructure.Authorization.csproj" />
         <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.Infrastructure\DiplomaChat.Common.Infrastructure.csproj" />
         <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.Infrastructure.Logging\DiplomaChat.Common.Infrastructure.Logging.csproj" />
         <ProjectReference Include="..\DiplomaChat.SingleSignOn.DataAccess\DiplomaChat.SingleSignOn.DataAccess.csproj" />

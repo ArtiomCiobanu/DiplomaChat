@@ -1,4 +1,4 @@
-﻿namespace DiplomaChat.Common.Authorization.Configuration
+﻿namespace DiplomaChat.Common.Infrastructure.Authorization.Configuration
 {
     public class JwtConfiguration
     {

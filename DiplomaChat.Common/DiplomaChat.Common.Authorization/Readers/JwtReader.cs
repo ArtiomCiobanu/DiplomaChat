@@ -1,8 +1,8 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
-using DiplomaChat.Common.Authorization.Constants;
-using DiplomaChat.Common.Authorization.Extensions;
+using DiplomaChat.Common.Infrastructure.Authorization.Constants;
+using DiplomaChat.Common.Infrastructure.Authorization.Extensions;
 
-namespace DiplomaChat.Common.Authorization.Readers
+namespace DiplomaChat.Common.Infrastructure.Authorization.Readers
 {
     public class JwtReader : ITokenReader
     {

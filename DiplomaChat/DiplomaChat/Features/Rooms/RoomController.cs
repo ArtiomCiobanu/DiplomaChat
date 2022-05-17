@@ -1,5 +1,5 @@
-﻿using DiplomaChat.Common.Authorization.Constants;
-using DiplomaChat.Common.Authorization.Extensions;
+﻿using DiplomaChat.Common.Infrastructure.Authorization.Constants;
+using DiplomaChat.Common.Infrastructure.Authorization.Extensions;
 using DiplomaChat.Common.Infrastructure.Controllers;
 using DiplomaChat.Common.Infrastructure.ResponseMappers;
 using DiplomaChat.Features.Rooms.CreateChatRoom;

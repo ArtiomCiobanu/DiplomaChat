@@ -1,4 +1,4 @@
-﻿namespace DiplomaChat.Common.Authorization.Readers
+﻿namespace DiplomaChat.Common.Infrastructure.Authorization.Readers
 {
     public interface ITokenReader
     {

@@ -1,6 +1,5 @@
 ﻿using DiplomaChat.Common.Infrastructure.Logging.Attributes;
-using DiplomaChat.Common.Infrastructure.Logging.Entries;
-using DiplomaChat.Common.Infrastructure.Logging.EntryLoggers;
+using DiplomaChat.Common.Infrastructure.Logging.Loggers.EndpointLoggers;
 using DiplomaChat.Common.Infrastructure.Logging.NotLoggedStores.Properties;
 using DiplomaChat.Common.Infrastructure.Logging.NotLoggedStores.Types;
 using DiplomaChat.Common.Infrastructure.Logging.RequestPipelines;
@@ -11,6 +10,7 @@ using DiplomaChat.Common.Infrastructure.Logging.Sanitizers.Objects;
 using DiplomaChat.Common.Infrastructure.Logging.Sanitizers.Objects.Generic;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using System.Reflection;
 
 namespace DiplomaChat.Common.Infrastructure.Logging.Extensions
@@ -26,7 +26,7 @@ namespace DiplomaChat.Common.Infrastructure.Logging.Extensions
 
         public static IServiceCollection AddLoggers(this IServiceCollection services)
         {
-            services.AddScoped<IEntryLogger<EndpointLogEntry>, EndpointEntryLogger>();
+            services.AddScoped<IEndpointLogger, EndpointLogger>(_ => new EndpointLogger(Log.Logger));
 
             return services;
         }

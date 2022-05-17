@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Security.Claims;
 
-namespace DiplomaChat.Common.Authorization.Extensions
+namespace DiplomaChat.Common.Infrastructure.Authorization.Extensions
 {
     public static class ClaimExtensions
     {

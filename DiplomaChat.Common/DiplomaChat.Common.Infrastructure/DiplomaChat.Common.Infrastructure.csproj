@@ -8,7 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\DiplomaChat.Common.Authorization\DiplomaChat.Common.Authorization.csproj" />
+		<ProjectReference Include="..\DiplomaChat.Common.Authorization\DiplomaChat.Common.Infrastructure.Authorization.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

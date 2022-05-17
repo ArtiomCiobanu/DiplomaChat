@@ -1,6 +1,6 @@
-﻿using DiplomaChat.Common.Infrastructure.Logging.Accessors.Endpoint;
-using DiplomaChat.Common.Infrastructure.Logging.Entries;
-using DiplomaChat.Common.Infrastructure.Logging.EntryLoggers;
+﻿using DiplomaChat.Common.Infrastructure.Enums;
+using DiplomaChat.Common.Infrastructure.Logging.Accessors.Endpoint;
+using DiplomaChat.Common.Infrastructure.Logging.Loggers.EndpointLoggers;
 using DiplomaChat.Common.Infrastructure.Logging.Sanitizers.Endpoint;
 using DiplomaChat.Common.Infrastructure.Responses;
 using MediatR;
@@ -12,54 +12,60 @@ namespace DiplomaChat.Common.Infrastructure.Logging.RequestPipelines
         where TRequest : IRequest<TResponse>
         where TResponse : IResponse
     {
-        private readonly IEntryLogger<EndpointLogEntry> _entryLogger;
+        private readonly IEndpointLogger _endpointLogger;
         private readonly IEndpointSanitizer<TRequest, TResponse> _endpointSanitizer;
         private readonly IEndpointInformationAccessor _endpointInformationAccessor;
 
         public EndpointLoggingPipeline(
             IEndpointInformationAccessor endpointInformationAccessor,
-            IEntryLogger<EndpointLogEntry> entryLogger,
+            IEndpointLogger endpointLogger,
             IEndpointSanitizer<TRequest, TResponse> endpointSanitizer)
         {
-            _entryLogger = entryLogger;
-
             _endpointInformationAccessor = endpointInformationAccessor;
-
+            _endpointLogger = endpointLogger;
             _endpointSanitizer = endpointSanitizer;
         }
 
         public async Task<TResponse> Handle(
-            TRequest request,
-            CancellationToken cancellationToken,
-            RequestHandlerDelegate<TResponse> next)
+                TRequest request,
+                CancellationToken cancellationToken,
+                RequestHandlerDelegate<TResponse> next)
         {
             var startTimestamp = Stopwatch.GetTimestamp();
 
-            var response = await next();
+            var requestBody = _endpointSanitizer.GetSanitizedRequestJson(request);
+            _endpointLogger
+                .AddRequestBody(requestBody)
+                .AddRequestMethod(_endpointInformationAccessor.Method)
+                .AddRequestPath(_endpointInformationAccessor.Path)
+                .AddUserId(_endpointInformationAccessor.UserId);
 
-            if (!cancellationToken.IsCancellationRequested)
+            try
             {
-                var requestBody = _endpointSanitizer.GetSanitizedRequestJson(request);
-                var responseBody = _endpointSanitizer.GetSanitizedResponseJson(response);
+                TResponse response = await next();
 
-                var logEntry = new EndpointLogEntry
+                if (!cancellationToken.IsCancellationRequested)
                 {
-                    RequestBody = requestBody,
-                    ResponseBody = responseBody,
+                    var elapsedMilliseconds = GetElapsedMilliseconds(startTimestamp, Stopwatch.GetTimestamp());
 
-                    Method = _endpointInformationAccessor.Method,
-                    Path = _endpointInformationAccessor.Path,
+                    var responseBody = _endpointSanitizer.GetSanitizedResponseJson(response);
+                    _endpointLogger
+                        .AddResponseBody(responseBody)
+                        .AddStatusCode((int)response.Status)
+                        .AddElapsed(elapsedMilliseconds);
 
-                    StatusCode = (int) response.Status,
+                    _endpointLogger.Warning();
+                }
 
-                    Elapsed = GetElapsedMilliseconds(startTimestamp, Stopwatch.GetTimestamp()),
-
-                    AccountId = _endpointInformationAccessor.UserId
-                };
-                _entryLogger.LogEntry(logEntry);
+                return response;
             }
+            catch
+            {
+                _endpointLogger.AddStatusCode((int)ResponseStatus.InternalServerError)
+                    .Warning();
 
-            return response;
+                throw;
+            }
         }
 
         private int GetElapsedMilliseconds(long start, long stop)

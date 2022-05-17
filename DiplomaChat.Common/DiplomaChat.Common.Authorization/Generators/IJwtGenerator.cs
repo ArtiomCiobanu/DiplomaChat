@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace DiplomaChat.Common.Authorization.Generators
+namespace DiplomaChat.Common.Infrastructure.Authorization.Generators
 {
     public interface IJwtGenerator
     {

@@ -1,4 +1,4 @@
-﻿namespace DiplomaChat.Common.Authorization.Constants
+﻿namespace DiplomaChat.Common.Infrastructure.Authorization.Constants
 {
     public static class Schemes
     {

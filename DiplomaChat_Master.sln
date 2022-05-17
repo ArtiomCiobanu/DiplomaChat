@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Domain", "Diplo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Common", "DiplomaChat.Common\DiplomaChat.Common\DiplomaChat.Common.csproj", "{0FEB0024-6B3D-441D-A3FA-13907838FBD9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Common.Authorization", "DiplomaChat.Common\DiplomaChat.Common.Authorization\DiplomaChat.Common.Authorization.csproj", "{37D7E54F-4412-40F5-AE33-61633CD655F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Common.Infrastructure.Authorization", "DiplomaChat.Common\DiplomaChat.Common.Authorization\DiplomaChat.Common.Infrastructure.Authorization.csproj", "{37D7E54F-4412-40F5-AE33-61633CD655F4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomaChat.Common.DataAccess", "DiplomaChat.Common\DiplomaChat.Common.DataAccess\DiplomaChat.Common.DataAccess.csproj", "{9B67F90E-7838-4AB7-BC8E-6E8247A66710}"
 EndProject

@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
-		<RootNamespace>DiplomaChat.Common.Authorization</RootNamespace>
+		<RootNamespace>DiplomaChat.Common.Infrastructure.Authorization</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

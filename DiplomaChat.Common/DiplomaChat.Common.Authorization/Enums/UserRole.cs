@@ -1,4 +1,4 @@
-﻿namespace DiplomaChat.Common.Authorization.Enums
+﻿namespace DiplomaChat.Common.Infrastructure.Authorization.Enums
 {
     public enum UserRole
     {

@@ -23,7 +23,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\DiplomaChat.Common.Authorization\DiplomaChat.Common.Authorization.csproj" />
+		<ProjectReference Include="..\DiplomaChat.Common.Authorization\DiplomaChat.Common.Infrastructure.Authorization.csproj" />
 		<ProjectReference Include="..\DiplomaChat.Common.Infrastructure\DiplomaChat.Common.Infrastructure.csproj" />
 		<ProjectReference Include="..\DiplomaChat.Common.Infrastructure.Logging\DiplomaChat.Common.Infrastructure.Logging.csproj" />
 	</ItemGroup>

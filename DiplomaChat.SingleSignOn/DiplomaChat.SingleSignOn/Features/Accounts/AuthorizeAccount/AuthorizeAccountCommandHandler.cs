@@ -1,6 +1,6 @@
-﻿using DiplomaChat.Common.Authorization.Constants;
-using DiplomaChat.Common.Authorization.Generators;
-using DiplomaChat.Common.DataAccess.Extensions;
+﻿using DiplomaChat.Common.DataAccess.Extensions;
+using DiplomaChat.Common.Infrastructure.Authorization.Constants;
+using DiplomaChat.Common.Infrastructure.Authorization.Generators;
 using DiplomaChat.Common.Infrastructure.Enums;
 using DiplomaChat.Common.Infrastructure.Generators.Hashing;
 using DiplomaChat.Common.Infrastructure.Responses;

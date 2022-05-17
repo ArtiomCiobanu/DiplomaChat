@@ -1,10 +1,9 @@
-﻿using System;
+﻿using DiplomaChat.Common.Infrastructure.Authorization.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using DiplomaChat.Common.Authorization.Configuration;
-using Microsoft.IdentityModel.Tokens;
 
-namespace DiplomaChat.Common.Authorization.Generators
+namespace DiplomaChat.Common.Infrastructure.Authorization.Generators
 {
     public class JwtGenerator : IJwtGenerator
     {

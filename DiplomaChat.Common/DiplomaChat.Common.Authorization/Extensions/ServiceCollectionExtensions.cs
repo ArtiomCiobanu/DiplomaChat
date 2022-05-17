@@ -1,11 +1,11 @@
-﻿using DiplomaChat.Common.Authorization.Configuration;
-using DiplomaChat.Common.Authorization.Generators;
+﻿using DiplomaChat.Common.Infrastructure.Authorization.Configuration;
+using DiplomaChat.Common.Infrastructure.Authorization.Generators;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace DiplomaChat.Common.Authorization.Extensions
+namespace DiplomaChat.Common.Infrastructure.Authorization.Extensions
 {
     public static class ServiceCollectionExtensions
     {
