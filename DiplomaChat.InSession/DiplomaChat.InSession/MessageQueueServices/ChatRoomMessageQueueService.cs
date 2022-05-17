@@ -7,11 +7,11 @@ using MediatR;
 namespace DiplomaChat.InSession.MessageQueueServices
 {
     [MessageQueueService]
-    public class MenuMessageQueueService
+    public class ChatRoomMessageQueueService
     {
         private readonly IMediator _mediator;
 
-        public MenuMessageQueueService(IMediator mediator)
+        public ChatRoomMessageQueueService(IMediator mediator)
         {
             _mediator = mediator;
         }
