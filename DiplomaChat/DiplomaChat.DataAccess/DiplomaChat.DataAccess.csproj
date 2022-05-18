@@ -1,19 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>disable</Nullable>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
 
-    <!--<PropertyGroup>
+	<!--<PropertyGroup>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <OutputPath>$(MSBuildProjectDirectory)/../../../output</OutputPath>
     </PropertyGroup>-->
 
-    <ItemGroup>
-      <ProjectReference Include="..\DiplomaChat.DataAccess.Contracts\DiplomaChat.DataAccess.Contracts.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\DiplomaChat.DataAccess.Contracts\DiplomaChat.DataAccess.Contracts.csproj" />
+	</ItemGroup>
 
 
 </Project>

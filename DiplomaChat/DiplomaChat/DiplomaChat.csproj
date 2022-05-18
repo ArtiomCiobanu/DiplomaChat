@@ -35,24 +35,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.Infrastructure.Logging\DiplomaChat.Common.Infrastructure.Logging.csproj" />
-	  <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.Infrastructure.MessageQueueing\DiplomaChat.Common.Infrastructure.MessageQueueing.csproj" />
-	  <ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.Infrastructure\DiplomaChat.Common.Infrastructure.csproj" />
-	  <ProjectReference Include="..\DiplomaChat.DataAccess.Contracts\DiplomaChat.DataAccess.Contracts.csproj" />
-	  <ProjectReference Include="..\DiplomaChat.DataAccess\DiplomaChat.DataAccess.csproj" />
-	  <ProjectReference Include="..\DiplomaChat.Domain\DiplomaChat.Domain.csproj" />
+		<ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.Infrastructure.Logging\DiplomaChat.Common.Infrastructure.Logging.csproj" />
+		<ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.Infrastructure.MessageQueueing\DiplomaChat.Common.Infrastructure.MessageQueueing.csproj" />
+		<ProjectReference Include="..\..\DiplomaChat.Common\DiplomaChat.Common.Infrastructure\DiplomaChat.Common.Infrastructure.csproj" />
+		<ProjectReference Include="..\DiplomaChat.DataAccess.Contracts\DiplomaChat.DataAccess.Contracts.csproj" />
+		<ProjectReference Include="..\DiplomaChat.DataAccess\DiplomaChat.DataAccess.csproj" />
+		<ProjectReference Include="..\DiplomaChat.Domain\DiplomaChat.Domain.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Update="appsettings.Development.json">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
-	  <Content Update="appsettings.json">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
-	  <Content Update="appsettings.Production.json">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
+		<Content Update="appsettings.Development.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Update="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Update="appsettings.Production.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 
 </Project>
